@@ -1,0 +1,9 @@
+D:\program\CSharp\COManalysis\COMv1\COMv1\bin\Debug\COMv1.exe.config
+D:\program\CSharp\COManalysis\COMv1\COMv1\obj\Debug\COMv1.csprojResolveAssemblyReference.cache
+D:\program\CSharp\COManalysis\COMv1\COMv1\obj\Debug\COMv1.Form1.resources
+D:\program\CSharp\COManalysis\COMv1\COMv1\obj\Debug\COMv1.Properties.Resources.resources
+D:\program\CSharp\COManalysis\COMv1\COMv1\obj\Debug\COMv1.csproj.GenerateResource.Cache
+D:\program\CSharp\COManalysis\COMv1\COMv1\bin\Debug\COMv1.exe
+D:\program\CSharp\COManalysis\COMv1\COMv1\bin\Debug\COMv1.pdb
+D:\program\CSharp\COManalysis\COMv1\COMv1\obj\Debug\COMv1.exe
+D:\program\CSharp\COManalysis\COMv1\COMv1\obj\Debug\COMv1.pdb
