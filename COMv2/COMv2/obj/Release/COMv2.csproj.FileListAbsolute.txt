@@ -1,0 +1,9 @@
+D:\program\CSharp\COManalysis\COMv2\COMv2\bin\Release\COMv2.exe.config
+D:\program\CSharp\COManalysis\COMv2\COMv2\bin\Release\COMv2.exe
+D:\program\CSharp\COManalysis\COMv2\COMv2\bin\Release\COMv2.pdb
+D:\program\CSharp\COManalysis\COMv2\COMv2\obj\Release\COMv2.MainForm.resources
+D:\program\CSharp\COManalysis\COMv2\COMv2\obj\Release\COMv2.Properties.Resources.resources
+D:\program\CSharp\COManalysis\COMv2\COMv2\obj\Release\COMv2.csproj.GenerateResource.Cache
+D:\program\CSharp\COManalysis\COMv2\COMv2\obj\Release\COMv2.exe
+D:\program\CSharp\COManalysis\COMv2\COMv2\obj\Release\COMv2.pdb
+D:\program\CSharp\COManalysis\COMv2\COMv2\obj\Release\COMv2.csprojResolveAssemblyReference.cache

@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.COM = new System.IO.Ports.SerialPort(this.components);
             this.cbPort = new System.Windows.Forms.ComboBox();
             this.lbPort = new System.Windows.Forms.Label();
@@ -42,39 +43,30 @@
             this.cbDataBits = new System.Windows.Forms.ComboBox();
             this.lbParity = new System.Windows.Forms.Label();
             this.cbParity = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbPort = new System.Windows.Forms.GroupBox();
             this.btnPortOpen = new System.Windows.Forms.Button();
             this.btnPortClose = new System.Windows.Forms.Button();
             this.btnPortReadBegin = new System.Windows.Forms.Button();
             this.btnPortReadEnd = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gbCmd = new System.Windows.Forms.GroupBox();
             this.btnPortWrite = new System.Windows.Forms.Button();
+            this.tbPortWrite = new System.Windows.Forms.TextBox();
+            this.gbSend = new System.Windows.Forms.GroupBox();
+            this.ckbNewLine = new System.Windows.Forms.CheckBox();
+            this.tbPortRead = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chtData = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.gbPort.SuspendLayout();
+            this.gbCmd.SuspendLayout();
+            this.gbSend.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chtData)).BeginInit();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(204, 141);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(166, 39);
-            this.textBox1.TabIndex = 9;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(314, 246);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(251, 92);
-            this.textBox2.TabIndex = 11;
             // 
             // cbPort
             // 
             this.cbPort.FormattingEnabled = true;
-            this.cbPort.Location = new System.Drawing.Point(69, 32);
+            this.cbPort.Location = new System.Drawing.Point(69, 41);
             this.cbPort.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbPort.Name = "cbPort";
             this.cbPort.Size = new System.Drawing.Size(76, 25);
@@ -83,7 +75,7 @@
             // lbPort
             // 
             this.lbPort.AutoSize = true;
-            this.lbPort.Location = new System.Drawing.Point(16, 35);
+            this.lbPort.Location = new System.Drawing.Point(16, 44);
             this.lbPort.Name = "lbPort";
             this.lbPort.Size = new System.Drawing.Size(35, 17);
             this.lbPort.TabIndex = 8;
@@ -92,7 +84,7 @@
             // lbBaudRate
             // 
             this.lbBaudRate.AutoSize = true;
-            this.lbBaudRate.Location = new System.Drawing.Point(16, 68);
+            this.lbBaudRate.Location = new System.Drawing.Point(16, 77);
             this.lbBaudRate.Name = "lbBaudRate";
             this.lbBaudRate.Size = new System.Drawing.Size(47, 17);
             this.lbBaudRate.TabIndex = 10;
@@ -113,7 +105,7 @@
             "230400",
             "460800",
             "921600"});
-            this.cbBaudRate.Location = new System.Drawing.Point(69, 65);
+            this.cbBaudRate.Location = new System.Drawing.Point(69, 74);
             this.cbBaudRate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbBaudRate.Name = "cbBaudRate";
             this.cbBaudRate.Size = new System.Drawing.Size(76, 25);
@@ -122,7 +114,7 @@
             // lbStopBits
             // 
             this.lbStopBits.AutoSize = true;
-            this.lbStopBits.Location = new System.Drawing.Point(16, 134);
+            this.lbStopBits.Location = new System.Drawing.Point(16, 143);
             this.lbStopBits.Name = "lbStopBits";
             this.lbStopBits.Size = new System.Drawing.Size(47, 17);
             this.lbStopBits.TabIndex = 14;
@@ -135,7 +127,7 @@
             "1",
             "1.5",
             "2"});
-            this.cbStopBits.Location = new System.Drawing.Point(69, 131);
+            this.cbStopBits.Location = new System.Drawing.Point(69, 140);
             this.cbStopBits.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbStopBits.Name = "cbStopBits";
             this.cbStopBits.Size = new System.Drawing.Size(76, 25);
@@ -144,7 +136,7 @@
             // lbDataBits
             // 
             this.lbDataBits.AutoSize = true;
-            this.lbDataBits.Location = new System.Drawing.Point(16, 101);
+            this.lbDataBits.Location = new System.Drawing.Point(16, 110);
             this.lbDataBits.Name = "lbDataBits";
             this.lbDataBits.Size = new System.Drawing.Size(47, 17);
             this.lbDataBits.TabIndex = 12;
@@ -158,7 +150,7 @@
             "6",
             "7",
             "8"});
-            this.cbDataBits.Location = new System.Drawing.Point(69, 98);
+            this.cbDataBits.Location = new System.Drawing.Point(69, 107);
             this.cbDataBits.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbDataBits.Name = "cbDataBits";
             this.cbDataBits.Size = new System.Drawing.Size(76, 25);
@@ -167,7 +159,7 @@
             // lbParity
             // 
             this.lbParity.AutoSize = true;
-            this.lbParity.Location = new System.Drawing.Point(16, 167);
+            this.lbParity.Location = new System.Drawing.Point(16, 176);
             this.lbParity.Name = "lbParity";
             this.lbParity.Size = new System.Drawing.Size(35, 17);
             this.lbParity.TabIndex = 16;
@@ -182,30 +174,30 @@
             "Even",
             "Mark",
             "Space"});
-            this.cbParity.Location = new System.Drawing.Point(69, 164);
+            this.cbParity.Location = new System.Drawing.Point(69, 173);
             this.cbParity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbParity.Name = "cbParity";
             this.cbParity.Size = new System.Drawing.Size(76, 25);
             this.cbParity.TabIndex = 4;
             // 
-            // groupBox1
+            // gbPort
             // 
-            this.groupBox1.Controls.Add(this.cbPort);
-            this.groupBox1.Controls.Add(this.lbParity);
-            this.groupBox1.Controls.Add(this.cbDataBits);
-            this.groupBox1.Controls.Add(this.lbDataBits);
-            this.groupBox1.Controls.Add(this.lbPort);
-            this.groupBox1.Controls.Add(this.lbBaudRate);
-            this.groupBox1.Controls.Add(this.cbStopBits);
-            this.groupBox1.Controls.Add(this.cbParity);
-            this.groupBox1.Controls.Add(this.cbBaudRate);
-            this.groupBox1.Controls.Add(this.lbStopBits);
-            this.groupBox1.Location = new System.Drawing.Point(12, 24);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(169, 214);
-            this.groupBox1.TabIndex = 17;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "串口参数";
+            this.gbPort.Controls.Add(this.cbPort);
+            this.gbPort.Controls.Add(this.lbParity);
+            this.gbPort.Controls.Add(this.cbDataBits);
+            this.gbPort.Controls.Add(this.lbDataBits);
+            this.gbPort.Controls.Add(this.lbPort);
+            this.gbPort.Controls.Add(this.lbBaudRate);
+            this.gbPort.Controls.Add(this.cbStopBits);
+            this.gbPort.Controls.Add(this.cbParity);
+            this.gbPort.Controls.Add(this.cbBaudRate);
+            this.gbPort.Controls.Add(this.lbStopBits);
+            this.gbPort.Location = new System.Drawing.Point(12, 24);
+            this.gbPort.Name = "gbPort";
+            this.gbPort.Size = new System.Drawing.Size(169, 228);
+            this.gbPort.TabIndex = 17;
+            this.gbPort.TabStop = false;
+            this.gbPort.Text = "串口参数";
             // 
             // btnPortOpen
             // 
@@ -247,55 +239,127 @@
             this.btnPortReadEnd.UseVisualStyleBackColor = true;
             this.btnPortReadEnd.Click += new System.EventHandler(this.btnPortReadEnd_Click);
             // 
-            // groupBox2
+            // gbCmd
             // 
-            this.groupBox2.Controls.Add(this.btnPortReadEnd);
-            this.groupBox2.Controls.Add(this.btnPortOpen);
-            this.groupBox2.Controls.Add(this.btnPortReadBegin);
-            this.groupBox2.Controls.Add(this.btnPortClose);
-            this.groupBox2.Location = new System.Drawing.Point(187, 24);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 100);
-            this.groupBox2.TabIndex = 22;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "串口操作";
+            this.gbCmd.Controls.Add(this.btnPortReadEnd);
+            this.gbCmd.Controls.Add(this.btnPortOpen);
+            this.gbCmd.Controls.Add(this.btnPortReadBegin);
+            this.gbCmd.Controls.Add(this.btnPortClose);
+            this.gbCmd.Location = new System.Drawing.Point(187, 24);
+            this.gbCmd.Name = "gbCmd";
+            this.gbCmd.Size = new System.Drawing.Size(200, 100);
+            this.gbCmd.TabIndex = 22;
+            this.gbCmd.TabStop = false;
+            this.gbCmd.Text = "串口操作";
             // 
             // btnPortWrite
             // 
-            this.btnPortWrite.Location = new System.Drawing.Point(204, 191);
+            this.btnPortWrite.Location = new System.Drawing.Point(318, 93);
             this.btnPortWrite.Name = "btnPortWrite";
             this.btnPortWrite.Size = new System.Drawing.Size(75, 23);
-            this.btnPortWrite.TabIndex = 23;
+            this.btnPortWrite.TabIndex = 10;
             this.btnPortWrite.Text = "发送";
             this.btnPortWrite.UseVisualStyleBackColor = true;
             this.btnPortWrite.Click += new System.EventHandler(this.btnPortWrite_Click);
+            // 
+            // tbPortWrite
+            // 
+            this.tbPortWrite.Location = new System.Drawing.Point(6, 22);
+            this.tbPortWrite.Multiline = true;
+            this.tbPortWrite.Name = "tbPortWrite";
+            this.tbPortWrite.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tbPortWrite.Size = new System.Drawing.Size(387, 61);
+            this.tbPortWrite.TabIndex = 9;
+            // 
+            // gbSend
+            // 
+            this.gbSend.Controls.Add(this.ckbNewLine);
+            this.gbSend.Controls.Add(this.tbPortWrite);
+            this.gbSend.Controls.Add(this.btnPortWrite);
+            this.gbSend.Location = new System.Drawing.Point(12, 258);
+            this.gbSend.Name = "gbSend";
+            this.gbSend.Size = new System.Drawing.Size(399, 122);
+            this.gbSend.TabIndex = 23;
+            this.gbSend.TabStop = false;
+            this.gbSend.Text = "发送";
+            // 
+            // ckbNewLine
+            // 
+            this.ckbNewLine.AutoSize = true;
+            this.ckbNewLine.Checked = true;
+            this.ckbNewLine.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbNewLine.Location = new System.Drawing.Point(6, 95);
+            this.ckbNewLine.Name = "ckbNewLine";
+            this.ckbNewLine.Size = new System.Drawing.Size(87, 21);
+            this.ckbNewLine.TabIndex = 11;
+            this.ckbNewLine.Text = "发送时换行";
+            this.ckbNewLine.UseVisualStyleBackColor = true;
+            // 
+            // tbPortRead
+            // 
+            this.tbPortRead.Location = new System.Drawing.Point(6, 22);
+            this.tbPortRead.Multiline = true;
+            this.tbPortRead.Name = "tbPortRead";
+            this.tbPortRead.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tbPortRead.Size = new System.Drawing.Size(387, 86);
+            this.tbPortRead.TabIndex = 24;
+            this.tbPortRead.TextChanged += new System.EventHandler(this.tbPortRead_TextChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tbPortRead);
+            this.groupBox1.Location = new System.Drawing.Point(12, 386);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(399, 114);
+            this.groupBox1.TabIndex = 25;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "接收";
+            // 
+            // chtData
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chtData.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chtData.Legends.Add(legend2);
+            this.chtData.Location = new System.Drawing.Point(444, 46);
+            this.chtData.Name = "chtData";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chtData.Series.Add(series2);
+            this.chtData.Size = new System.Drawing.Size(494, 295);
+            this.chtData.TabIndex = 26;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 378);
-            this.Controls.Add(this.btnPortWrite);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(974, 514);
+            this.Controls.Add(this.chtData);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.gbSend);
+            this.Controls.Add(this.gbCmd);
+            this.Controls.Add(this.gbPort);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainForm";
             this.Text = "COM.Analysis.v2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.gbPort.ResumeLayout(false);
+            this.gbPort.PerformLayout();
+            this.gbCmd.ResumeLayout(false);
+            this.gbSend.ResumeLayout(false);
+            this.gbSend.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chtData)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.IO.Ports.SerialPort COM;
         private System.Windows.Forms.ComboBox cbPort;
         private System.Windows.Forms.Label lbPort;
@@ -307,13 +371,19 @@
         private System.Windows.Forms.ComboBox cbDataBits;
         private System.Windows.Forms.Label lbParity;
         private System.Windows.Forms.ComboBox cbParity;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbPort;
         private System.Windows.Forms.Button btnPortOpen;
         private System.Windows.Forms.Button btnPortClose;
         private System.Windows.Forms.Button btnPortReadBegin;
         private System.Windows.Forms.Button btnPortReadEnd;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gbCmd;
         private System.Windows.Forms.Button btnPortWrite;
+        private System.Windows.Forms.TextBox tbPortWrite;
+        private System.Windows.Forms.GroupBox gbSend;
+        private System.Windows.Forms.TextBox tbPortRead;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox ckbNewLine;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chtData;
     }
 }
 

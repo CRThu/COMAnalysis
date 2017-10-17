@@ -53,7 +53,12 @@ namespace COMv2
             // byte[] to string
             COMdataAll += System.Text.Encoding.Default.GetString(readBuffer);
             COMdataNow = System.Text.Encoding.Default.GetString(readBuffer);
-            textBox2.Invoke(new Action(() => { textBox2.Text += COMdataNow; }));
+            tbPortRead.Invoke(new Action(() => { tbPortRead.Text += COMdataNow; }));
+
+            //chtData.Invoke(new Action(() =>
+            //{
+            //    chtData.Series["Series1"].Points.AddY(COMdataNow);
+            //}));
         }
 
         public MainForm()
@@ -73,6 +78,12 @@ namespace COMv2
             cbStopBits.SelectedText = "1";
             cbParity.SelectedText = "None";
 
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            btnPortReadEnd_Click(null, null);
+            btnPortClose_Click(null, null);
         }
 
         private void btnPortOpen_Click(object sender, EventArgs e)
@@ -124,9 +135,29 @@ namespace COMv2
         {
             if (COM.IsOpen)
             {
-                COM.Write(textBox1.Text);
-                textBox1.Text = "";
+                if (ckbNewLine.Checked == true)
+                    tbPortWrite.Text += Environment.NewLine;
+                COM.Write(tbPortWrite.Text);
+                tbPortWrite.Text = "";
             }
+        }
+
+        private void tbPortRead_TextChanged(object sender, EventArgs e)
+        {
+            chtData.Invoke(new Action(() =>
+            {
+                //string test = "9.234,9.111,9.333,9.888,9.092";
+                //string[] b = test.Split(new char[] { ',' });
+                string[] b = tbPortRead.Text.Split(new char[] { ',' });
+                double[] c = new double[b.Length];
+                for (int i = 0; i < b.Length; i++)
+                {
+                    if (b[i] == "")
+                        b[i] = "0";
+                    c[i] = Convert.ToDouble(b[i]);
+                }
+                chtData.Series["Series1"].Points.DataBindY(c);
+            }));
         }
     }
 }
