@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace COMv2
 {
@@ -18,6 +19,7 @@ namespace COMv2
         volatile bool loop=false;
         string COMdataAll;
         string COMdataNow;
+        List<string> ChartChannelNameList=new List<string>();
 
         public delegate void EventHandle(byte[] readBuffer);
         public event EventHandle DataReceived;
@@ -78,6 +80,34 @@ namespace COMv2
             cbStopBits.SelectedText = "1";
             cbParity.SelectedText = "None";
 
+            // Chart Set
+            ChartChannelNameList.Add("data1");
+            cbChartChannelNameList.SelectedIndex = 0;
+            tbChartChannelName.Text = ChartChannelNameList[cbChartChannelNameList.SelectedIndex];
+
+            // Chart Clear Param
+            chtData.Annotations.Clear();
+            chtData.ChartAreas.Clear();
+            chtData.Legends.Clear();
+            chtData.Series.Clear();
+            chtData.Titles.Clear();
+
+            // Title
+            Title chtDataTitle = new Title("title");
+            chtData.Titles.Add(chtDataTitle);
+            // ChartArea
+            ChartArea chtDataChartArea = new ChartArea("ChartArea");
+            chtData.ChartAreas.Add(chtDataChartArea);
+            // Series
+            Series chtDataSeries = new Series("chtDataSeries");
+            chtDataSeries.ChartType = SeriesChartType.Line;
+            chtDataSeries.IsValueShownAsLabel = true;
+            chtDataSeries.LegendText = "data1";
+            chtData.Series.Add(chtDataSeries);
+            tbPortRead.Text = "9.234,6.111,4.333,8.888,9.092,9.234,6.111,4.333,8.888,9.092,9.234,6.111,4.333,8.888,9.092,9.234,6.111,4.333,8.888,9.092,9.234,6.111,4.333,8.888,9.092,9.234,6.111,4.333,8.888,9.092";
+            // Legend
+            Legend chtDataLegend = new Legend("chtDataLegend");
+            chtData.Legends.Add(chtDataLegend);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -146,8 +176,6 @@ namespace COMv2
         {
             chtData.Invoke(new Action(() =>
             {
-                //string test = "9.234,9.111,9.333,9.888,9.092";
-                //string[] b = test.Split(new char[] { ',' });
                 string[] b = tbPortRead.Text.Split(new char[] { ',' });
                 double[] c = new double[b.Length];
                 for (int i = 0; i < b.Length; i++)
@@ -156,8 +184,26 @@ namespace COMv2
                         b[i] = "0";
                     c[i] = Convert.ToDouble(b[i]);
                 }
-                chtData.Series["Series1"].Points.DataBindY(c);
+                chtData.Series["chtDataSeries"].Points.DataBindY(c);
             }));
+        }
+
+        private void cbChartChannelName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((string)cbChartChannelNameList.SelectedItem == "Add Channel")
+            {
+                ChartChannelNameList.Add("data" + cbChartChannelNameList.Items.Count.ToString());
+                cbChartChannelNameList.Items.Insert(cbChartChannelNameList.Items.Count - 1, "Channel " + cbChartChannelNameList.Items.Count.ToString());
+                cbChartChannelNameList.SelectedIndex--;
+            }
+            else
+                tbChartChannelName.Text = ChartChannelNameList[cbChartChannelNameList.SelectedIndex];
+
+        }
+
+        private void btnChartChannelName_Click(object sender, EventArgs e)
+        {
+            ChartChannelNameList[cbChartChannelNameList.SelectedIndex] = tbChartChannelName.Text;
         }
     }
 }
