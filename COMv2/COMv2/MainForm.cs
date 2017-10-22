@@ -235,5 +235,11 @@ namespace COMv2
             // Change Channel Name In Series
             chtDataSeriesAdd[cbChartChannelNameList.SelectedIndex].Name = tbChartChannelName.Text;
         }
+
+        private void cbChartShowValue_CheckedChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < chtDataSeriesAdd.Count; i++)
+                chtDataSeriesAdd[i].IsValueShownAsLabel = cbChartShowValue.Checked;
+        }
     }
 }
