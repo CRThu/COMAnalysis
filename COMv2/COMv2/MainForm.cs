@@ -64,6 +64,20 @@ namespace COMv2
             //}));
         }
 
+        string ByteIsString(byte[] ByteArray)
+        {
+            return System.Text.Encoding.Default.GetString(ByteArray);
+        }
+
+        Int16[] ByteIsInt16(byte[] ByteArray)
+        {
+            Int16[] Int16Array=new Int16[ByteArray.Length/2];
+            if (ByteArray.Length % 2 == 0)
+                for (int i = 0; i < ByteArray.Length; i += 2)
+                    Int16Array[i / 2] = BitConverter.ToInt16(ByteArray, i);
+            return Int16Array;
+        }
+
         public MainForm()
         {
             InitializeComponent();
@@ -104,7 +118,7 @@ namespace COMv2
             // New Channel 1
             chtDataSeriesAdd.Add(new Series(ChartChannelNameList[0]));
             chtDataSeriesAdd[0].ChartType = SeriesChartType.Line;
-            chtDataSeriesAdd[0].IsValueShownAsLabel = true;
+            chtDataSeriesAdd[0].IsValueShownAsLabel = cbChartShowValue.Checked;
             chtData.Series.Add(chtDataSeriesAdd[0]);
             //tbPortRead.Text = "9.234,6.111,2.222,8.888,4.886,9.234,4.111,4.333,7.78,9.092,5.234,6.111,4.333,8.888,2.092,9.234,3.09,4.333,5.8,9.092,4.234,6.111,4.333,8.888,1.092,9.234,5.32,4.333,1.8,7.02";
             // Legend
@@ -190,8 +204,9 @@ namespace COMv2
             //    chtData.Series["chtDataSeries"].Points.DataBindY(c);
             //}));
             //only one channel
-            string[] b = tbPortRead.Text.Split(new char[] { ',' });
-                List<double> c1 = new List<double>();
+            //string[] b = tbPortRead.Text.Split(new char[] { ',' });
+            string[] b = tbPortRead.Text.Split(tbStringFilter.Text.ToCharArray());
+            List<double> c1 = new List<double>();
                 List<double> c2 = new List<double>();
                 for (int i = 0; i < b.Length; i+=2)
                 {
@@ -215,7 +230,7 @@ namespace COMv2
                 // New Channel n
                 chtDataSeriesAdd.Add(new Series(ChartChannelNameList[cbChartChannelNameList.Items.Count - 1]));
                 chtDataSeriesAdd[cbChartChannelNameList.Items.Count - 1].ChartType = SeriesChartType.Line;
-                chtDataSeriesAdd[cbChartChannelNameList.Items.Count - 1].IsValueShownAsLabel = true;
+                chtDataSeriesAdd[cbChartChannelNameList.Items.Count - 1].IsValueShownAsLabel = cbChartShowValue.Checked;
                 chtData.Series.Add(chtDataSeriesAdd[cbChartChannelNameList.Items.Count - 1]);
                 // Add Channel Name To ComboBox
                 cbChartChannelNameList.Items.Insert(cbChartChannelNameList.Items.Count - 1, "Channel " + cbChartChannelNameList.Items.Count.ToString());
@@ -227,6 +242,12 @@ namespace COMv2
 
         private void btnChartChannelName_Click(object sender, EventArgs e)
         {
+            // for test
+            byte[] t = { 0x01, 0x03, 0x05, 0x07, 0x11, 0x05 };
+            //            {0x301=769,0x705=1797,0x511=1297}
+            for (int i = 0; i < t.Length / 2; i++)
+                tbPortWrite.Text += ByteIsInt16(t)[i].ToString() + Environment.NewLine;
+
             // for test
             tbPortRead.Text = "9.234,6.111,2.222,8.888,4.886,9.234,4.111,4.333,7.78,9.092,5.234,6.111,4.333,8.888,2.092,9.234,3.09,4.333,5.8,9.092,4.234,6.111,4.333,8.888,1.092,9.234,5.32,4.333,1.8,7.02";
 
