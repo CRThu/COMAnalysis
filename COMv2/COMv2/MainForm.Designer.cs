@@ -64,10 +64,12 @@
             this.lbChartChannelName = new System.Windows.Forms.Label();
             this.rbByteIsString = new System.Windows.Forms.RadioButton();
             this.gbByteDecoder = new System.Windows.Forms.GroupBox();
+            this.cbByteIsNumber = new System.Windows.Forms.ComboBox();
+            this.rbByteIsNumber = new System.Windows.Forms.RadioButton();
             this.lbStringFilter = new System.Windows.Forms.Label();
             this.tbStringFilter = new System.Windows.Forms.TextBox();
-            this.rbByteIsNumber = new System.Windows.Forms.RadioButton();
-            this.cbByteIsNumber = new System.Windows.Forms.ComboBox();
+            this.rbNoDecoder = new System.Windows.Forms.RadioButton();
+            this.btnOnlyForTest = new System.Windows.Forms.Button();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -415,15 +417,18 @@
             // 
             this.rbByteIsString.AutoSize = true;
             this.rbByteIsString.Checked = true;
-            this.rbByteIsString.Location = new System.Drawing.Point(6, 22);
+            this.rbByteIsString.Location = new System.Drawing.Point(6, 28);
             this.rbByteIsString.Name = "rbByteIsString";
             this.rbByteIsString.Size = new System.Drawing.Size(60, 21);
             this.rbByteIsString.TabIndex = 25;
+            this.rbByteIsString.TabStop = true;
             this.rbByteIsString.Text = "String";
             this.rbByteIsString.UseVisualStyleBackColor = true;
             // 
             // gbByteDecoder
             // 
+            this.gbByteDecoder.Controls.Add(this.btnOnlyForTest);
+            this.gbByteDecoder.Controls.Add(this.rbNoDecoder);
             this.gbByteDecoder.Controls.Add(this.cbByteIsNumber);
             this.gbByteDecoder.Controls.Add(this.rbByteIsNumber);
             this.gbByteDecoder.Controls.Add(this.lbStringFilter);
@@ -436,10 +441,32 @@
             this.gbByteDecoder.TabStop = false;
             this.gbByteDecoder.Text = "字节解析";
             // 
+            // cbByteIsNumber
+            // 
+            this.cbByteIsNumber.FormattingEnabled = true;
+            this.cbByteIsNumber.Items.AddRange(new object[] {
+            "int16",
+            "int32"});
+            this.cbByteIsNumber.Location = new System.Drawing.Point(95, 57);
+            this.cbByteIsNumber.Name = "cbByteIsNumber";
+            this.cbByteIsNumber.Size = new System.Drawing.Size(73, 25);
+            this.cbByteIsNumber.TabIndex = 33;
+            this.cbByteIsNumber.Text = "int16";
+            // 
+            // rbByteIsNumber
+            // 
+            this.rbByteIsNumber.AutoSize = true;
+            this.rbByteIsNumber.Location = new System.Drawing.Point(6, 58);
+            this.rbByteIsNumber.Name = "rbByteIsNumber";
+            this.rbByteIsNumber.Size = new System.Drawing.Size(67, 21);
+            this.rbByteIsNumber.TabIndex = 30;
+            this.rbByteIsNumber.Text = "double";
+            this.rbByteIsNumber.UseVisualStyleBackColor = true;
+            // 
             // lbStringFilter
             // 
             this.lbStringFilter.AutoSize = true;
-            this.lbStringFilter.Location = new System.Drawing.Point(92, 25);
+            this.lbStringFilter.Location = new System.Drawing.Point(92, 31);
             this.lbStringFilter.Name = "lbStringFilter";
             this.lbStringFilter.Size = new System.Drawing.Size(39, 17);
             this.lbStringFilter.TabIndex = 29;
@@ -447,33 +474,32 @@
             // 
             // tbStringFilter
             // 
-            this.tbStringFilter.Location = new System.Drawing.Point(137, 22);
+            this.tbStringFilter.Location = new System.Drawing.Point(137, 28);
             this.tbStringFilter.Name = "tbStringFilter";
             this.tbStringFilter.Size = new System.Drawing.Size(31, 23);
             this.tbStringFilter.TabIndex = 28;
             this.tbStringFilter.Text = ",";
             // 
-            // rbByteIsNumber
+            // rbNoDecoder
             // 
-            this.rbByteIsNumber.AutoSize = true;
-            this.rbByteIsNumber.Location = new System.Drawing.Point(6, 55);
-            this.rbByteIsNumber.Name = "rbByteIsNumber";
-            this.rbByteIsNumber.Size = new System.Drawing.Size(67, 21);
-            this.rbByteIsNumber.TabIndex = 30;
-            this.rbByteIsNumber.Text = "double";
-            this.rbByteIsNumber.UseVisualStyleBackColor = true;
+            this.rbNoDecoder.AutoSize = true;
+            this.rbNoDecoder.Location = new System.Drawing.Point(6, 88);
+            this.rbNoDecoder.Name = "rbNoDecoder";
+            this.rbNoDecoder.Size = new System.Drawing.Size(86, 21);
+            this.rbNoDecoder.TabIndex = 34;
+            this.rbNoDecoder.TabStop = true;
+            this.rbNoDecoder.Text = "不使用图表";
+            this.rbNoDecoder.UseVisualStyleBackColor = true;
             // 
-            // cbByteIsNumber
+            // btnOnlyForTest
             // 
-            this.cbByteIsNumber.FormattingEnabled = true;
-            this.cbByteIsNumber.Items.AddRange(new object[] {
-            "int16",
-            "int32"});
-            this.cbByteIsNumber.Location = new System.Drawing.Point(95, 54);
-            this.cbByteIsNumber.Name = "cbByteIsNumber";
-            this.cbByteIsNumber.Size = new System.Drawing.Size(73, 25);
-            this.cbByteIsNumber.TabIndex = 33;
-            this.cbByteIsNumber.Text = "int16";
+            this.btnOnlyForTest.Location = new System.Drawing.Point(93, 87);
+            this.btnOnlyForTest.Name = "btnOnlyForTest";
+            this.btnOnlyForTest.Size = new System.Drawing.Size(75, 23);
+            this.btnOnlyForTest.TabIndex = 32;
+            this.btnOnlyForTest.Text = "解析测试";
+            this.btnOnlyForTest.UseVisualStyleBackColor = true;
+            this.btnOnlyForTest.Click += new System.EventHandler(this.btnOnlyForTest_Click);
             // 
             // MainForm
             // 
@@ -545,6 +571,8 @@
         private System.Windows.Forms.TextBox tbStringFilter;
         private System.Windows.Forms.ComboBox cbByteIsNumber;
         private System.Windows.Forms.RadioButton rbByteIsNumber;
+        private System.Windows.Forms.RadioButton rbNoDecoder;
+        private System.Windows.Forms.Button btnOnlyForTest;
     }
 }
 

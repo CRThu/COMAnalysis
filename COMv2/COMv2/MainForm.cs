@@ -78,6 +78,15 @@ namespace COMv2
             return Int16Array;
         }
 
+        Int32[] ByteIsInt32(byte[] ByteArray)
+        {
+            Int32[] Int32Array = new Int32[ByteArray.Length / 4];
+            if (ByteArray.Length % 4 == 0)
+                for (int i = 0; i < ByteArray.Length; i += 4)
+                    Int32Array[i / 4] = BitConverter.ToInt32(ByteArray, i);
+            return Int32Array;
+        }
+
         public MainForm()
         {
             InitializeComponent();
@@ -242,15 +251,6 @@ namespace COMv2
 
         private void btnChartChannelName_Click(object sender, EventArgs e)
         {
-            // for test
-            byte[] t = { 0x01, 0x03, 0x05, 0x07, 0x11, 0x05 };
-            //            {0x301=769,0x705=1797,0x511=1297}
-            for (int i = 0; i < t.Length / 2; i++)
-                tbPortWrite.Text += ByteIsInt16(t)[i].ToString() + Environment.NewLine;
-
-            // for test
-            tbPortRead.Text = "9.234,6.111,2.222,8.888,4.886,9.234,4.111,4.333,7.78,9.092,5.234,6.111,4.333,8.888,2.092,9.234,3.09,4.333,5.8,9.092,4.234,6.111,4.333,8.888,1.092,9.234,5.32,4.333,1.8,7.02";
-
             // Change Channel Name In List
             ChartChannelNameList[cbChartChannelNameList.SelectedIndex] = tbChartChannelName.Text;
             // Change Channel Name In Series
@@ -261,6 +261,26 @@ namespace COMv2
         {
             for (int i = 0; i < chtDataSeriesAdd.Count; i++)
                 chtDataSeriesAdd[i].IsValueShownAsLabel = cbChartShowValue.Checked;
+        }
+
+        private void btnOnlyForTest_Click(object sender, EventArgs e)
+        {
+            // for test
+            byte[] t = { 0x0D, 0x6B, 0x3C, 0x05, 0x11, 0x55, 0x40, 0xDD, 0xF0, 0x65, 0x8E, 0xA3, 0xD5, 0xC7, 0x11, 0x05 };
+            // int16    {   27405     ,      1340     ,    21777    ,    -8896     ,    26096    ,    -23666   ,    -14379   ,       1297    }
+            // int32    {           87845645           ,        -582986479	         ,          -1550948880      ,	            85051349	       }
+
+            for (int i = 0; i < t.Length / 2; i++)
+                tbPortWrite.Text += ByteIsInt16(t)[i].ToString() + "\t";
+
+            tbPortWrite.Text += Environment.NewLine;
+
+            for (int i = 0; i < t.Length / 4; i++)
+                tbPortWrite.Text += ByteIsInt32(t)[i].ToString() + "\t";
+
+            // for test
+            tbPortRead.Text = "9.234,6.111,2.222,8.888,4.886,9.234,4.111,4.333,7.78,9.092,5.234,6.111,4.333,8.888,2.092,9.234,3.09,4.333,5.8,9.092,4.234,6.111,4.333,8.888,1.092,9.234,5.32,4.333,1.8,7.02";
+
         }
     }
 }
