@@ -215,19 +215,22 @@ namespace COMv2
             //only one channel
             //string[] b = tbPortRead.Text.Split(new char[] { ',' });
             string[] b = tbPortRead.Text.Split(tbStringFilter.Text.ToCharArray());
-            List<double> c1 = new List<double>();
-                List<double> c2 = new List<double>();
-                for (int i = 0; i < b.Length; i+=2)
+            List<List<double>> c = new List<List<double>>();
+            for (int i = 0; i < ChartChannelNameList.Count; i++)
+            {
+                List<double> ci = new List<double>();
+                for (int j = i; j < b.Length; j += ChartChannelNameList.Count)
                 {
-                if (b[i] == "")
-                    b[i] = "0";
-                if (i + 1 < b.Length && b[i + 1] == "")
-                    b[i + 1] = "0";
-                c1.Add(Convert.ToDouble(b[i]));
-                c2.Add(Convert.ToDouble(b[i + 1]));
+                    if (b[j] != "")
+                        ci.Add(Convert.ToDouble(b[j]));
                 }
-                chtData.Series["data1"].Points.DataBindY(c1);
-                chtData.Series["data2"].Points.DataBindY(c2);
+                c.Add(ci);
+            }
+            chtData.Invoke(new Action(() =>
+            {
+                for (int i = 0; i < ChartChannelNameList.Count; i++)
+                    chtData.Series[ChartChannelNameList[i]].Points.DataBindY(c[i]);
+            }));
         }
 
         private void cbChartChannelName_SelectedIndexChanged(object sender, EventArgs e)
@@ -281,6 +284,7 @@ namespace COMv2
             // for test
             tbPortRead.Text = "9.234,6.111,2.222,8.888,4.886,9.234,4.111,4.333,7.78,9.092,5.234,6.111,4.333,8.888,2.092,9.234,3.09,4.333,5.8,9.092,4.234,6.111,4.333,8.888,1.092,9.234,5.32,4.333,1.8,7.02";
 
+            tbPortRead_TextChanged(null, null);
         }
     }
 }
