@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.COM = new System.IO.Ports.SerialPort(this.components);
             this.cbPort = new System.Windows.Forms.ComboBox();
             this.lbPort = new System.Windows.Forms.Label();
@@ -217,7 +217,7 @@
             // 
             // btnPortOpen
             // 
-            this.btnPortOpen.Location = new System.Drawing.Point(17, 22);
+            this.btnPortOpen.Location = new System.Drawing.Point(12, 22);
             this.btnPortOpen.Name = "btnPortOpen";
             this.btnPortOpen.Size = new System.Drawing.Size(75, 23);
             this.btnPortOpen.TabIndex = 5;
@@ -227,7 +227,7 @@
             // 
             // btnPortClose
             // 
-            this.btnPortClose.Location = new System.Drawing.Point(98, 22);
+            this.btnPortClose.Location = new System.Drawing.Point(93, 22);
             this.btnPortClose.Name = "btnPortClose";
             this.btnPortClose.Size = new System.Drawing.Size(75, 23);
             this.btnPortClose.TabIndex = 6;
@@ -237,7 +237,7 @@
             // 
             // btnPortReadBegin
             // 
-            this.btnPortReadBegin.Location = new System.Drawing.Point(17, 58);
+            this.btnPortReadBegin.Location = new System.Drawing.Point(12, 58);
             this.btnPortReadBegin.Name = "btnPortReadBegin";
             this.btnPortReadBegin.Size = new System.Drawing.Size(75, 23);
             this.btnPortReadBegin.TabIndex = 7;
@@ -247,7 +247,7 @@
             // 
             // btnPortReadEnd
             // 
-            this.btnPortReadEnd.Location = new System.Drawing.Point(98, 58);
+            this.btnPortReadEnd.Location = new System.Drawing.Point(93, 58);
             this.btnPortReadEnd.Name = "btnPortReadEnd";
             this.btnPortReadEnd.Size = new System.Drawing.Size(75, 23);
             this.btnPortReadEnd.TabIndex = 8;
@@ -333,19 +333,19 @@
             // 
             // chtData
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chtData.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chtData.Legends.Add(legend4);
+            chartArea1.Name = "ChartArea1";
+            this.chtData.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chtData.Legends.Add(legend1);
             this.chtData.Location = new System.Drawing.Point(6, 172);
             this.chtData.Name = "chtData";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.IsValueShownAsLabel = true;
-            series4.Legend = "Legend1";
-            series4.LegendText = "data1";
-            series4.Name = "Series1";
-            this.chtData.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.LegendText = "data1";
+            series1.Name = "Series1";
+            this.chtData.Series.Add(series1);
             this.chtData.Size = new System.Drawing.Size(544, 297);
             this.chtData.TabIndex = 26;
             // 

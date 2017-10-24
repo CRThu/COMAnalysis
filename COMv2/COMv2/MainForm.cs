@@ -15,78 +15,15 @@ namespace COMv2
 {
     public partial class MainForm : Form
     {
-        public Thread thread = null;
-        volatile bool loop=false;
-        string COMdataAll;
-        string COMdataNow;
-        List<string> ChartChannelNameList=new List<string>();
-        List<Series> chtDataSeriesAdd = new List<Series>();
+        public Thread thread = null;     // 监听线程
+        volatile bool loop=false;           // 串口读取循环使能
+        byte[] COMdataNow;                // 缓冲区数据
+        List<string> ChartChannelNameList=new List<string>();   // 通道名
+        List<Series> chtDataSeriesAdd = new List<Series>();         // 通道类
 
-        public delegate void EventHandle(byte[] readBuffer);
-        public event EventHandle DataReceived;
-
-        public void PortRead()
-        {
-            while (loop)
-            {
-                if (COM.IsOpen)
-                {
-                    int count = COM.BytesToRead;
-                    if (count > 0)
-                    {
-                        byte[] readBuffer = new byte[count];
-                        try
-                        {
-                            Application.DoEvents();
-                            COM.Read(readBuffer, 0, count);
-                            if (DataReceived != null)
-                                DataReceived(readBuffer);
-                            Thread.Sleep(100);
-                        }
-                        catch (TimeoutException)
-                        {
-                        }
-                    }
-                }
-            }
-        }
-
-        void COMGetData(byte[] readBuffer)
-        {
-            // byte[] to string
-            COMdataAll += System.Text.Encoding.Default.GetString(readBuffer);
-            COMdataNow = System.Text.Encoding.Default.GetString(readBuffer);
-            tbPortRead.Invoke(new Action(() => { tbPortRead.Text += COMdataNow; }));
-
-            //chtData.Invoke(new Action(() =>
-            //{
-            //    chtData.Series["Series1"].Points.AddY(COMdataNow);
-            //}));
-        }
-
-        string ByteIsString(byte[] ByteArray)
-        {
-            return System.Text.Encoding.Default.GetString(ByteArray);
-        }
-
-        Int16[] ByteIsInt16(byte[] ByteArray)
-        {
-            Int16[] Int16Array=new Int16[ByteArray.Length/2];
-            if (ByteArray.Length % 2 == 0)
-                for (int i = 0; i < ByteArray.Length; i += 2)
-                    Int16Array[i / 2] = BitConverter.ToInt16(ByteArray, i);
-            return Int16Array;
-        }
-
-        Int32[] ByteIsInt32(byte[] ByteArray)
-        {
-            Int32[] Int32Array = new Int32[ByteArray.Length / 4];
-            if (ByteArray.Length % 4 == 0)
-                for (int i = 0; i < ByteArray.Length; i += 4)
-                    Int32Array[i / 4] = BitConverter.ToInt32(ByteArray, i);
-            return Int32Array;
-        }
-
+        public delegate void EventHandle(byte[] readBuffer);    // 读取串口委托
+        public event EventHandle DataReceived;                      // 读取串口函数
+        
         public MainForm()
         {
             InitializeComponent();
@@ -94,15 +31,7 @@ namespace COMv2
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            string[] PortNames = SerialPort.GetPortNames();
-            foreach (string PortName in PortNames)
-                cbPort.Items.Add(PortName);
-
-            cbPort.SelectedIndex = 0;
-            cbBaudRate.SelectedText = "9600";
-            cbDataBits.SelectedText = "8";
-            cbStopBits.SelectedText = "1";
-            cbParity.SelectedText = "None";
+            COMinit();
 
             // Chart Set
             ChartChannelNameList.Add("data1");
@@ -151,23 +80,7 @@ namespace COMv2
         {
             if (!COM.IsOpen)
             {
-                COM.PortName = (string)cbPort.SelectedItem;
-                COM.BaudRate = Convert.ToInt32(cbBaudRate.SelectedItem);
-                COM.DataBits = Convert.ToInt32(cbDataBits.SelectedItem);
-                switch ((string)cbStopBits.SelectedItem)
-                {
-                    case "1": COM.StopBits = StopBits.One; break;
-                    case "1.5": COM.StopBits = StopBits.OnePointFive; break;
-                    case "2": COM.StopBits = StopBits.Two; break;
-                }
-                switch ((string)cbParity.SelectedItem)
-                {
-                    case "None": COM.Parity = Parity.None; break;
-                    case "Odd": COM.Parity = Parity.Odd; break;
-                    case "Even": COM.Parity = Parity.Even; break;
-                    case "Mark": COM.Parity = Parity.Mark; break;
-                    case "Space": COM.Parity = Parity.Space; break;
-                }
+                COMGetSettings();
                 COM.Open();
                 DataReceived += new EventHandle(COMGetData);
             }
