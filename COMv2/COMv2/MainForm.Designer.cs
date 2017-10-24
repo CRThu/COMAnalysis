@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.COM = new System.IO.Ports.SerialPort(this.components);
             this.cbPort = new System.Windows.Forms.ComboBox();
             this.lbPort = new System.Windows.Forms.Label();
@@ -64,12 +64,12 @@
             this.lbChartChannelName = new System.Windows.Forms.Label();
             this.rbByteIsString = new System.Windows.Forms.RadioButton();
             this.gbByteDecoder = new System.Windows.Forms.GroupBox();
+            this.btnOnlyForTest = new System.Windows.Forms.Button();
+            this.rbNoDecoder = new System.Windows.Forms.RadioButton();
             this.cbByteIsNumber = new System.Windows.Forms.ComboBox();
             this.rbByteIsNumber = new System.Windows.Forms.RadioButton();
             this.lbStringFilter = new System.Windows.Forms.Label();
             this.tbStringFilter = new System.Windows.Forms.TextBox();
-            this.rbNoDecoder = new System.Windows.Forms.RadioButton();
-            this.btnOnlyForTest = new System.Windows.Forms.Button();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -313,7 +313,7 @@
             // 
             // tbPortRead
             // 
-            this.tbPortRead.Location = new System.Drawing.Point(6, 45);
+            this.tbPortRead.Location = new System.Drawing.Point(6, 22);
             this.tbPortRead.Multiline = true;
             this.tbPortRead.Name = "tbPortRead";
             this.tbPortRead.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -326,26 +326,26 @@
             this.groupBox1.Controls.Add(this.tbPortRead);
             this.groupBox1.Location = new System.Drawing.Point(12, 386);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(399, 137);
+            this.groupBox1.Size = new System.Drawing.Size(399, 114);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "接收";
             // 
             // chtData
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chtData.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chtData.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            this.chtData.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chtData.Legends.Add(legend4);
             this.chtData.Location = new System.Drawing.Point(6, 172);
             this.chtData.Name = "chtData";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.IsValueShownAsLabel = true;
-            series2.Legend = "Legend1";
-            series2.LegendText = "data1";
-            series2.Name = "Series1";
-            this.chtData.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.IsValueShownAsLabel = true;
+            series4.Legend = "Legend1";
+            series4.LegendText = "data1";
+            series4.Name = "Series1";
+            this.chtData.Series.Add(series4);
             this.chtData.Size = new System.Drawing.Size(544, 297);
             this.chtData.TabIndex = 26;
             // 
@@ -416,14 +416,13 @@
             // rbByteIsString
             // 
             this.rbByteIsString.AutoSize = true;
-            this.rbByteIsString.Checked = true;
             this.rbByteIsString.Location = new System.Drawing.Point(6, 28);
             this.rbByteIsString.Name = "rbByteIsString";
             this.rbByteIsString.Size = new System.Drawing.Size(60, 21);
             this.rbByteIsString.TabIndex = 25;
-            this.rbByteIsString.TabStop = true;
             this.rbByteIsString.Text = "String";
             this.rbByteIsString.UseVisualStyleBackColor = true;
+            this.rbByteIsString.CheckedChanged += new System.EventHandler(this.rbByteIsString_CheckedChanged);
             // 
             // gbByteDecoder
             // 
@@ -441,6 +440,27 @@
             this.gbByteDecoder.TabStop = false;
             this.gbByteDecoder.Text = "字节解析";
             // 
+            // btnOnlyForTest
+            // 
+            this.btnOnlyForTest.Location = new System.Drawing.Point(93, 87);
+            this.btnOnlyForTest.Name = "btnOnlyForTest";
+            this.btnOnlyForTest.Size = new System.Drawing.Size(75, 23);
+            this.btnOnlyForTest.TabIndex = 32;
+            this.btnOnlyForTest.Text = "解析测试";
+            this.btnOnlyForTest.UseVisualStyleBackColor = true;
+            this.btnOnlyForTest.Click += new System.EventHandler(this.btnOnlyForTest_Click);
+            // 
+            // rbNoDecoder
+            // 
+            this.rbNoDecoder.AutoSize = true;
+            this.rbNoDecoder.Location = new System.Drawing.Point(6, 88);
+            this.rbNoDecoder.Name = "rbNoDecoder";
+            this.rbNoDecoder.Size = new System.Drawing.Size(86, 21);
+            this.rbNoDecoder.TabIndex = 34;
+            this.rbNoDecoder.TabStop = true;
+            this.rbNoDecoder.Text = "不使用图表";
+            this.rbNoDecoder.UseVisualStyleBackColor = true;
+            // 
             // cbByteIsNumber
             // 
             this.cbByteIsNumber.FormattingEnabled = true;
@@ -451,7 +471,6 @@
             this.cbByteIsNumber.Name = "cbByteIsNumber";
             this.cbByteIsNumber.Size = new System.Drawing.Size(73, 25);
             this.cbByteIsNumber.TabIndex = 33;
-            this.cbByteIsNumber.Text = "int16";
             // 
             // rbByteIsNumber
             // 
@@ -479,27 +498,6 @@
             this.tbStringFilter.Size = new System.Drawing.Size(31, 23);
             this.tbStringFilter.TabIndex = 28;
             this.tbStringFilter.Text = ",";
-            // 
-            // rbNoDecoder
-            // 
-            this.rbNoDecoder.AutoSize = true;
-            this.rbNoDecoder.Location = new System.Drawing.Point(6, 88);
-            this.rbNoDecoder.Name = "rbNoDecoder";
-            this.rbNoDecoder.Size = new System.Drawing.Size(86, 21);
-            this.rbNoDecoder.TabIndex = 34;
-            this.rbNoDecoder.TabStop = true;
-            this.rbNoDecoder.Text = "不使用图表";
-            this.rbNoDecoder.UseVisualStyleBackColor = true;
-            // 
-            // btnOnlyForTest
-            // 
-            this.btnOnlyForTest.Location = new System.Drawing.Point(93, 87);
-            this.btnOnlyForTest.Name = "btnOnlyForTest";
-            this.btnOnlyForTest.Size = new System.Drawing.Size(75, 23);
-            this.btnOnlyForTest.TabIndex = 32;
-            this.btnOnlyForTest.Text = "解析测试";
-            this.btnOnlyForTest.UseVisualStyleBackColor = true;
-            this.btnOnlyForTest.Click += new System.EventHandler(this.btnOnlyForTest_Click);
             // 
             // MainForm
             // 

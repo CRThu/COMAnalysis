@@ -133,6 +133,12 @@ namespace COMv2
             // Legend
             Legend chtDataLegend = new Legend("chtDataLegend");
             chtData.Legends.Add(chtDataLegend);
+
+            // byte[] decode
+            rbByteIsString.Checked = true;
+            cbByteIsNumber.Text = "int16";
+
+
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -145,6 +151,23 @@ namespace COMv2
         {
             if (!COM.IsOpen)
             {
+                COM.PortName = (string)cbPort.SelectedItem;
+                COM.BaudRate = Convert.ToInt32(cbBaudRate.SelectedItem);
+                COM.DataBits = Convert.ToInt32(cbDataBits.SelectedItem);
+                switch ((string)cbStopBits.SelectedItem)
+                {
+                    case "1": COM.StopBits = StopBits.One; break;
+                    case "1.5": COM.StopBits = StopBits.OnePointFive; break;
+                    case "2": COM.StopBits = StopBits.Two; break;
+                }
+                switch ((string)cbParity.SelectedItem)
+                {
+                    case "None": COM.Parity = Parity.None; break;
+                    case "Odd": COM.Parity = Parity.Odd; break;
+                    case "Even": COM.Parity = Parity.Even; break;
+                    case "Mark": COM.Parity = Parity.Mark; break;
+                    case "Space": COM.Parity = Parity.Space; break;
+                }
                 COM.Open();
                 DataReceived += new EventHandle(COMGetData);
             }
@@ -286,5 +309,16 @@ namespace COMv2
 
             tbPortRead_TextChanged(null, null);
         }
+
+        private void rbByteIsString_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbByteIsString.Checked)
+            {
+                // for test
+                tbPortRead.Text = "9.234,6.111,2.222,8.888,4.886,9.234,4.111,4.333,7.78,9.092,5.234,6.111,4.333,8.888,2.092,9.234,3.09,4.333,5.8,9.092,4.234,6.111,4.333,8.888,1.092,9.234,5.32,4.333,1.8,7.02";
+                tbPortRead_TextChanged(null, null);
+            }
+        }
+
     }
 }
