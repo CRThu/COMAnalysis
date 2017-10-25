@@ -37,6 +37,17 @@ namespace COMv2
             chtData.Legends.Add(chtDataLegend);
         }
 
-
+        void ChartDraw()
+        {
+            chtData.Invoke(new Action(() =>
+            {
+                for (int i = 0; i < ChartChannelNameList.Count; i++)
+                    chtData.Series[ChartChannelNameList[i]].Points.DataBindY(MultiChannelDataPoint[i]);
+            }));
+            //chtData.Invoke(new Action(() =>
+            //{
+            //    chtData.Series[ChartChannelNameList[0]].Points.DataBindY(DataPoint);
+            //}));
+        }
     }
 }

@@ -8,7 +8,8 @@ namespace COMv2
 {
     partial class MainForm
     {
-        List<double> DataPoint = new List<double>();     // 数据集
+        List<double> DataPoint = new List<double>();            // 数据集
+        List<List<double>> MultiChannelDataPoint = new List<List<double>>();      // 多通道数据集
 
         List<double> ByteIsString(byte[] ByteArray)
         {
@@ -52,6 +53,9 @@ namespace COMv2
         // 选择解析器
         void ByteDecoder()
         {
+            DataPoint.Clear();
+            MultiChannelDataPoint.Clear();
+
             if (!rbNoDecoder.Checked)       // 绘制图表分支
             {
                 if (rbByteIsString.Checked)
@@ -62,11 +66,10 @@ namespace COMv2
                         case "int16": DataPoint = ByteIsInt16(COMdataNow); break;
                         case "int32": DataPoint = ByteIsInt32(COMdataNow); break;
                     }
+                // 单通道转多通道
+                DataToMultiChannel();
                 // 绘图
-                chtData.Invoke(new Action(() =>
-                {
-                        chtData.Series[ChartChannelNameList[0]].Points.DataBindY(DataPoint);
-                }));
+                ChartDraw();
             }
             else
             {
@@ -74,6 +77,18 @@ namespace COMv2
                     tbPortRead.Text += System.Text.Encoding.Default.GetString(COMdataNow);
             }
 
+        }
+
+        // 单通道转多通道
+        void DataToMultiChannel()
+        {
+            for (int i = 0; i < ChartChannelNameList.Count; i++)
+            {
+                List<double> ci = new List<double>();
+                for (int j = i; j < DataPoint.Count; j += ChartChannelNameList.Count)
+                    ci.Add(DataPoint[j]);
+                MultiChannelDataPoint.Add(ci);
+            }
         }
     }
 }
