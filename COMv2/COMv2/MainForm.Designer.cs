@@ -319,7 +319,7 @@
             this.tbPortRead.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.tbPortRead.Size = new System.Drawing.Size(387, 86);
             this.tbPortRead.TabIndex = 24;
-            this.tbPortRead.TextChanged += new System.EventHandler(this.tbPortRead_TextChanged);
+            //this.tbPortRead.TextChanged += new System.EventHandler(this.tbPortRead_TextChanged);
             // 
             // groupBox1
             // 

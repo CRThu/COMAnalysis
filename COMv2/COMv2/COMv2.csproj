@@ -62,6 +62,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chartfunc.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="COMfunc.cs">
       <SubType>Form</SubType>
     </Compile>
