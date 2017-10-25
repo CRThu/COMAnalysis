@@ -11,6 +11,12 @@ namespace COMv2
         List<double> DataPoint = new List<double>();            // 数据集
         List<List<double>> MultiChannelDataPoint = new List<List<double>>();      // 多通道数据集
 
+        void DataClear()
+        {
+            DataPoint.Clear();
+            MultiChannelDataPoint.Clear();
+        }
+
         List<double> ByteIsString(byte[] ByteArray)
         {
             //return System.Text.Encoding.Default.GetString(ByteArray);
@@ -49,12 +55,11 @@ namespace COMv2
             //        Int32Array[i / 4] = BitConverter.ToInt32(ByteArray, i);
             //return Int32Array;
         }
-
+        
         // 选择解析器
         void ByteDecoder()
         {
-            DataPoint.Clear();
-            MultiChannelDataPoint.Clear();
+            DataClear();
 
             if (!rbNoDecoder.Checked)       // 绘制图表分支
             {
@@ -66,10 +71,9 @@ namespace COMv2
                         case "int16": DataPoint = ByteIsInt16(COMdataNow); break;
                         case "int32": DataPoint = ByteIsInt32(COMdataNow); break;
                     }
-                // 单通道转多通道
-                DataToMultiChannel();
-                // 绘图
-                ChartDraw();
+                DataToText();                     // 解释器
+                DataToMultiChannel();       // 单通道转多通道
+                ChartDraw();                      // 绘图
             }
             else
             {
@@ -89,6 +93,13 @@ namespace COMv2
                     ci.Add(DataPoint[j]);
                 MultiChannelDataPoint.Add(ci);
             }
+        }
+
+        // 解释器
+        void DataToText()
+        {
+            for (int i = 0; i < DataPoint.Count; i++)
+                tbPortRead.Text += (DataPoint[i].ToString() + tbStringFilter.Text);
         }
     }
 }
