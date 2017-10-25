@@ -24,6 +24,7 @@ namespace COMv2
         public delegate void EventHandle(byte[] readBuffer);    // 读取串口委托
         public event EventHandle DataReceived;                      // 读取串口函数
         
+
         public MainForm()
         {
             InitializeComponent();
@@ -150,23 +151,23 @@ namespace COMv2
             //}));
             //only one channel
             //string[] b = tbPortRead.Text.Split(new char[] { ',' });
-            string[] b = tbPortRead.Text.Split(tbStringFilter.Text.ToCharArray());
-            List<List<double>> c = new List<List<double>>();
-            for (int i = 0; i < ChartChannelNameList.Count; i++)
-            {
-                List<double> ci = new List<double>();
-                for (int j = i; j < b.Length; j += ChartChannelNameList.Count)
-                {
-                    if (b[j] != "")
-                        ci.Add(Convert.ToDouble(b[j]));
-                }
-                c.Add(ci);
-            }
-            chtData.Invoke(new Action(() =>
-            {
-                for (int i = 0; i < ChartChannelNameList.Count; i++)
-                    chtData.Series[ChartChannelNameList[i]].Points.DataBindY(c[i]);
-            }));
+            //string[] b = tbPortRead.Text.Split(tbStringFilter.Text.ToCharArray());
+            //List<List<double>> c = new List<List<double>>();
+            //for (int i = 0; i < ChartChannelNameList.Count; i++)
+            //{
+            //    List<double> ci = new List<double>();
+            //    for (int j = i; j < b.Length; j += ChartChannelNameList.Count)
+            //    {
+            //        if (b[j] != "")
+            //            ci.Add(Convert.ToDouble(b[j]));
+            //    }
+            //    c.Add(ci);
+            //}
+            //chtData.Invoke(new Action(() =>
+            //{
+            //    for (int i = 0; i < ChartChannelNameList.Count; i++)
+            //        chtData.Series[ChartChannelNameList[i]].Points.DataBindY(c[i]);
+            //}));
         }
 
         private void cbChartChannelName_SelectedIndexChanged(object sender, EventArgs e)
