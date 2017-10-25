@@ -149,7 +149,6 @@ namespace COMv2
             //    }
             //    chtData.Series["chtDataSeries"].Points.DataBindY(c);
             //}));
-            //only one channel
             //string[] b = tbPortRead.Text.Split(new char[] { ',' });
             //string[] b = tbPortRead.Text.Split(tbStringFilter.Text.ToCharArray());
             //List<List<double>> c = new List<List<double>>();
@@ -206,32 +205,29 @@ namespace COMv2
         private void btnOnlyForTest_Click(object sender, EventArgs e)
         {
             // for test
-            byte[] t = { 0x0D, 0x6B, 0x3C, 0x05, 0x11, 0x55, 0x40, 0xDD, 0xF0, 0x65, 0x8E, 0xA3, 0xD5, 0xC7, 0x11, 0x05 };
+            if(rbByteIsString.Checked)
+            COMdataNow = System.Text.Encoding.Default.GetBytes("9.234,6.111,2.222,8.888,4.886,9.234,4.111,4.333,7.78,9.092,5.234,6.111,4.333,8.888,2.092,9.234,3.09,4.333,5.8,9.092,4.234,6.111,4.333,8.888,1.092,9.234,5.32,4.333,1.8,7.02");
+            if (rbByteIsNumber.Checked)
+                COMdataNow = new byte[] { 0x0D, 0x6B, 0x3C, 0x05, 0x11, 0x55, 0x40, 0xDD, 0xF0, 0x65, 0x8E, 0xA3, 0xD5, 0xC7, 0x11, 0x05 };
+            if (rbNoDecoder.Checked)
+                COMdataNow = System.Text.Encoding.Default.GetBytes("helloworld");
+                ByteDecoder();
+            // for test
+            //byte[] t = { 0x0D, 0x6B, 0x3C, 0x05, 0x11, 0x55, 0x40, 0xDD, 0xF0, 0x65, 0x8E, 0xA3, 0xD5, 0xC7, 0x11, 0x05 };
+
             // int16    {   27405     ,      1340     ,    21777    ,    -8896     ,    26096    ,    -23666   ,    -14379   ,       1297    }
             // int32    {           87845645           ,        -582986479	         ,          -1550948880      ,	            85051349	       }
 
-            for (int i = 0; i < t.Length / 2; i++)
-                tbPortWrite.Text += ByteIsInt16(t)[i].ToString() + "\t";
+            // for convert test
+            //for (int i = 0; i < t.Length / 2; i++)
+            //    tbPortWrite.Text += ByteIsInt16(t)[i].ToString() + "\t";
 
-            tbPortWrite.Text += Environment.NewLine;
+            //tbPortWrite.Text += Environment.NewLine;
 
-            for (int i = 0; i < t.Length / 4; i++)
-                tbPortWrite.Text += ByteIsInt32(t)[i].ToString() + "\t";
+            //for (int i = 0; i < t.Length / 4; i++)
+            //    tbPortWrite.Text += ByteIsInt32(t)[i].ToString() + "\t";
 
-            // for test
-            tbPortRead.Text = "9.234,6.111,2.222,8.888,4.886,9.234,4.111,4.333,7.78,9.092,5.234,6.111,4.333,8.888,2.092,9.234,3.09,4.333,5.8,9.092,4.234,6.111,4.333,8.888,1.092,9.234,5.32,4.333,1.8,7.02";
-
-            tbPortRead_TextChanged(null, null);
-        }
-
-        private void rbByteIsString_CheckedChanged(object sender, EventArgs e)
-        {
-            if(rbByteIsString.Checked)
-            {
-                // for test
-                tbPortRead.Text = "9.234,6.111,2.222,8.888,4.886,9.234,4.111,4.333,7.78,9.092,5.234,6.111,4.333,8.888,2.092,9.234,3.09,4.333,5.8,9.092,4.234,6.111,4.333,8.888,1.092,9.234,5.32,4.333,1.8,7.02";
-                tbPortRead_TextChanged(null, null);
-            }
+            //tbPortRead_TextChanged(null, null);
         }
 
     }

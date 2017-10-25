@@ -56,13 +56,17 @@ namespace COMv2
             {
                 if (rbByteIsString.Checked)
                     DataPoint = ByteIsString(COMdataNow);
-                if (rbByteIsString.Checked)
+                if (rbByteIsNumber.Checked)
                     switch ((string)cbByteIsNumber.SelectedItem)
                     {
                         case "int16": DataPoint = ByteIsInt16(COMdataNow); break;
                         case "int32": DataPoint = ByteIsInt32(COMdataNow); break;
                     }
-
+                // 绘图
+                chtData.Invoke(new Action(() =>
+                {
+                        chtData.Series[ChartChannelNameList[0]].Points.DataBindY(DataPoint);
+                }));
             }
             else
             {

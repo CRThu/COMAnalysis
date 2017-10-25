@@ -422,7 +422,6 @@
             this.rbByteIsString.TabIndex = 25;
             this.rbByteIsString.Text = "String";
             this.rbByteIsString.UseVisualStyleBackColor = true;
-            this.rbByteIsString.CheckedChanged += new System.EventHandler(this.rbByteIsString_CheckedChanged);
             // 
             // gbByteDecoder
             // 
