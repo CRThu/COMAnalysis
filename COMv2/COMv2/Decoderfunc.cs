@@ -9,6 +9,7 @@ namespace COMv2
     partial class MainForm
     {
         List<double> DataPoint = new List<double>();            // 数据集
+        List<double> AllDataPoint = new List<double>();            // 总数据集
         List<List<double>> MultiChannelDataPoint = new List<List<double>>();      // 多通道数据集
 
         void DataClear()
@@ -55,7 +56,7 @@ namespace COMv2
             //        Int32Array[i / 4] = BitConverter.ToInt32(ByteArray, i);
             //return Int32Array;
         }
-        
+
         // 选择解析器
         void ByteDecoder()
         {
@@ -71,6 +72,7 @@ namespace COMv2
                         case "int16": DataPoint = ByteIsInt16(COMdataNow); break;
                         case "int32": DataPoint = ByteIsInt32(COMdataNow); break;
                     }
+                AllDataPoint.AddRange(DataPoint);
                 DataToText();                     // 解释器
                 DataToMultiChannel();       // 单通道转多通道
                 ChartDraw();                      // 绘图
@@ -92,8 +94,8 @@ namespace COMv2
             for (int i = 0; i < ChartChannelNameList.Count; i++)
             {
                 List<double> ci = new List<double>();
-                for (int j = i; j < DataPoint.Count; j += ChartChannelNameList.Count)
-                    ci.Add(DataPoint[j]);
+                for (int j = i; j < AllDataPoint.Count; j += ChartChannelNameList.Count)
+                    ci.Add(AllDataPoint[j]);
                 MultiChannelDataPoint.Add(ci);
             }
         }
@@ -101,11 +103,17 @@ namespace COMv2
         // 解释器
         void DataToText()
         {
-            for (int i = 0; i < DataPoint.Count; i++)
-                chtData.Invoke(new Action(() =>
-                {
-                    tbPortRead.Text += (DataPoint[i].ToString() + tbStringFilter.Text);
-                }));
+            //for (int i = 0; i < DataPoint.Count; i++)
+            //    chtData.Invoke(new Action(() =>
+            //    {
+            //        tbPortRead.Text += (DataPoint[i].ToString() + tbStringFilter.Text);
+            //}));
+            chtData.Invoke(new Action(() =>
+            {
+                tbPortRead.Text = "";
+                for (int i = 0; i < AllDataPoint.Count; i++)
+                    tbPortRead.Text += (AllDataPoint[i].ToString() + tbStringFilter.Text);
+            }));
         }
     }
 }

@@ -54,5 +54,12 @@ namespace COMv2
             //    chtData.Series[ChartChannelNameList[0]].Points.DataBindY(DataPoint);
             //}));
         }
+
+        void ChartUpdate()
+        {
+            DataClear();
+            DataToMultiChannel();       // 单通道转多通道
+            ChartDraw();                      // 绘图
+        }
     }
 }

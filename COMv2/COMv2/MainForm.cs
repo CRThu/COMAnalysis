@@ -158,6 +158,8 @@ namespace COMv2
                 // Add Channel Name To ComboBox
                 cbChartChannelNameList.Items.Insert(cbChartChannelNameList.Items.Count - 1, "Channel " + cbChartChannelNameList.Items.Count.ToString());
                 cbChartChannelNameList.SelectedIndex--;
+
+                ChartUpdate();
             }
             else
                 tbChartChannelName.Text = ChartChannelNameList[cbChartChannelNameList.SelectedIndex];
@@ -169,6 +171,7 @@ namespace COMv2
             ChartChannelNameList[cbChartChannelNameList.SelectedIndex] = tbChartChannelName.Text;
             // Change Channel Name In Series
             chtDataSeriesAdd[cbChartChannelNameList.SelectedIndex].Name = tbChartChannelName.Text;
+            ChartUpdate();
         }
 
         private void cbChartShowValue_CheckedChanged(object sender, EventArgs e)
@@ -220,6 +223,6 @@ namespace COMv2
                 chtData.ChartAreas[0].AxisX.Interval = 0;                                      // 设置X轴间隔
             }
         }
-        
+
     }
 }
