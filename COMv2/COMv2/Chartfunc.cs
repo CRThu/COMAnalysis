@@ -24,6 +24,11 @@ namespace COMv2
             // ChartArea
             ChartArea chtDataChartArea = new ChartArea("ChartArea");
             chtData.ChartAreas.Add(chtDataChartArea);
+
+            chtData.ChartAreas[0].AxisX.ScrollBar.IsPositionedInside = false;   // 设置滚动条外部显示
+            chtData.ChartAreas[0].AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.SmallScroll;
+            chtData.ChartAreas[0].AxisX.Minimum = 1;
+
             // Series
             //Series chtDataSeries = new Series("chtDataSeries");
             // New Channel 1

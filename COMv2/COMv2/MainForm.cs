@@ -16,14 +16,14 @@ namespace COMv2
     public partial class MainForm : Form
     {
         public Thread thread = null;     // 监听线程
-        volatile bool loop=false;           // 串口读取循环使能
+        volatile bool loop = false;           // 串口读取循环使能
         byte[] COMdataNow;                // 缓冲区数据
-        List<string> ChartChannelNameList=new List<string>();   // 通道名
+        List<string> ChartChannelNameList = new List<string>();   // 通道名
         List<Series> chtDataSeriesAdd = new List<Series>();         // 通道类
 
         public delegate void EventHandle(byte[] readBuffer);    // 读取串口委托
         public event EventHandle DataReceived;                      // 读取串口函数
-        
+
 
         public MainForm()
         {
@@ -44,8 +44,6 @@ namespace COMv2
             // byte[] decode
             rbByteIsString.Checked = true;
             cbByteIsNumber.Text = "int16";
-
-
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -113,37 +111,37 @@ namespace COMv2
 
         //private void tbPortRead_TextChanged(object sender, EventArgs e)
         //{
-            //only one channel
-            //chtData.Invoke(new Action(() =>
-            //{
-            //    string[] b = tbPortRead.Text.Split(new char[] { ',' });
-            //    double[] c = new double[b.Length];
-            //    for (int i = 0; i < b.Length; i++)
-            //    {
-            //        if (b[i] == "")
-            //            b[i] = "0";
-            //        c[i] = Convert.ToDouble(b[i]);
-            //    }
-            //    chtData.Series["chtDataSeries"].Points.DataBindY(c);
-            //}));
-            //string[] b = tbPortRead.Text.Split(new char[] { ',' });
-            //string[] b = tbPortRead.Text.Split(tbStringFilter.Text.ToCharArray());
-            //List<List<double>> c = new List<List<double>>();
-            //for (int i = 0; i < ChartChannelNameList.Count; i++)
-            //{
-            //    List<double> ci = new List<double>();
-            //    for (int j = i; j < b.Length; j += ChartChannelNameList.Count)
-            //    {
-            //        if (b[j] != "")
-            //            ci.Add(Convert.ToDouble(b[j]));
-            //    }
-            //    c.Add(ci);
-            //}
-            //chtData.Invoke(new Action(() =>
-            //{
-            //    for (int i = 0; i < ChartChannelNameList.Count; i++)
-            //        chtData.Series[ChartChannelNameList[i]].Points.DataBindY(c[i]);
-            //}));
+        //only one channel
+        //chtData.Invoke(new Action(() =>
+        //{
+        //    string[] b = tbPortRead.Text.Split(new char[] { ',' });
+        //    double[] c = new double[b.Length];
+        //    for (int i = 0; i < b.Length; i++)
+        //    {
+        //        if (b[i] == "")
+        //            b[i] = "0";
+        //        c[i] = Convert.ToDouble(b[i]);
+        //    }
+        //    chtData.Series["chtDataSeries"].Points.DataBindY(c);
+        //}));
+        //string[] b = tbPortRead.Text.Split(new char[] { ',' });
+        //string[] b = tbPortRead.Text.Split(tbStringFilter.Text.ToCharArray());
+        //List<List<double>> c = new List<List<double>>();
+        //for (int i = 0; i < ChartChannelNameList.Count; i++)
+        //{
+        //    List<double> ci = new List<double>();
+        //    for (int j = i; j < b.Length; j += ChartChannelNameList.Count)
+        //    {
+        //        if (b[j] != "")
+        //            ci.Add(Convert.ToDouble(b[j]));
+        //    }
+        //    c.Add(ci);
+        //}
+        //chtData.Invoke(new Action(() =>
+        //{
+        //    for (int i = 0; i < ChartChannelNameList.Count; i++)
+        //        chtData.Series[ChartChannelNameList[i]].Points.DataBindY(c[i]);
+        //}));
         //}
 
         private void cbChartChannelName_SelectedIndexChanged(object sender, EventArgs e)
@@ -182,13 +180,13 @@ namespace COMv2
         private void btnOnlyForTest_Click(object sender, EventArgs e)
         {
             // for test
-            if(rbByteIsString.Checked)
-            COMdataNow = System.Text.Encoding.Default.GetBytes("9.234,6.111,2.222,8.888,4.886,9.234,4.111,4.333,7.78,9.092,5.234,6.111,4.333,8.888,2.092,9.234,3.09,4.333,5.8,9.092,4.234,6.111,4.333,8.888,1.092,9.234,5.32,4.333,1.8,7.02");
+            if (rbByteIsString.Checked)
+                COMdataNow = System.Text.Encoding.Default.GetBytes("9.234,6.111,2.222,8.888,4.886,9.234,4.111,4.333,7.78,9.092,5.234,6.111,4.333,8.888,2.092,9.234,3.09,4.333,5.8,9.092,4.234,6.111,4.333,8.888,1.092,9.234,5.32,4.333,1.8,7.02");
             if (rbByteIsNumber.Checked)
                 COMdataNow = new byte[] { 0x0D, 0x6B, 0x3C, 0x05, 0x11, 0x55, 0x40, 0xDD, 0xF0, 0x65, 0x8E, 0xA3, 0xD5, 0xC7, 0x11, 0x05 };
             if (rbNoDecoder.Checked)
                 COMdataNow = System.Text.Encoding.Default.GetBytes("helloworld");
-                ByteDecoder();
+            ByteDecoder();
             // for test
             //byte[] t = { 0x0D, 0x6B, 0x3C, 0x05, 0x11, 0x55, 0x40, 0xDD, 0xF0, 0x65, 0x8E, 0xA3, 0xD5, 0xC7, 0x11, 0x05 };
 
@@ -207,5 +205,21 @@ namespace COMv2
             //tbPortRead_TextChanged(null, null);
         }
 
+        private void cbChartScrollBar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbChartScrollBar.Checked)
+            {
+                chtData.ChartAreas[0].AxisX.ScaleView.Size = 10;           // 可见数据点数
+                chtData.ChartAreas[0].AxisX.ScaleView.MinSize = 1;       // 步进
+                chtData.ChartAreas[0].AxisX.Interval = 1;                       // 设置X轴间隔
+            }
+            else
+            {
+                chtData.ChartAreas[0].AxisX.ScaleView.Size = double.NaN;           // 可见数据点数
+                chtData.ChartAreas[0].AxisX.ScaleView.MinSize = double.NaN;     // 步进
+                chtData.ChartAreas[0].AxisX.Interval = 0;                                      // 设置X轴间隔
+            }
+        }
+        
     }
 }

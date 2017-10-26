@@ -57,6 +57,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chtData = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gbChart = new System.Windows.Forms.GroupBox();
+            this.cbChartScrollBar = new System.Windows.Forms.CheckBox();
             this.cbChartShowValue = new System.Windows.Forms.CheckBox();
             this.btnChartChannelName = new System.Windows.Forms.Button();
             this.tbChartChannelName = new System.Windows.Forms.TextBox();
@@ -273,7 +274,7 @@
             this.btnPortWrite.Location = new System.Drawing.Point(318, 93);
             this.btnPortWrite.Name = "btnPortWrite";
             this.btnPortWrite.Size = new System.Drawing.Size(75, 23);
-            this.btnPortWrite.TabIndex = 10;
+            this.btnPortWrite.TabIndex = 14;
             this.btnPortWrite.Text = "发送";
             this.btnPortWrite.UseVisualStyleBackColor = true;
             this.btnPortWrite.Click += new System.EventHandler(this.btnPortWrite_Click);
@@ -285,7 +286,7 @@
             this.tbPortWrite.Name = "tbPortWrite";
             this.tbPortWrite.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.tbPortWrite.Size = new System.Drawing.Size(387, 61);
-            this.tbPortWrite.TabIndex = 9;
+            this.tbPortWrite.TabIndex = 12;
             // 
             // gbSend
             // 
@@ -307,7 +308,7 @@
             this.ckbNewLine.Location = new System.Drawing.Point(6, 95);
             this.ckbNewLine.Name = "ckbNewLine";
             this.ckbNewLine.Size = new System.Drawing.Size(87, 21);
-            this.ckbNewLine.TabIndex = 11;
+            this.ckbNewLine.TabIndex = 13;
             this.ckbNewLine.Text = "发送时换行";
             this.ckbNewLine.UseVisualStyleBackColor = true;
             // 
@@ -318,8 +319,7 @@
             this.tbPortRead.Name = "tbPortRead";
             this.tbPortRead.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.tbPortRead.Size = new System.Drawing.Size(387, 86);
-            this.tbPortRead.TabIndex = 24;
-            //this.tbPortRead.TextChanged += new System.EventHandler(this.tbPortRead_TextChanged);
+            this.tbPortRead.TabIndex = 15;
             // 
             // groupBox1
             // 
@@ -351,6 +351,7 @@
             // 
             // gbChart
             // 
+            this.gbChart.Controls.Add(this.cbChartScrollBar);
             this.gbChart.Controls.Add(this.cbChartShowValue);
             this.gbChart.Controls.Add(this.btnChartChannelName);
             this.gbChart.Controls.Add(this.tbChartChannelName);
@@ -364,13 +365,24 @@
             this.gbChart.TabStop = false;
             this.gbChart.Text = "图表显示";
             // 
+            // cbChartScrollBar
+            // 
+            this.cbChartScrollBar.AutoSize = true;
+            this.cbChartScrollBar.Location = new System.Drawing.Point(22, 102);
+            this.cbChartScrollBar.Name = "cbChartScrollBar";
+            this.cbChartScrollBar.Size = new System.Drawing.Size(87, 21);
+            this.cbChartScrollBar.TabIndex = 28;
+            this.cbChartScrollBar.Text = "显示滚动条";
+            this.cbChartScrollBar.UseVisualStyleBackColor = true;
+            this.cbChartScrollBar.CheckedChanged += new System.EventHandler(this.cbChartScrollBar_CheckedChanged);
+            // 
             // cbChartShowValue
             // 
             this.cbChartShowValue.AutoSize = true;
             this.cbChartShowValue.Location = new System.Drawing.Point(22, 75);
             this.cbChartShowValue.Name = "cbChartShowValue";
             this.cbChartShowValue.Size = new System.Drawing.Size(75, 21);
-            this.cbChartShowValue.TabIndex = 31;
+            this.cbChartShowValue.TabIndex = 19;
             this.cbChartShowValue.Text = "显示数值";
             this.cbChartShowValue.UseVisualStyleBackColor = true;
             this.cbChartShowValue.CheckedChanged += new System.EventHandler(this.cbChartShowValue_CheckedChanged);
@@ -380,7 +392,7 @@
             this.btnChartChannelName.Location = new System.Drawing.Point(249, 37);
             this.btnChartChannelName.Name = "btnChartChannelName";
             this.btnChartChannelName.Size = new System.Drawing.Size(75, 23);
-            this.btnChartChannelName.TabIndex = 30;
+            this.btnChartChannelName.TabIndex = 18;
             this.btnChartChannelName.Text = "修改";
             this.btnChartChannelName.UseVisualStyleBackColor = true;
             this.btnChartChannelName.Click += new System.EventHandler(this.btnChartChannelName_Click);
@@ -390,7 +402,7 @@
             this.tbChartChannelName.Location = new System.Drawing.Point(147, 37);
             this.tbChartChannelName.Name = "tbChartChannelName";
             this.tbChartChannelName.Size = new System.Drawing.Size(96, 23);
-            this.tbChartChannelName.TabIndex = 29;
+            this.tbChartChannelName.TabIndex = 17;
             // 
             // cbChartChannelNameList
             // 
@@ -401,7 +413,7 @@
             this.cbChartChannelNameList.Location = new System.Drawing.Point(60, 37);
             this.cbChartChannelNameList.Name = "cbChartChannelNameList";
             this.cbChartChannelNameList.Size = new System.Drawing.Size(81, 25);
-            this.cbChartChannelNameList.TabIndex = 28;
+            this.cbChartChannelNameList.TabIndex = 16;
             this.cbChartChannelNameList.SelectedIndexChanged += new System.EventHandler(this.cbChartChannelName_SelectedIndexChanged);
             // 
             // lbChartChannelName
@@ -444,7 +456,7 @@
             this.btnOnlyForTest.Location = new System.Drawing.Point(93, 87);
             this.btnOnlyForTest.Name = "btnOnlyForTest";
             this.btnOnlyForTest.Size = new System.Drawing.Size(75, 23);
-            this.btnOnlyForTest.TabIndex = 32;
+            this.btnOnlyForTest.TabIndex = 11;
             this.btnOnlyForTest.Text = "解析测试";
             this.btnOnlyForTest.UseVisualStyleBackColor = true;
             this.btnOnlyForTest.Click += new System.EventHandler(this.btnOnlyForTest_Click);
@@ -469,7 +481,7 @@
             this.cbByteIsNumber.Location = new System.Drawing.Point(95, 57);
             this.cbByteIsNumber.Name = "cbByteIsNumber";
             this.cbByteIsNumber.Size = new System.Drawing.Size(73, 25);
-            this.cbByteIsNumber.TabIndex = 33;
+            this.cbByteIsNumber.TabIndex = 10;
             // 
             // rbByteIsNumber
             // 
@@ -495,7 +507,7 @@
             this.tbStringFilter.Location = new System.Drawing.Point(137, 28);
             this.tbStringFilter.Name = "tbStringFilter";
             this.tbStringFilter.Size = new System.Drawing.Size(31, 23);
-            this.tbStringFilter.TabIndex = 28;
+            this.tbStringFilter.TabIndex = 9;
             this.tbStringFilter.Text = ",";
             // 
             // MainForm
@@ -570,6 +582,7 @@
         private System.Windows.Forms.RadioButton rbByteIsNumber;
         private System.Windows.Forms.RadioButton rbNoDecoder;
         private System.Windows.Forms.Button btnOnlyForTest;
+        private System.Windows.Forms.CheckBox cbChartScrollBar;
     }
 }
 

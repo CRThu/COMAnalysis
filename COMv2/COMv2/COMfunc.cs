@@ -33,16 +33,16 @@ namespace COMv2
         // 读取用户输入配置
         void COMGetSettings()
         {
-            COM.PortName = (string)cbPort.SelectedItem;
-            COM.BaudRate = Convert.ToInt32(cbBaudRate.SelectedItem);
-            COM.DataBits = Convert.ToInt32(cbDataBits.SelectedItem);
-            switch ((string)cbStopBits.SelectedItem)
+            COM.PortName = cbPort.Text;
+            COM.BaudRate = Convert.ToInt32(cbBaudRate.Text);
+            COM.DataBits = Convert.ToInt32(cbDataBits.Text);
+            switch (cbStopBits.Text)
             {
                 case "1": COM.StopBits = StopBits.One; break;
                 case "1.5": COM.StopBits = StopBits.OnePointFive; break;
                 case "2": COM.StopBits = StopBits.Two; break;
             }
-            switch ((string)cbParity.SelectedItem)
+            switch (cbParity.Text)
             {
                 case "None": COM.Parity = Parity.None; break;
                 case "Odd": COM.Parity = Parity.Odd; break;

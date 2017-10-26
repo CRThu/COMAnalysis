@@ -78,7 +78,10 @@ namespace COMv2
             else
             {
                 if (rbNoDecoder.Checked)        // 不使用图表
-                    tbPortRead.Text += System.Text.Encoding.Default.GetString(COMdataNow);
+                    chtData.Invoke(new Action(() =>
+                    {
+                        tbPortRead.Text += System.Text.Encoding.Default.GetString(COMdataNow);
+                    }));
             }
 
         }
@@ -99,7 +102,10 @@ namespace COMv2
         void DataToText()
         {
             for (int i = 0; i < DataPoint.Count; i++)
-                tbPortRead.Text += (DataPoint[i].ToString() + tbStringFilter.Text);
+                chtData.Invoke(new Action(() =>
+                {
+                    tbPortRead.Text += (DataPoint[i].ToString() + tbStringFilter.Text);
+                }));
         }
     }
 }
