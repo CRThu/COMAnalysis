@@ -19,7 +19,7 @@ namespace COMv2
             chtData.Titles.Clear();
 
             // Title
-            Title chtDataTitle = new Title("title");
+            Title chtDataTitle = new Title("波形显示");
             chtData.Titles.Add(chtDataTitle);
             // ChartArea
             ChartArea chtDataChartArea = new ChartArea("ChartArea");

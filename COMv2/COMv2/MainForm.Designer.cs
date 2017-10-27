@@ -56,7 +56,6 @@
             this.tbPortRead = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chtData = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.gbChart = new System.Windows.Forms.GroupBox();
             this.cbChartScrollBar = new System.Windows.Forms.CheckBox();
             this.cbChartShowValue = new System.Windows.Forms.CheckBox();
             this.btnChartChannelName = new System.Windows.Forms.Button();
@@ -71,13 +70,17 @@
             this.rbByteIsNumber = new System.Windows.Forms.RadioButton();
             this.lbStringFilter = new System.Windows.Forms.Label();
             this.tbStringFilter = new System.Windows.Forms.TextBox();
+            this.tcOutput = new System.Windows.Forms.TabControl();
+            this.tpChart = new System.Windows.Forms.TabPage();
+            this.tpExcel = new System.Windows.Forms.TabPage();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chtData)).BeginInit();
-            this.gbChart.SuspendLayout();
             this.gbByteDecoder.SuspendLayout();
+            this.tcOutput.SuspendLayout();
+            this.tpChart.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbPort
@@ -337,7 +340,7 @@
             this.chtData.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chtData.Legends.Add(legend1);
-            this.chtData.Location = new System.Drawing.Point(6, 172);
+            this.chtData.Location = new System.Drawing.Point(6, 141);
             this.chtData.Name = "chtData";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -346,29 +349,13 @@
             series1.LegendText = "data1";
             series1.Name = "Series1";
             this.chtData.Series.Add(series1);
-            this.chtData.Size = new System.Drawing.Size(544, 297);
+            this.chtData.Size = new System.Drawing.Size(544, 299);
             this.chtData.TabIndex = 26;
-            // 
-            // gbChart
-            // 
-            this.gbChart.Controls.Add(this.cbChartScrollBar);
-            this.gbChart.Controls.Add(this.cbChartShowValue);
-            this.gbChart.Controls.Add(this.btnChartChannelName);
-            this.gbChart.Controls.Add(this.tbChartChannelName);
-            this.gbChart.Controls.Add(this.cbChartChannelNameList);
-            this.gbChart.Controls.Add(this.lbChartChannelName);
-            this.gbChart.Controls.Add(this.chtData);
-            this.gbChart.Location = new System.Drawing.Point(417, 25);
-            this.gbChart.Name = "gbChart";
-            this.gbChart.Size = new System.Drawing.Size(556, 475);
-            this.gbChart.TabIndex = 27;
-            this.gbChart.TabStop = false;
-            this.gbChart.Text = "图表显示";
             // 
             // cbChartScrollBar
             // 
             this.cbChartScrollBar.AutoSize = true;
-            this.cbChartScrollBar.Location = new System.Drawing.Point(22, 102);
+            this.cbChartScrollBar.Location = new System.Drawing.Point(21, 77);
             this.cbChartScrollBar.Name = "cbChartScrollBar";
             this.cbChartScrollBar.Size = new System.Drawing.Size(87, 21);
             this.cbChartScrollBar.TabIndex = 28;
@@ -379,7 +366,7 @@
             // cbChartShowValue
             // 
             this.cbChartShowValue.AutoSize = true;
-            this.cbChartShowValue.Location = new System.Drawing.Point(22, 75);
+            this.cbChartShowValue.Location = new System.Drawing.Point(21, 50);
             this.cbChartShowValue.Name = "cbChartShowValue";
             this.cbChartShowValue.Size = new System.Drawing.Size(75, 21);
             this.cbChartShowValue.TabIndex = 19;
@@ -389,7 +376,7 @@
             // 
             // btnChartChannelName
             // 
-            this.btnChartChannelName.Location = new System.Drawing.Point(249, 37);
+            this.btnChartChannelName.Location = new System.Drawing.Point(248, 12);
             this.btnChartChannelName.Name = "btnChartChannelName";
             this.btnChartChannelName.Size = new System.Drawing.Size(75, 23);
             this.btnChartChannelName.TabIndex = 18;
@@ -399,7 +386,7 @@
             // 
             // tbChartChannelName
             // 
-            this.tbChartChannelName.Location = new System.Drawing.Point(147, 37);
+            this.tbChartChannelName.Location = new System.Drawing.Point(146, 12);
             this.tbChartChannelName.Name = "tbChartChannelName";
             this.tbChartChannelName.Size = new System.Drawing.Size(96, 23);
             this.tbChartChannelName.TabIndex = 17;
@@ -410,7 +397,7 @@
             this.cbChartChannelNameList.Items.AddRange(new object[] {
             "Channel 1",
             "Add Channel"});
-            this.cbChartChannelNameList.Location = new System.Drawing.Point(60, 37);
+            this.cbChartChannelNameList.Location = new System.Drawing.Point(59, 12);
             this.cbChartChannelNameList.Name = "cbChartChannelNameList";
             this.cbChartChannelNameList.Size = new System.Drawing.Size(81, 25);
             this.cbChartChannelNameList.TabIndex = 16;
@@ -419,7 +406,7 @@
             // lbChartChannelName
             // 
             this.lbChartChannelName.AutoSize = true;
-            this.lbChartChannelName.Location = new System.Drawing.Point(19, 40);
+            this.lbChartChannelName.Location = new System.Drawing.Point(18, 15);
             this.lbChartChannelName.Name = "lbChartChannelName";
             this.lbChartChannelName.Size = new System.Drawing.Size(35, 17);
             this.lbChartChannelName.TabIndex = 27;
@@ -510,13 +497,50 @@
             this.tbStringFilter.TabIndex = 9;
             this.tbStringFilter.Text = ",";
             // 
+            // tcOutput
+            // 
+            this.tcOutput.Controls.Add(this.tpChart);
+            this.tcOutput.Controls.Add(this.tpExcel);
+            this.tcOutput.Location = new System.Drawing.Point(417, 24);
+            this.tcOutput.Name = "tcOutput";
+            this.tcOutput.SelectedIndex = 0;
+            this.tcOutput.Size = new System.Drawing.Size(564, 476);
+            this.tcOutput.TabIndex = 29;
+            // 
+            // tpChart
+            // 
+            this.tpChart.Controls.Add(this.cbChartScrollBar);
+            this.tpChart.Controls.Add(this.cbChartShowValue);
+            this.tpChart.Controls.Add(this.chtData);
+            this.tpChart.Controls.Add(this.btnChartChannelName);
+            this.tpChart.Controls.Add(this.lbChartChannelName);
+            this.tpChart.Controls.Add(this.tbChartChannelName);
+            this.tpChart.Controls.Add(this.cbChartChannelNameList);
+            this.tpChart.Location = new System.Drawing.Point(4, 26);
+            this.tpChart.Name = "tpChart";
+            this.tpChart.Padding = new System.Windows.Forms.Padding(3);
+            this.tpChart.Size = new System.Drawing.Size(556, 446);
+            this.tpChart.TabIndex = 0;
+            this.tpChart.Text = "图表显示";
+            this.tpChart.UseVisualStyleBackColor = true;
+            // 
+            // tpExcel
+            // 
+            this.tpExcel.Location = new System.Drawing.Point(4, 26);
+            this.tpExcel.Name = "tpExcel";
+            this.tpExcel.Padding = new System.Windows.Forms.Padding(3);
+            this.tpExcel.Size = new System.Drawing.Size(556, 446);
+            this.tpExcel.TabIndex = 1;
+            this.tpExcel.Text = "Excel显示";
+            this.tpExcel.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(985, 535);
+            this.ClientSize = new System.Drawing.Size(1005, 535);
+            this.Controls.Add(this.tcOutput);
             this.Controls.Add(this.gbByteDecoder);
-            this.Controls.Add(this.gbChart);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbSend);
             this.Controls.Add(this.gbCmd);
@@ -535,10 +559,11 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chtData)).EndInit();
-            this.gbChart.ResumeLayout(false);
-            this.gbChart.PerformLayout();
             this.gbByteDecoder.ResumeLayout(false);
             this.gbByteDecoder.PerformLayout();
+            this.tcOutput.ResumeLayout(false);
+            this.tpChart.ResumeLayout(false);
+            this.tpChart.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -568,7 +593,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox ckbNewLine;
         private System.Windows.Forms.DataVisualization.Charting.Chart chtData;
-        private System.Windows.Forms.GroupBox gbChart;
         private System.Windows.Forms.Label lbChartChannelName;
         private System.Windows.Forms.ComboBox cbChartChannelNameList;
         private System.Windows.Forms.TextBox tbChartChannelName;
@@ -583,6 +607,9 @@
         private System.Windows.Forms.RadioButton rbNoDecoder;
         private System.Windows.Forms.Button btnOnlyForTest;
         private System.Windows.Forms.CheckBox cbChartScrollBar;
+        private System.Windows.Forms.TabControl tcOutput;
+        private System.Windows.Forms.TabPage tpChart;
+        private System.Windows.Forms.TabPage tpExcel;
     }
 }
 
