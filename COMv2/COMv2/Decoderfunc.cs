@@ -67,11 +67,18 @@ namespace COMv2
                 if (rbByteIsString.Checked)
                     DataPoint = ByteIsString(COMdataNow);
                 if (rbByteIsNumber.Checked)
-                    switch ((string)cbByteIsNumber.SelectedItem)
+                {
+                    string NumSI="";
+                    chtData.Invoke(new Action(() =>
+                    {
+                        NumSI = (string)cbByteIsNumber.SelectedItem;
+                    }));
+                switch (NumSI)
                     {
                         case "int16": DataPoint = ByteIsInt16(COMdataNow); break;
                         case "int32": DataPoint = ByteIsInt32(COMdataNow); break;
                     }
+                }
                 AllDataPoint.AddRange(DataPoint);
                 DataToText();                     // 解释器
                 DataToMultiChannel();       // 单通道转多通道
