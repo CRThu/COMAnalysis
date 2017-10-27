@@ -74,6 +74,8 @@
             this.tpChart = new System.Windows.Forms.TabPage();
             this.tpExcel = new System.Windows.Forms.TabPage();
             this.btnExcelWrite = new System.Windows.Forms.Button();
+            this.cbExcelAllDataOutput = new System.Windows.Forms.CheckBox();
+            this.cbExcelChannelDataOutput = new System.Windows.Forms.CheckBox();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -528,6 +530,8 @@
             // 
             // tpExcel
             // 
+            this.tpExcel.Controls.Add(this.cbExcelChannelDataOutput);
+            this.tpExcel.Controls.Add(this.cbExcelAllDataOutput);
             this.tpExcel.Controls.Add(this.btnExcelWrite);
             this.tpExcel.Location = new System.Drawing.Point(4, 26);
             this.tpExcel.Name = "tpExcel";
@@ -539,13 +543,33 @@
             // 
             // btnExcelWrite
             // 
-            this.btnExcelWrite.Location = new System.Drawing.Point(50, 51);
+            this.btnExcelWrite.Location = new System.Drawing.Point(25, 83);
             this.btnExcelWrite.Name = "btnExcelWrite";
             this.btnExcelWrite.Size = new System.Drawing.Size(75, 23);
             this.btnExcelWrite.TabIndex = 0;
             this.btnExcelWrite.Text = "写入Excel";
             this.btnExcelWrite.UseVisualStyleBackColor = true;
             this.btnExcelWrite.Click += new System.EventHandler(this.btnExcelWrite_Click);
+            // 
+            // cbExcelAllDataOutput
+            // 
+            this.cbExcelAllDataOutput.AutoSize = true;
+            this.cbExcelAllDataOutput.Location = new System.Drawing.Point(25, 22);
+            this.cbExcelAllDataOutput.Name = "cbExcelAllDataOutput";
+            this.cbExcelAllDataOutput.Size = new System.Drawing.Size(99, 21);
+            this.cbExcelAllDataOutput.TabIndex = 1;
+            this.cbExcelAllDataOutput.Text = "输出所有数据";
+            this.cbExcelAllDataOutput.UseVisualStyleBackColor = true;
+            // 
+            // cbExcelChannelDataOutput
+            // 
+            this.cbExcelChannelDataOutput.AutoSize = true;
+            this.cbExcelChannelDataOutput.Location = new System.Drawing.Point(25, 49);
+            this.cbExcelChannelDataOutput.Name = "cbExcelChannelDataOutput";
+            this.cbExcelChannelDataOutput.Size = new System.Drawing.Size(111, 21);
+            this.cbExcelChannelDataOutput.TabIndex = 2;
+            this.cbExcelChannelDataOutput.Text = "输出多通道数据";
+            this.cbExcelChannelDataOutput.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -578,6 +602,7 @@
             this.tpChart.ResumeLayout(false);
             this.tpChart.PerformLayout();
             this.tpExcel.ResumeLayout(false);
+            this.tpExcel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -625,6 +650,8 @@
         private System.Windows.Forms.TabPage tpChart;
         private System.Windows.Forms.TabPage tpExcel;
         private System.Windows.Forms.Button btnExcelWrite;
+        private System.Windows.Forms.CheckBox cbExcelChannelDataOutput;
+        private System.Windows.Forms.CheckBox cbExcelAllDataOutput;
     }
 }
 

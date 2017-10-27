@@ -41,6 +41,9 @@ namespace COMv2
 
             Chartinit();
 
+            // Excel Checkbox
+            cbExcelAllDataOutput.Checked = true;
+
             // byte[] decode
             rbByteIsString.Checked = true;
             cbByteIsNumber.Text = "int16";
@@ -229,6 +232,7 @@ namespace COMv2
             Microsoft.Office.Interop.Excel.Application ExcelApplication;
             Microsoft.Office.Interop.Excel.Workbook ExcelWorkbook;
             Microsoft.Office.Interop.Excel.Worksheet ExcelWorksheet;
+            int Column = 1;
 
             // create
             ExcelApplication = new Microsoft.Office.Interop.Excel.Application();
@@ -238,9 +242,13 @@ namespace COMv2
             ExcelWorksheet.Name = COM.PortName + "-Data";    // Sheet Name
             ExcelWorkbook.Worksheets["Sheet1"].Delete();
             // data
-            ExcelWorksheet.Cells[1, 1] = "AllDataPoint";
-            for (int i = 0; i < AllDataPoint.Count; i++)
-                ExcelWorksheet.Cells[1, i + 2] = AllDataPoint[i];
+            if (cbExcelAllDataOutput.Checked)
+            {
+                ExcelWorksheet.Cells[1, Column] = "AllDataPoint";
+                for (int i = 0; i < AllDataPoint.Count; i++)
+                    ExcelWorksheet.Cells[i + 2, Column] = AllDataPoint[i];
+                Column++;
+            }
             // save
             //ExcelWorkbook.SaveAs("D:\\Data2017");
         }
