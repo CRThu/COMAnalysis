@@ -73,6 +73,7 @@
             this.tcOutput = new System.Windows.Forms.TabControl();
             this.tpChart = new System.Windows.Forms.TabPage();
             this.tpExcel = new System.Windows.Forms.TabPage();
+            this.btnExcelWrite = new System.Windows.Forms.Button();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -81,6 +82,7 @@
             this.gbByteDecoder.SuspendLayout();
             this.tcOutput.SuspendLayout();
             this.tpChart.SuspendLayout();
+            this.tpExcel.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbPort
@@ -526,6 +528,7 @@
             // 
             // tpExcel
             // 
+            this.tpExcel.Controls.Add(this.btnExcelWrite);
             this.tpExcel.Location = new System.Drawing.Point(4, 26);
             this.tpExcel.Name = "tpExcel";
             this.tpExcel.Padding = new System.Windows.Forms.Padding(3);
@@ -533,6 +536,16 @@
             this.tpExcel.TabIndex = 1;
             this.tpExcel.Text = "Excel显示";
             this.tpExcel.UseVisualStyleBackColor = true;
+            // 
+            // btnExcelWrite
+            // 
+            this.btnExcelWrite.Location = new System.Drawing.Point(50, 51);
+            this.btnExcelWrite.Name = "btnExcelWrite";
+            this.btnExcelWrite.Size = new System.Drawing.Size(75, 23);
+            this.btnExcelWrite.TabIndex = 0;
+            this.btnExcelWrite.Text = "写入Excel";
+            this.btnExcelWrite.UseVisualStyleBackColor = true;
+            this.btnExcelWrite.Click += new System.EventHandler(this.btnExcelWrite_Click);
             // 
             // MainForm
             // 
@@ -564,6 +577,7 @@
             this.tcOutput.ResumeLayout(false);
             this.tpChart.ResumeLayout(false);
             this.tpChart.PerformLayout();
+            this.tpExcel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -610,6 +624,7 @@
         private System.Windows.Forms.TabControl tcOutput;
         private System.Windows.Forms.TabPage tpChart;
         private System.Windows.Forms.TabPage tpExcel;
+        private System.Windows.Forms.Button btnExcelWrite;
     }
 }
 

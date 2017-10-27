@@ -224,5 +224,25 @@ namespace COMv2
             }
         }
 
+        private void btnExcelWrite_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application ExcelApplication;
+            Microsoft.Office.Interop.Excel.Workbook ExcelWorkbook;
+            Microsoft.Office.Interop.Excel.Worksheet ExcelWorksheet;
+
+            // create
+            ExcelApplication = new Microsoft.Office.Interop.Excel.Application();
+            ExcelApplication.Visible = true;    // open GUI
+            ExcelWorkbook = ExcelApplication.Workbooks.Add();
+            ExcelWorksheet = ExcelWorkbook.Worksheets.Add();
+            ExcelWorksheet.Name = COM.PortName + "-Data";    // Sheet Name
+            ExcelWorkbook.Worksheets["Sheet1"].Delete();
+            // data
+            ExcelWorksheet.Cells[1, 1] = "AllDataPoint";
+            for (int i = 0; i < AllDataPoint.Count; i++)
+                ExcelWorksheet.Cells[1, i + 2] = AllDataPoint[i];
+            // save
+            //ExcelWorkbook.SaveAs("D:\\Data2017");
+        }
     }
 }
