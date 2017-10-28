@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace COMv2
 {
@@ -78,41 +79,48 @@ namespace COMv2
         // 选择解析器
         void ByteDecoder()
         {
-            DataClear();
-
-            if (!rbNoDecoder.Checked)       // 绘制图表分支
+            try
             {
-                if (rbByteIsString.Checked)
-                    DataPoint = ByteIsString(COMdataNow);
-                if (rbByteIsNumber.Checked)
+                DataClear();
+
+                if (!rbNoDecoder.Checked)       // 绘制图表分支
                 {
-                    string NumSI="";
-                    chtData.Invoke(new Action(() =>
+                    if (rbByteIsString.Checked)
+                        DataPoint = ByteIsString(COMdataNow);
+                    if (rbByteIsNumber.Checked)
                     {
-                        NumSI = (string)cbByteIsNumber.SelectedItem;
-                    }));
-                switch (NumSI)
-                    {
-                        case "int16": DataPoint = ByteIsInt16(COMdataNow); break;
-                        case "int32": DataPoint = ByteIsInt32(COMdataNow); break;
-                        case "float": DataPoint = ByteIsFloat(COMdataNow); break;
-                        case "double": DataPoint = ByteIsDouble(COMdataNow); break;
+                        string NumSI = "";
+                        chtData.Invoke(new Action(() =>
+                        {
+                            NumSI = (string)cbByteIsNumber.SelectedItem;
+                        }));
+                        switch (NumSI)
+                        {
+                            case "int16": DataPoint = ByteIsInt16(COMdataNow); break;
+                            case "int32": DataPoint = ByteIsInt32(COMdataNow); break;
+                            case "float": DataPoint = ByteIsFloat(COMdataNow); break;
+                            case "double": DataPoint = ByteIsDouble(COMdataNow); break;
+                        }
                     }
+                    AllDataPoint.AddRange(DataPoint);
+                    DataToText();                     // 解释器
+                    DataToMultiChannel();       // 单通道转多通道
+                    ChartDraw();                      // 绘图
                 }
-                AllDataPoint.AddRange(DataPoint);
-                DataToText();                     // 解释器
-                DataToMultiChannel();       // 单通道转多通道
-                ChartDraw();                      // 绘图
-            }
-            else
-            {
-                if (rbNoDecoder.Checked)        // 不使用图表
-                    chtData.Invoke(new Action(() =>
-                    {
-                        tbPortRead.Text += System.Text.Encoding.Default.GetString(COMdataNow);
-                    }));
-            }
+                else
+                {
+                    if (rbNoDecoder.Checked)        // 不使用图表
+                        chtData.Invoke(new Action(() =>
+                        {
+                            tbPortRead.Text += System.Text.Encoding.Default.GetString(COMdataNow);
+                        }));
+                }
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         // 单通道转多通道

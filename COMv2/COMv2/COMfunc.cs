@@ -18,17 +18,24 @@ namespace COMv2
         // 初始化串口
         void COMinit()
         {
-            // 配置可用串口号
-            string[] PortNames = SerialPort.GetPortNames();
-            foreach (string PortName in PortNames)
-                cbPort.Items.Add(PortName);
+            //try
+            //{
+                // 配置可用串口号
+                string[] PortNames = SerialPort.GetPortNames();
+                foreach (string PortName in PortNames)
+                    cbPort.Items.Add(PortName);
 
-            // 配置默认串口参数
-            cbPort.SelectedIndex = 0;
-            cbBaudRate.SelectedText = "9600";
-            cbDataBits.SelectedText = "8";
-            cbStopBits.SelectedText = "1";
-            cbParity.SelectedText = "None";
+                // 配置默认串口参数
+                cbPort.SelectedIndex = 0;
+                cbBaudRate.SelectedText = "9600";
+                cbDataBits.SelectedText = "8";
+                cbStopBits.SelectedText = "1";
+                cbParity.SelectedText = "None";
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
         }
         // 读取用户输入配置
         void COMGetSettings()

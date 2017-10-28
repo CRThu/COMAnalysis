@@ -32,7 +32,15 @@ namespace COMv2
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            COMinit();
+            // COMinit
+            try
+            {
+                COMinit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 
             // Chart Set
             ChartChannelNameList.Add("data1");
@@ -58,15 +66,18 @@ namespace COMv2
 
         private void btnPortOpen_Click(object sender, EventArgs e)
         {
-            if (!COM.IsOpen)
+            try
             {
-                COMGetSettings();
-                COM.Open();
-                DataReceived += new EventHandle(COMGetData);
+                if (!COM.IsOpen)
+                {
+                    COMGetSettings();
+                    COM.Open();
+                    DataReceived += new EventHandle(COMGetData);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Port Opened.");
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -238,40 +249,47 @@ namespace COMv2
 
         private void btnExcelWrite_Click(object sender, EventArgs e)
         {
-            Microsoft.Office.Interop.Excel.Application ExcelApplication;
-            Microsoft.Office.Interop.Excel.Workbook ExcelWorkbook;
-            Microsoft.Office.Interop.Excel.Worksheet ExcelWorksheet;
-            int Column = 1;
+            try
+            {
+                Microsoft.Office.Interop.Excel.Application ExcelApplication;
+                Microsoft.Office.Interop.Excel.Workbook ExcelWorkbook;
+                Microsoft.Office.Interop.Excel.Worksheet ExcelWorksheet;
+                int Column = 1;
 
-            // create
-            ExcelApplication = new Microsoft.Office.Interop.Excel.Application();
-            ExcelApplication.Visible = true;    // open GUI
-            ExcelWorkbook = ExcelApplication.Workbooks.Add();
-            ExcelWorksheet = ExcelWorkbook.Worksheets.Add();
-            ExcelWorksheet.Name = COM.PortName + "-Data";    // Sheet Name
-            ExcelWorkbook.Worksheets["Sheet1"].Delete();
-            // data
-            if (cbExcelAllDataOutput.Checked)
-            {
-                ExcelWorksheet.Cells[1, Column] = "AllDataPoint";
-                for (int i = 0; i < AllDataPoint.Count; i++)
-                    ExcelWorksheet.Cells[i + 2, Column] = AllDataPoint[i];
-                Column++;
-            }
-            if (cbExcelChannelDataOutput.Checked)
-            {
-                for (int i = 0; i < ChartChannelNameList.Count; i++)
+                // create
+                ExcelApplication = new Microsoft.Office.Interop.Excel.Application();
+                ExcelApplication.Visible = true;    // open GUI
+                ExcelWorkbook = ExcelApplication.Workbooks.Add();
+                ExcelWorksheet = ExcelWorkbook.Worksheets.Add();
+                ExcelWorksheet.Name = COM.PortName + "-Data";    // Sheet Name
+                ExcelWorkbook.Worksheets["Sheet1"].Delete();
+                // data
+                if (cbExcelAllDataOutput.Checked)
                 {
-                    ExcelWorksheet.Cells[1, Column] = ChartChannelNameList[i];
-                    for (int j = 0; j < MultiChannelDataPoint[i].Count; j++)
-                        ExcelWorksheet.Cells[j + 2, Column] = MultiChannelDataPoint[i][j];
+                    ExcelWorksheet.Cells[1, Column] = "AllDataPoint";
+                    for (int i = 0; i < AllDataPoint.Count; i++)
+                        ExcelWorksheet.Cells[i + 2, Column] = AllDataPoint[i];
                     Column++;
                 }
+                if (cbExcelChannelDataOutput.Checked)
+                {
+                    for (int i = 0; i < ChartChannelNameList.Count; i++)
+                    {
+                        ExcelWorksheet.Cells[1, Column] = ChartChannelNameList[i];
+                        for (int j = 0; j < MultiChannelDataPoint[i].Count; j++)
+                            ExcelWorksheet.Cells[j + 2, Column] = MultiChannelDataPoint[i][j];
+                        Column++;
+                    }
+                }
+                // save
+                //ExcelWorkbook.SaveAs("D:\\Data2017");
+                ExcelWorkbook.SaveAs(Application.StartupPath + "\\" + tbExcelFileName.Text);
+                //ExcelWorkbook.SaveAs(saveFileDialog1.FileName);
             }
-            // save
-            //ExcelWorkbook.SaveAs("D:\\Data2017");
-            ExcelWorkbook.SaveAs(Application.StartupPath + "\\" + tbExcelFileName.Text);
-            //ExcelWorkbook.SaveAs(saveFileDialog1.FileName);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

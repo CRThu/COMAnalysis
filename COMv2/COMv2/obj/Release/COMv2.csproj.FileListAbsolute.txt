@@ -7,3 +7,4 @@ D:\program\CSharp\COManalysis\COMv2\COMv2\obj\Release\COMv2.csproj.GenerateResou
 D:\program\CSharp\COManalysis\COMv2\COMv2\obj\Release\COMv2.exe
 D:\program\CSharp\COManalysis\COMv2\COMv2\obj\Release\COMv2.pdb
 D:\program\CSharp\COManalysis\COMv2\COMv2\obj\Release\COMv2.csprojResolveAssemblyReference.cache
+D:\program\CSharp\COManalysis\COMv2\COMv2\obj\Release\COMv2.csproj.ResolveComReference.cache
