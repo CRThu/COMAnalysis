@@ -73,11 +73,11 @@
             this.tcOutput = new System.Windows.Forms.TabControl();
             this.tpChart = new System.Windows.Forms.TabPage();
             this.tpExcel = new System.Windows.Forms.TabPage();
+            this.lbExcelFileName = new System.Windows.Forms.Label();
+            this.tbExcelFileName = new System.Windows.Forms.TextBox();
             this.cbExcelChannelDataOutput = new System.Windows.Forms.CheckBox();
             this.cbExcelAllDataOutput = new System.Windows.Forms.CheckBox();
             this.btnExcelWrite = new System.Windows.Forms.Button();
-            this.tbExcelFileName = new System.Windows.Forms.TextBox();
-            this.lbExcelFileName = new System.Windows.Forms.Label();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -470,7 +470,9 @@
             this.cbByteIsNumber.FormattingEnabled = true;
             this.cbByteIsNumber.Items.AddRange(new object[] {
             "int16",
-            "int32"});
+            "int32",
+            "float",
+            "double"});
             this.cbByteIsNumber.Location = new System.Drawing.Point(95, 57);
             this.cbByteIsNumber.Name = "cbByteIsNumber";
             this.cbByteIsNumber.Size = new System.Drawing.Size(73, 25);
@@ -545,6 +547,22 @@
             this.tpExcel.Text = "Excel显示";
             this.tpExcel.UseVisualStyleBackColor = true;
             // 
+            // lbExcelFileName
+            // 
+            this.lbExcelFileName.AutoSize = true;
+            this.lbExcelFileName.Location = new System.Drawing.Point(149, 23);
+            this.lbExcelFileName.Name = "lbExcelFileName";
+            this.lbExcelFileName.Size = new System.Drawing.Size(47, 17);
+            this.lbExcelFileName.TabIndex = 4;
+            this.lbExcelFileName.Text = "文件名:";
+            // 
+            // tbExcelFileName
+            // 
+            this.tbExcelFileName.Location = new System.Drawing.Point(202, 20);
+            this.tbExcelFileName.Name = "tbExcelFileName";
+            this.tbExcelFileName.Size = new System.Drawing.Size(146, 23);
+            this.tbExcelFileName.TabIndex = 3;
+            // 
             // cbExcelChannelDataOutput
             // 
             this.cbExcelChannelDataOutput.AutoSize = true;
@@ -574,22 +592,6 @@
             this.btnExcelWrite.Text = "生成Excel";
             this.btnExcelWrite.UseVisualStyleBackColor = true;
             this.btnExcelWrite.Click += new System.EventHandler(this.btnExcelWrite_Click);
-            // 
-            // tbExcelFileName
-            // 
-            this.tbExcelFileName.Location = new System.Drawing.Point(202, 20);
-            this.tbExcelFileName.Name = "tbExcelFileName";
-            this.tbExcelFileName.Size = new System.Drawing.Size(146, 23);
-            this.tbExcelFileName.TabIndex = 3;
-            // 
-            // lbExcelFileName
-            // 
-            this.lbExcelFileName.AutoSize = true;
-            this.lbExcelFileName.Location = new System.Drawing.Point(149, 23);
-            this.lbExcelFileName.Name = "lbExcelFileName";
-            this.lbExcelFileName.Size = new System.Drawing.Size(47, 17);
-            this.lbExcelFileName.TabIndex = 4;
-            this.lbExcelFileName.Text = "文件名:";
             // 
             // MainForm
             // 

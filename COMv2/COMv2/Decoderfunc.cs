@@ -57,6 +57,24 @@ namespace COMv2
             //return Int32Array;
         }
 
+        List<double> ByteIsFloat(byte[] ByteArray)
+        {
+            List<double> FloatArray = new List<double>();
+            if (ByteArray.Length % 4 == 0)
+                for (int i = 0; i < ByteArray.Length; i += 4)
+                    FloatArray.Add(BitConverter.ToSingle(ByteArray, i));
+            return FloatArray;
+        }
+
+        List<double> ByteIsDouble(byte[] ByteArray)
+        {
+            List<double> DoubleArray = new List<double>();
+            if (ByteArray.Length % 8 == 0)
+                for (int i = 0; i < ByteArray.Length; i += 8)
+                    DoubleArray.Add(BitConverter.ToDouble(ByteArray, i));
+            return DoubleArray;
+        }
+
         // 选择解析器
         void ByteDecoder()
         {
@@ -77,6 +95,8 @@ namespace COMv2
                     {
                         case "int16": DataPoint = ByteIsInt16(COMdataNow); break;
                         case "int32": DataPoint = ByteIsInt32(COMdataNow); break;
+                        case "float": DataPoint = ByteIsFloat(COMdataNow); break;
+                        case "double": DataPoint = ByteIsDouble(COMdataNow); break;
                     }
                 }
                 AllDataPoint.AddRange(DataPoint);

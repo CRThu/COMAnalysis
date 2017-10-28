@@ -43,7 +43,7 @@ namespace COMv2
 
             // Excel
             cbExcelAllDataOutput.Checked = true;
-            tbExcelFileName.Text = DateTime.Now.ToString("g").Replace("/","-").Replace(" ","-").Replace(":","-")+"-"+DateTime.Now.Second;
+            tbExcelFileName.Text = DateTime.Now.ToString("g").Replace("/", "-").Replace(" ", "-").Replace(":", "-") + "-" + DateTime.Now.Second;
 
             // byte[] decode
             rbByteIsString.Checked = true;
@@ -186,6 +186,9 @@ namespace COMv2
 
         private void btnOnlyForTest_Click(object sender, EventArgs e)
         {
+            // float to byte[]
+            //float a = 123.321F;
+            //COMdataNow = BitConverter.GetBytes(a);
             // for test
             if (rbByteIsString.Checked)
                 COMdataNow = System.Text.Encoding.Default.GetBytes("9.234,6.111,2.222,8.888,4.886,9.234,4.111,4.333,7.78,9.092,5.234,6.111,4.333,8.888,2.092,9.234,3.09,4.333,5.8,9.092,4.234,6.111,4.333,8.888,1.092,9.234,5.32,4.333,1.8,7.02");
@@ -193,6 +196,11 @@ namespace COMv2
                 COMdataNow = new byte[] { 0x0D, 0x6B, 0x3C, 0x05, 0x11, 0x55, 0x40, 0xDD, 0xF0, 0x65, 0x8E, 0xA3, 0xD5, 0xC7, 0x11, 0x05 };
             if (rbNoDecoder.Checked)
                 COMdataNow = System.Text.Encoding.Default.GetBytes("helloworld");
+
+            // for float test
+            //for (int i = 0; i < 4; i++)
+            //    tbPortWrite.Text += (COMdataNow[i]+" ");
+
             ByteDecoder();
             // for test
             //byte[] t = { 0x0D, 0x6B, 0x3C, 0x05, 0x11, 0x55, 0x40, 0xDD, 0xF0, 0x65, 0x8E, 0xA3, 0xD5, 0xC7, 0x11, 0x05 };
@@ -262,7 +270,7 @@ namespace COMv2
             }
             // save
             //ExcelWorkbook.SaveAs("D:\\Data2017");
-            ExcelWorkbook.SaveAs(Application.StartupPath+ "\\"+tbExcelFileName.Text);
+            ExcelWorkbook.SaveAs(Application.StartupPath + "\\" + tbExcelFileName.Text);
             //ExcelWorkbook.SaveAs(saveFileDialog1.FileName);
         }
     }
