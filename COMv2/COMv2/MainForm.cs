@@ -41,8 +41,9 @@ namespace COMv2
 
             Chartinit();
 
-            // Excel Checkbox
+            // Excel
             cbExcelAllDataOutput.Checked = true;
+            tbExcelFileName.Text = DateTime.Now.ToString("g").Replace("/","-").Replace(" ","-").Replace(":","-")+"-"+DateTime.Now.Second;
 
             // byte[] decode
             rbByteIsString.Checked = true;
@@ -249,8 +250,20 @@ namespace COMv2
                     ExcelWorksheet.Cells[i + 2, Column] = AllDataPoint[i];
                 Column++;
             }
+            if (cbExcelChannelDataOutput.Checked)
+            {
+                for (int i = 0; i < ChartChannelNameList.Count; i++)
+                {
+                    ExcelWorksheet.Cells[1, Column] = ChartChannelNameList[i];
+                    for (int j = 0; j < MultiChannelDataPoint[i].Count; j++)
+                        ExcelWorksheet.Cells[j + 2, Column] = MultiChannelDataPoint[i][j];
+                    Column++;
+                }
+            }
             // save
             //ExcelWorkbook.SaveAs("D:\\Data2017");
+            ExcelWorkbook.SaveAs(Application.StartupPath+ "\\"+tbExcelFileName.Text);
+            //ExcelWorkbook.SaveAs(saveFileDialog1.FileName);
         }
     }
 }

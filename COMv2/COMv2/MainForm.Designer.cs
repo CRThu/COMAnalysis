@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.COM = new System.IO.Ports.SerialPort(this.components);
             this.cbPort = new System.Windows.Forms.ComboBox();
             this.lbPort = new System.Windows.Forms.Label();
@@ -73,9 +73,11 @@
             this.tcOutput = new System.Windows.Forms.TabControl();
             this.tpChart = new System.Windows.Forms.TabPage();
             this.tpExcel = new System.Windows.Forms.TabPage();
-            this.btnExcelWrite = new System.Windows.Forms.Button();
-            this.cbExcelAllDataOutput = new System.Windows.Forms.CheckBox();
             this.cbExcelChannelDataOutput = new System.Windows.Forms.CheckBox();
+            this.cbExcelAllDataOutput = new System.Windows.Forms.CheckBox();
+            this.btnExcelWrite = new System.Windows.Forms.Button();
+            this.tbExcelFileName = new System.Windows.Forms.TextBox();
+            this.lbExcelFileName = new System.Windows.Forms.Label();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -340,19 +342,19 @@
             // 
             // chtData
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chtData.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chtData.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chtData.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chtData.Legends.Add(legend2);
             this.chtData.Location = new System.Drawing.Point(6, 141);
             this.chtData.Name = "chtData";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.IsValueShownAsLabel = true;
-            series1.Legend = "Legend1";
-            series1.LegendText = "data1";
-            series1.Name = "Series1";
-            this.chtData.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.IsValueShownAsLabel = true;
+            series2.Legend = "Legend1";
+            series2.LegendText = "data1";
+            series2.Name = "Series1";
+            this.chtData.Series.Add(series2);
             this.chtData.Size = new System.Drawing.Size(544, 299);
             this.chtData.TabIndex = 26;
             // 
@@ -530,6 +532,8 @@
             // 
             // tpExcel
             // 
+            this.tpExcel.Controls.Add(this.lbExcelFileName);
+            this.tpExcel.Controls.Add(this.tbExcelFileName);
             this.tpExcel.Controls.Add(this.cbExcelChannelDataOutput);
             this.tpExcel.Controls.Add(this.cbExcelAllDataOutput);
             this.tpExcel.Controls.Add(this.btnExcelWrite);
@@ -541,15 +545,15 @@
             this.tpExcel.Text = "Excel显示";
             this.tpExcel.UseVisualStyleBackColor = true;
             // 
-            // btnExcelWrite
+            // cbExcelChannelDataOutput
             // 
-            this.btnExcelWrite.Location = new System.Drawing.Point(25, 83);
-            this.btnExcelWrite.Name = "btnExcelWrite";
-            this.btnExcelWrite.Size = new System.Drawing.Size(75, 23);
-            this.btnExcelWrite.TabIndex = 0;
-            this.btnExcelWrite.Text = "写入Excel";
-            this.btnExcelWrite.UseVisualStyleBackColor = true;
-            this.btnExcelWrite.Click += new System.EventHandler(this.btnExcelWrite_Click);
+            this.cbExcelChannelDataOutput.AutoSize = true;
+            this.cbExcelChannelDataOutput.Location = new System.Drawing.Point(25, 49);
+            this.cbExcelChannelDataOutput.Name = "cbExcelChannelDataOutput";
+            this.cbExcelChannelDataOutput.Size = new System.Drawing.Size(111, 21);
+            this.cbExcelChannelDataOutput.TabIndex = 2;
+            this.cbExcelChannelDataOutput.Text = "输出多通道数据";
+            this.cbExcelChannelDataOutput.UseVisualStyleBackColor = true;
             // 
             // cbExcelAllDataOutput
             // 
@@ -561,15 +565,31 @@
             this.cbExcelAllDataOutput.Text = "输出所有数据";
             this.cbExcelAllDataOutput.UseVisualStyleBackColor = true;
             // 
-            // cbExcelChannelDataOutput
+            // btnExcelWrite
             // 
-            this.cbExcelChannelDataOutput.AutoSize = true;
-            this.cbExcelChannelDataOutput.Location = new System.Drawing.Point(25, 49);
-            this.cbExcelChannelDataOutput.Name = "cbExcelChannelDataOutput";
-            this.cbExcelChannelDataOutput.Size = new System.Drawing.Size(111, 21);
-            this.cbExcelChannelDataOutput.TabIndex = 2;
-            this.cbExcelChannelDataOutput.Text = "输出多通道数据";
-            this.cbExcelChannelDataOutput.UseVisualStyleBackColor = true;
+            this.btnExcelWrite.Location = new System.Drawing.Point(25, 78);
+            this.btnExcelWrite.Name = "btnExcelWrite";
+            this.btnExcelWrite.Size = new System.Drawing.Size(75, 23);
+            this.btnExcelWrite.TabIndex = 0;
+            this.btnExcelWrite.Text = "生成Excel";
+            this.btnExcelWrite.UseVisualStyleBackColor = true;
+            this.btnExcelWrite.Click += new System.EventHandler(this.btnExcelWrite_Click);
+            // 
+            // tbExcelFileName
+            // 
+            this.tbExcelFileName.Location = new System.Drawing.Point(202, 20);
+            this.tbExcelFileName.Name = "tbExcelFileName";
+            this.tbExcelFileName.Size = new System.Drawing.Size(146, 23);
+            this.tbExcelFileName.TabIndex = 3;
+            // 
+            // lbExcelFileName
+            // 
+            this.lbExcelFileName.AutoSize = true;
+            this.lbExcelFileName.Location = new System.Drawing.Point(149, 23);
+            this.lbExcelFileName.Name = "lbExcelFileName";
+            this.lbExcelFileName.Size = new System.Drawing.Size(47, 17);
+            this.lbExcelFileName.TabIndex = 4;
+            this.lbExcelFileName.Text = "文件名:";
             // 
             // MainForm
             // 
@@ -652,6 +672,8 @@
         private System.Windows.Forms.Button btnExcelWrite;
         private System.Windows.Forms.CheckBox cbExcelChannelDataOutput;
         private System.Windows.Forms.CheckBox cbExcelAllDataOutput;
+        private System.Windows.Forms.Label lbExcelFileName;
+        private System.Windows.Forms.TextBox tbExcelFileName;
     }
 }
 
