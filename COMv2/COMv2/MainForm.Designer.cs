@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.COM = new System.IO.Ports.SerialPort(this.components);
             this.cbPort = new System.Windows.Forms.ComboBox();
             this.lbPort = new System.Windows.Forms.Label();
@@ -72,6 +72,9 @@
             this.tbStringFilter = new System.Windows.Forms.TextBox();
             this.tcOutput = new System.Windows.Forms.TabControl();
             this.tpChart = new System.Windows.Forms.TabPage();
+            this.btnChartXSmall = new System.Windows.Forms.Button();
+            this.btnChartXBig = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.tpExcel = new System.Windows.Forms.TabPage();
             this.lbExcelFileName = new System.Windows.Forms.Label();
             this.tbExcelFileName = new System.Windows.Forms.TextBox();
@@ -81,6 +84,7 @@
             this.TSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.MS = new System.Windows.Forms.MenuStrip();
+            this.cbChartTotb = new System.Windows.Forms.CheckBox();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -346,26 +350,26 @@
             // 
             // chtData
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chtData.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chtData.Legends.Add(legend4);
+            chartArea3.Name = "ChartArea1";
+            this.chtData.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chtData.Legends.Add(legend3);
             this.chtData.Location = new System.Drawing.Point(6, 141);
             this.chtData.Name = "chtData";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.IsValueShownAsLabel = true;
-            series4.Legend = "Legend1";
-            series4.LegendText = "data1";
-            series4.Name = "Series1";
-            this.chtData.Series.Add(series4);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.IsValueShownAsLabel = true;
+            series3.Legend = "Legend1";
+            series3.LegendText = "data1";
+            series3.Name = "Series1";
+            this.chtData.Series.Add(series3);
             this.chtData.Size = new System.Drawing.Size(544, 299);
             this.chtData.TabIndex = 26;
             // 
             // cbChartScrollBar
             // 
             this.cbChartScrollBar.AutoSize = true;
-            this.cbChartScrollBar.Location = new System.Drawing.Point(21, 77);
+            this.cbChartScrollBar.Location = new System.Drawing.Point(21, 97);
             this.cbChartScrollBar.Name = "cbChartScrollBar";
             this.cbChartScrollBar.Size = new System.Drawing.Size(87, 21);
             this.cbChartScrollBar.TabIndex = 28;
@@ -376,7 +380,7 @@
             // cbChartShowValue
             // 
             this.cbChartShowValue.AutoSize = true;
-            this.cbChartShowValue.Location = new System.Drawing.Point(21, 50);
+            this.cbChartShowValue.Location = new System.Drawing.Point(21, 70);
             this.cbChartShowValue.Name = "cbChartShowValue";
             this.cbChartShowValue.Size = new System.Drawing.Size(75, 21);
             this.cbChartShowValue.TabIndex = 19;
@@ -521,6 +525,10 @@
             // 
             // tpChart
             // 
+            this.tpChart.Controls.Add(this.cbChartTotb);
+            this.tpChart.Controls.Add(this.btnChartXSmall);
+            this.tpChart.Controls.Add(this.btnChartXBig);
+            this.tpChart.Controls.Add(this.label1);
             this.tpChart.Controls.Add(this.cbChartScrollBar);
             this.tpChart.Controls.Add(this.cbChartShowValue);
             this.tpChart.Controls.Add(this.chtData);
@@ -535,6 +543,37 @@
             this.tpChart.TabIndex = 0;
             this.tpChart.Text = "图表显示";
             this.tpChart.UseVisualStyleBackColor = true;
+            // 
+            // btnChartXSmall
+            // 
+            this.btnChartXSmall.Enabled = false;
+            this.btnChartXSmall.Location = new System.Drawing.Point(278, 95);
+            this.btnChartXSmall.Name = "btnChartXSmall";
+            this.btnChartXSmall.Size = new System.Drawing.Size(75, 23);
+            this.btnChartXSmall.TabIndex = 31;
+            this.btnChartXSmall.Text = "缩小";
+            this.btnChartXSmall.UseVisualStyleBackColor = true;
+            this.btnChartXSmall.Click += new System.EventHandler(this.btnChartXSmall_Click);
+            // 
+            // btnChartXBig
+            // 
+            this.btnChartXBig.Enabled = false;
+            this.btnChartXBig.Location = new System.Drawing.Point(197, 95);
+            this.btnChartXBig.Name = "btnChartXBig";
+            this.btnChartXBig.Size = new System.Drawing.Size(75, 23);
+            this.btnChartXBig.TabIndex = 30;
+            this.btnChartXBig.Text = "放大";
+            this.btnChartXBig.UseVisualStyleBackColor = true;
+            this.btnChartXBig.Click += new System.EventHandler(this.btnChartXBig_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(136, 98);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 17);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "X轴缩放:";
             // 
             // tpExcel
             // 
@@ -608,7 +647,7 @@
             // TSMIAbout
             // 
             this.TSMIAbout.Name = "TSMIAbout";
-            this.TSMIAbout.Size = new System.Drawing.Size(152, 22);
+            this.TSMIAbout.Size = new System.Drawing.Size(100, 22);
             this.TSMIAbout.Text = "更新";
             this.TSMIAbout.Click += new System.EventHandler(this.TSMIAbout_Click);
             // 
@@ -621,6 +660,16 @@
             this.MS.Size = new System.Drawing.Size(1005, 25);
             this.MS.TabIndex = 30;
             this.MS.Text = "menuStrip1";
+            // 
+            // cbChartTotb
+            // 
+            this.cbChartTotb.AutoSize = true;
+            this.cbChartTotb.Location = new System.Drawing.Point(21, 43);
+            this.cbChartTotb.Name = "cbChartTotb";
+            this.cbChartTotb.Size = new System.Drawing.Size(75, 21);
+            this.cbChartTotb.TabIndex = 32;
+            this.cbChartTotb.Text = "数据回显";
+            this.cbChartTotb.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -713,6 +762,10 @@
         private System.Windows.Forms.ToolStripMenuItem TSMI;
         private System.Windows.Forms.ToolStripMenuItem TSMIAbout;
         private System.Windows.Forms.MenuStrip MS;
+        private System.Windows.Forms.Button btnChartXSmall;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnChartXBig;
+        private System.Windows.Forms.CheckBox cbChartTotb;
     }
 }
 

@@ -103,7 +103,8 @@ namespace COMv2
                         }
                     }
                     AllDataPoint.AddRange(DataPoint);
-                    DataToText();                     // 解释器
+                    if(cbChartTotb.Checked)
+                        DataToText();                     // 解释器
                     DataToMultiChannel();       // 单通道转多通道
                     ChartDraw();                      // 绘图
                 }
@@ -143,11 +144,18 @@ namespace COMv2
             //    {
             //        tbPortRead.Text += (DataPoint[i].ToString() + tbStringFilter.Text);
             //}));
+            // Version 2.3.7.1
+            //chtData.Invoke(new Action(() =>
+            //{
+            //    tbPortRead.Text = "";
+            //    for (int i = 0; i < AllDataPoint.Count; i++)
+            //        tbPortRead.Text += (AllDataPoint[i].ToString() + tbStringFilter.Text);
+            //}));
+            // Version 2.3.8.0
             chtData.Invoke(new Action(() =>
             {
-                tbPortRead.Text = "";
-                for (int i = 0; i < AllDataPoint.Count; i++)
-                    tbPortRead.Text += (AllDataPoint[i].ToString() + tbStringFilter.Text);
+                for (int i = 0; i < DataPoint.Count; i++)
+                    tbPortRead.Text += (DataPoint[i].ToString() + tbStringFilter.Text);
             }));
         }
     }

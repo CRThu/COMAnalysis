@@ -234,12 +234,16 @@ namespace COMv2
                 chtData.ChartAreas[0].AxisX.ScaleView.Size = 10;           // 可见数据点数
                 chtData.ChartAreas[0].AxisX.ScaleView.MinSize = 1;       // 步进
                 chtData.ChartAreas[0].AxisX.Interval = 1;                       // 设置X轴间隔
+                btnChartXBig.Enabled = true;
+                btnChartXSmall.Enabled = true;
             }
             else
             {
                 chtData.ChartAreas[0].AxisX.ScaleView.Size = double.NaN;           // 可见数据点数
                 chtData.ChartAreas[0].AxisX.ScaleView.MinSize = double.NaN;     // 步进
                 chtData.ChartAreas[0].AxisX.Interval = 0;                                      // 设置X轴间隔
+                btnChartXBig.Enabled = false;
+                btnChartXSmall.Enabled = false;
             }
         }
 
@@ -294,5 +298,21 @@ namespace COMv2
             About about = new About();
             about.ShowDialog();
         }
+        private void btnChartXBig_Click(object sender, EventArgs e)
+        {
+                chtData.ChartAreas[0].AxisX.Interval /= 2;
+            chtData.ChartAreas[0].AxisX.ScaleView.Size /= 2;           // 可见数据点数
+            if (chtData.ChartAreas[0].AxisX.Interval <= 1)
+                btnChartXBig.Enabled = false;
+
+        }
+
+        private void btnChartXSmall_Click(object sender, EventArgs e)
+        {
+            chtData.ChartAreas[0].AxisX.Interval *= 2;
+            chtData.ChartAreas[0].AxisX.ScaleView.Size *= 2;           // 可见数据点数
+            btnChartXBig.Enabled = true;
+        }
+        
     }
 }
