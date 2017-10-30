@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.COM = new System.IO.Ports.SerialPort(this.components);
             this.cbPort = new System.Windows.Forms.ComboBox();
             this.lbPort = new System.Windows.Forms.Label();
@@ -78,6 +78,9 @@
             this.cbExcelChannelDataOutput = new System.Windows.Forms.CheckBox();
             this.cbExcelAllDataOutput = new System.Windows.Forms.CheckBox();
             this.btnExcelWrite = new System.Windows.Forms.Button();
+            this.TSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.MS = new System.Windows.Forms.MenuStrip();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -87,6 +90,7 @@
             this.tcOutput.SuspendLayout();
             this.tpChart.SuspendLayout();
             this.tpExcel.SuspendLayout();
+            this.MS.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbPort
@@ -342,19 +346,19 @@
             // 
             // chtData
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chtData.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chtData.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            this.chtData.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chtData.Legends.Add(legend4);
             this.chtData.Location = new System.Drawing.Point(6, 141);
             this.chtData.Name = "chtData";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.IsValueShownAsLabel = true;
-            series2.Legend = "Legend1";
-            series2.LegendText = "data1";
-            series2.Name = "Series1";
-            this.chtData.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.IsValueShownAsLabel = true;
+            series4.Legend = "Legend1";
+            series4.LegendText = "data1";
+            series4.Name = "Series1";
+            this.chtData.Series.Add(series4);
             this.chtData.Size = new System.Drawing.Size(544, 299);
             this.chtData.TabIndex = 26;
             // 
@@ -593,6 +597,31 @@
             this.btnExcelWrite.UseVisualStyleBackColor = true;
             this.btnExcelWrite.Click += new System.EventHandler(this.btnExcelWrite_Click);
             // 
+            // TSMI
+            // 
+            this.TSMI.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMIAbout});
+            this.TSMI.Name = "TSMI";
+            this.TSMI.Size = new System.Drawing.Size(44, 21);
+            this.TSMI.Text = "更新";
+            // 
+            // TSMIAbout
+            // 
+            this.TSMIAbout.Name = "TSMIAbout";
+            this.TSMIAbout.Size = new System.Drawing.Size(152, 22);
+            this.TSMIAbout.Text = "更新";
+            this.TSMIAbout.Click += new System.EventHandler(this.TSMIAbout_Click);
+            // 
+            // MS
+            // 
+            this.MS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMI});
+            this.MS.Location = new System.Drawing.Point(0, 0);
+            this.MS.Name = "MS";
+            this.MS.Size = new System.Drawing.Size(1005, 25);
+            this.MS.TabIndex = 30;
+            this.MS.Text = "menuStrip1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -604,7 +633,9 @@
             this.Controls.Add(this.gbSend);
             this.Controls.Add(this.gbCmd);
             this.Controls.Add(this.gbPort);
+            this.Controls.Add(this.MS);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.MainMenuStrip = this.MS;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainForm";
             this.Text = "COM.Analysis.v2";
@@ -625,7 +656,10 @@
             this.tpChart.PerformLayout();
             this.tpExcel.ResumeLayout(false);
             this.tpExcel.PerformLayout();
+            this.MS.ResumeLayout(false);
+            this.MS.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -676,6 +710,9 @@
         private System.Windows.Forms.CheckBox cbExcelAllDataOutput;
         private System.Windows.Forms.Label lbExcelFileName;
         private System.Windows.Forms.TextBox tbExcelFileName;
+        private System.Windows.Forms.ToolStripMenuItem TSMI;
+        private System.Windows.Forms.ToolStripMenuItem TSMIAbout;
+        private System.Windows.Forms.MenuStrip MS;
     }
 }
 

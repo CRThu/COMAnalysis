@@ -87,10 +87,6 @@ namespace COMv2
             {
                 COM.Close();
             }
-            else
-            {
-                MessageBox.Show("Port Closed.");
-            }
         }
 
         private void btnPortReadBegin_Click(object sender, EventArgs e)
@@ -290,6 +286,13 @@ namespace COMv2
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void TSMIAbout_Click(object sender, EventArgs e)
+        {
+            // About
+            About about = new About();
+            about.ShowDialog();
         }
     }
 }
