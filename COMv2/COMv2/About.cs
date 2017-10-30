@@ -20,36 +20,49 @@ namespace COMv2
         }
         private void About_Load(object sender, EventArgs e)
         {
-            lbNowVersion.Text = "Now Version : " + Application.ProductVersion;
-            DownloadFile("https://raw.githubusercontent.com/CRThu/COMAnalysis/master/COMv2/COMv2/bin/Release/version", "version", null);
-            StreamReader sr = new StreamReader("version", Encoding.Default);
-            LatestVersionStr = sr.ReadLine();
-            // version test
-            //LatestVersionStr = "2.3.7.2";
-            lbLatestVersion.Text = "Latest Version : " + LatestVersionStr;
-
-            string[] NowVersion = Application.ProductVersion.Split('.');
-            string[] LatestVersion = LatestVersionStr.Split('.');
-            btnUpdate.Enabled = false;
-            for (int i = 0; i < 4; i++)
+            try
             {
-                if (Convert.ToInt16(LatestVersion[i]) > Convert.ToInt16(NowVersion[i]))
-                {
+                lbNowVersion.Text = "Now Version : " + Application.ProductVersion;
+                DownloadFile("https://raw.githubusercontent.com/CRThu/COMAnalysis/master/version", "version", null);
+                StreamReader sr = new StreamReader("version", Encoding.Default);
+                LatestVersionStr = sr.ReadLine();
+                // version test
+                //LatestVersionStr = "2.3.7.2";
+                lbLatestVersion.Text = "Latest Version : " + LatestVersionStr;
+                sr.Close();
+
+                int NowVersion = Convert.ToInt16(Application.ProductVersion.Replace(".",""));
+                int LatestVersion = Convert.ToInt16(LatestVersionStr.Replace(".", ""));
+                if (LatestVersion >= NowVersion)
                     btnUpdate.Enabled = true;
-                    break;
-                }
+                else
+                    btnUpdate.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            DownloadFile("https://github.com/CRThu/COMAnalysis/raw/master/COMv2/COMv2/bin/Release/COMv"+ LatestVersionStr + ".exe", "COMv"+LatestVersionStr+".exe", progressBar1);
-            MessageBox.Show("update success!");
+            bool success = true;
+            try
+            {
+                DownloadFile("https://github.com/CRThu/COMAnalysis/raw/master/COMv2/COMv2/bin/Release/COMv2.exe", "COMv" + LatestVersionStr + ".exe", progressBar1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                success = false;
+            }
+            if (success)
+                MessageBox.Show("update success!");
         }
         public void DownloadFile(string URL, string filename, System.Windows.Forms.ProgressBar progressBar)
         {
             float percent = 0;
-            try
-            {
+            //try
+            //{
                 System.Net.HttpWebRequest Myrq = (System.Net.HttpWebRequest)System.Net.HttpWebRequest.Create(URL);
                 System.Net.HttpWebResponse myrp = (System.Net.HttpWebResponse)Myrq.GetResponse();
                 long totalBytes = myrp.ContentLength;
@@ -79,11 +92,10 @@ namespace COMv2
                 }
                 so.Close();
                 st.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
         }
         
     }
