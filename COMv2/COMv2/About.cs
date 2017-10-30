@@ -33,7 +33,7 @@ namespace COMv2
 
                 int NowVersion = Convert.ToInt16(Application.ProductVersion.Replace(".",""));
                 int LatestVersion = Convert.ToInt16(LatestVersionStr.Replace(".", ""));
-                if (LatestVersion >= NowVersion)
+                if (LatestVersion > NowVersion)
                     btnUpdate.Enabled = true;
                 else
                     btnUpdate.Enabled = false;
