@@ -152,10 +152,13 @@ namespace COMv2
             //        tbPortRead.Text += (AllDataPoint[i].ToString() + tbStringFilter.Text);
             //}));
             // Version 2.3.8.0
+            // Version 2.3.9.0
+            string tbPortReadBuffer="";
+                for (int i = 0; i < DataPoint.Count; i++)
+                    tbPortReadBuffer += (DataPoint[i].ToString() + tbStringFilter.Text);
             chtData.Invoke(new Action(() =>
             {
-                for (int i = 0; i < DataPoint.Count; i++)
-                    tbPortRead.Text += (DataPoint[i].ToString() + tbStringFilter.Text);
+                tbPortRead.Text += tbPortReadBuffer;
             }));
         }
     }
