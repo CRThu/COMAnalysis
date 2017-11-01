@@ -46,8 +46,6 @@
             this.gbPort = new System.Windows.Forms.GroupBox();
             this.btnPortOpen = new System.Windows.Forms.Button();
             this.btnPortClose = new System.Windows.Forms.Button();
-            this.btnPortReadBegin = new System.Windows.Forms.Button();
-            this.btnPortReadEnd = new System.Windows.Forms.Button();
             this.gbCmd = new System.Windows.Forms.GroupBox();
             this.btnPortWrite = new System.Windows.Forms.Button();
             this.tbPortWrite = new System.Windows.Forms.TextBox();
@@ -72,6 +70,7 @@
             this.tbStringFilter = new System.Windows.Forms.TextBox();
             this.tcOutput = new System.Windows.Forms.TabControl();
             this.tpChart = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnChartNormal = new System.Windows.Forms.Button();
             this.btnChartMaximized = new System.Windows.Forms.Button();
             this.cbChartTotb = new System.Windows.Forms.CheckBox();
@@ -87,6 +86,7 @@
             this.TSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.MS = new System.Windows.Forms.MenuStrip();
+            this.lbCOMstatus = new System.Windows.Forms.Label();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -255,31 +255,10 @@
             this.btnPortClose.UseVisualStyleBackColor = true;
             this.btnPortClose.Click += new System.EventHandler(this.btnPortClose_Click);
             // 
-            // btnPortReadBegin
-            // 
-            this.btnPortReadBegin.Location = new System.Drawing.Point(12, 58);
-            this.btnPortReadBegin.Name = "btnPortReadBegin";
-            this.btnPortReadBegin.Size = new System.Drawing.Size(75, 23);
-            this.btnPortReadBegin.TabIndex = 7;
-            this.btnPortReadBegin.Text = "开始读取";
-            this.btnPortReadBegin.UseVisualStyleBackColor = true;
-            this.btnPortReadBegin.Click += new System.EventHandler(this.btnPortReadBegin_Click);
-            // 
-            // btnPortReadEnd
-            // 
-            this.btnPortReadEnd.Location = new System.Drawing.Point(93, 58);
-            this.btnPortReadEnd.Name = "btnPortReadEnd";
-            this.btnPortReadEnd.Size = new System.Drawing.Size(75, 23);
-            this.btnPortReadEnd.TabIndex = 8;
-            this.btnPortReadEnd.Text = "结束读取";
-            this.btnPortReadEnd.UseVisualStyleBackColor = true;
-            this.btnPortReadEnd.Click += new System.EventHandler(this.btnPortReadEnd_Click);
-            // 
             // gbCmd
             // 
-            this.gbCmd.Controls.Add(this.btnPortReadEnd);
+            this.gbCmd.Controls.Add(this.lbCOMstatus);
             this.gbCmd.Controls.Add(this.btnPortOpen);
-            this.gbCmd.Controls.Add(this.btnPortReadBegin);
             this.gbCmd.Controls.Add(this.btnPortClose);
             this.gbCmd.Location = new System.Drawing.Point(187, 24);
             this.gbCmd.Name = "gbCmd";
@@ -366,6 +345,7 @@
             this.chtData.Legends.Add(legend2);
             this.chtData.Location = new System.Drawing.Point(6, 141);
             this.chtData.Name = "chtData";
+            series2.BorderWidth = 2;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series2.IsValueShownAsLabel = true;
@@ -538,6 +518,7 @@
             // 
             // tpChart
             // 
+            this.tpChart.Controls.Add(this.label2);
             this.tpChart.Controls.Add(this.btnChartNormal);
             this.tpChart.Controls.Add(this.btnChartMaximized);
             this.tpChart.Controls.Add(this.cbChartTotb);
@@ -559,23 +540,32 @@
             this.tpChart.Text = "图表显示";
             this.tpChart.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(132, 70);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 17);
+            this.label2.TabIndex = 35;
+            this.label2.Text = "图表大小:";
+            // 
             // btnChartNormal
             // 
-            this.btnChartNormal.Location = new System.Drawing.Point(278, 51);
+            this.btnChartNormal.Location = new System.Drawing.Point(278, 67);
             this.btnChartNormal.Name = "btnChartNormal";
             this.btnChartNormal.Size = new System.Drawing.Size(75, 23);
             this.btnChartNormal.TabIndex = 34;
-            this.btnChartNormal.Text = "图表小窗口";
+            this.btnChartNormal.Text = "小窗";
             this.btnChartNormal.UseVisualStyleBackColor = true;
             this.btnChartNormal.Click += new System.EventHandler(this.btnChartNormal_Click);
             // 
             // btnChartMaximized
             // 
-            this.btnChartMaximized.Location = new System.Drawing.Point(197, 51);
+            this.btnChartMaximized.Location = new System.Drawing.Point(197, 67);
             this.btnChartMaximized.Name = "btnChartMaximized";
             this.btnChartMaximized.Size = new System.Drawing.Size(75, 23);
             this.btnChartMaximized.TabIndex = 33;
-            this.btnChartMaximized.Text = "图表全屏";
+            this.btnChartMaximized.Text = "全屏";
             this.btnChartMaximized.UseVisualStyleBackColor = true;
             this.btnChartMaximized.Click += new System.EventHandler(this.btnChartMaximized_Click);
             // 
@@ -630,7 +620,7 @@
             this.tpExcel.Location = new System.Drawing.Point(4, 26);
             this.tpExcel.Name = "tpExcel";
             this.tpExcel.Padding = new System.Windows.Forms.Padding(3);
-            this.tpExcel.Size = new System.Drawing.Size(568, 469);
+            this.tpExcel.Size = new System.Drawing.Size(568, 467);
             this.tpExcel.TabIndex = 1;
             this.tpExcel.Text = "Excel显示";
             this.tpExcel.UseVisualStyleBackColor = true;
@@ -706,6 +696,15 @@
             this.MS.TabIndex = 30;
             this.MS.Text = "menuStrip1";
             // 
+            // lbCOMstatus
+            // 
+            this.lbCOMstatus.AutoSize = true;
+            this.lbCOMstatus.Location = new System.Drawing.Point(53, 60);
+            this.lbCOMstatus.Name = "lbCOMstatus";
+            this.lbCOMstatus.Size = new System.Drawing.Size(68, 17);
+            this.lbCOMstatus.TabIndex = 7;
+            this.lbCOMstatus.Text = "串口已关闭";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -729,6 +728,7 @@
             this.gbPort.ResumeLayout(false);
             this.gbPort.PerformLayout();
             this.gbCmd.ResumeLayout(false);
+            this.gbCmd.PerformLayout();
             this.gbSend.ResumeLayout(false);
             this.gbSend.PerformLayout();
             this.gbRead.ResumeLayout(false);
@@ -763,8 +763,6 @@
         private System.Windows.Forms.GroupBox gbPort;
         private System.Windows.Forms.Button btnPortOpen;
         private System.Windows.Forms.Button btnPortClose;
-        private System.Windows.Forms.Button btnPortReadBegin;
-        private System.Windows.Forms.Button btnPortReadEnd;
         private System.Windows.Forms.GroupBox gbCmd;
         private System.Windows.Forms.Button btnPortWrite;
         private System.Windows.Forms.TextBox tbPortWrite;
@@ -804,6 +802,8 @@
         private System.Windows.Forms.CheckBox cbChartTotb;
         private System.Windows.Forms.Button btnChartNormal;
         private System.Windows.Forms.Button btnChartMaximized;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbCOMstatus;
     }
 }
 

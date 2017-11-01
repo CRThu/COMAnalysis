@@ -62,7 +62,6 @@ namespace COMv2
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            btnPortReadEnd_Click(null, null);
             btnPortClose_Click(null, null);
         }
 
@@ -70,12 +69,22 @@ namespace COMv2
         {
             try
             {
-                if (!COM.IsOpen)
+                if (!COM.IsOpen)    // open
                 {
                     COMGetSettings();
                     COM.Open();
                     DataReceived += new EventHandle(COMGetData);
                 }
+
+                if (!loop)                  // begin read
+                {
+                    loop = true;
+                    thread = new Thread(new ThreadStart(PortRead));
+                    thread.Start();
+                }
+
+                if (COM.IsOpen)
+                    lbCOMstatus.Text = "串口已打开";
             }
             catch (Exception ex)
             {
@@ -85,29 +94,26 @@ namespace COMv2
 
         private void btnPortClose_Click(object sender, EventArgs e)
         {
-            if (COM.IsOpen)
+            try
             {
-                COM.Close();
-            }
-        }
+                if (loop)                   // end read
+                {
+                    loop = false;
+                    thread.Join();
+                    thread = null;
+                }
 
-        private void btnPortReadBegin_Click(object sender, EventArgs e)
-        {
-            if (!loop)
-            {
-                loop = true;
-                thread = new Thread(new ThreadStart(PortRead));
-                thread.Start();
-            }
-        }
+                if (COM.IsOpen)     // close
+                {
+                    COM.Close();
+                }
 
-        private void btnPortReadEnd_Click(object sender, EventArgs e)
-        {
-            if (loop)
+                if (!COM.IsOpen)
+                    lbCOMstatus.Text = "串口已关闭";
+            }
+            catch (Exception ex)
             {
-                loop = false;
-                thread.Join();
-                thread = null;
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -167,6 +173,7 @@ namespace COMv2
                 chtDataSeriesAdd.Add(new Series(ChartChannelNameList[cbChartChannelNameList.Items.Count - 1]));
                 chtDataSeriesAdd[cbChartChannelNameList.Items.Count - 1].ChartType = SeriesChartType.Line;
                 chtDataSeriesAdd[cbChartChannelNameList.Items.Count - 1].IsValueShownAsLabel = cbChartShowValue.Checked;
+                chtDataSeriesAdd[cbChartChannelNameList.Items.Count - 1].BorderWidth = 2;
                 chtData.Series.Add(chtDataSeriesAdd[cbChartChannelNameList.Items.Count - 1]);
                 // Add Channel Name To ComboBox
                 cbChartChannelNameList.Items.Insert(cbChartChannelNameList.Items.Count - 1, "Channel " + cbChartChannelNameList.Items.Count.ToString());
