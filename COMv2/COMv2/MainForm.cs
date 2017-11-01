@@ -315,6 +315,15 @@ namespace COMv2
             chtData.ChartAreas[0].AxisX.ScaleView.Size *= 2;           // 可见数据点数
             btnChartXBig.Enabled = true;
         }
-        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tcOutput.Dock = DockStyle.Fill;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            tcOutput.Dock = DockStyle.None;
+        }
     }
 }

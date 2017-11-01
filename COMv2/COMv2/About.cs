@@ -23,8 +23,8 @@ namespace COMv2
             try
             {
                 lbNowVersion.Text = "Now Version : " + Application.ProductVersion;
-                DownloadFile("https://raw.githubusercontent.com/CRThu/COMAnalysis/master/version", "version", null);
-                StreamReader sr = new StreamReader("version", Encoding.Default);
+                DownloadFile("https://raw.githubusercontent.com/CRThu/COMAnalysis/master/version", @".\version", null);
+                StreamReader sr = new StreamReader(@".\version", Encoding.Default);
                 LatestVersionStr = sr.ReadLine();
                 // version test
                 //LatestVersionStr = "2.3.7.2";
