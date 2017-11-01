@@ -316,13 +316,15 @@ namespace COMv2
             btnChartXBig.Enabled = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnChartMaximized_Click(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             tcOutput.Dock = DockStyle.Fill;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnChartNormal_Click(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Normal;
             tcOutput.Dock = DockStyle.None;
         }
     }

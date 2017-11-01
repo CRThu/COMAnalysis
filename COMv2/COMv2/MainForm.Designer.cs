@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.COM = new System.IO.Ports.SerialPort(this.components);
             this.cbPort = new System.Windows.Forms.ComboBox();
             this.lbPort = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@
             this.gbSend = new System.Windows.Forms.GroupBox();
             this.ckbNewLine = new System.Windows.Forms.CheckBox();
             this.tbPortRead = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbRead = new System.Windows.Forms.GroupBox();
             this.chtData = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cbChartScrollBar = new System.Windows.Forms.CheckBox();
             this.cbChartShowValue = new System.Windows.Forms.CheckBox();
@@ -72,6 +72,8 @@
             this.tbStringFilter = new System.Windows.Forms.TextBox();
             this.tcOutput = new System.Windows.Forms.TabControl();
             this.tpChart = new System.Windows.Forms.TabPage();
+            this.btnChartNormal = new System.Windows.Forms.Button();
+            this.btnChartMaximized = new System.Windows.Forms.Button();
             this.cbChartTotb = new System.Windows.Forms.CheckBox();
             this.btnChartXSmall = new System.Windows.Forms.Button();
             this.btnChartXBig = new System.Windows.Forms.Button();
@@ -85,12 +87,10 @@
             this.TSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.MS = new System.Windows.Forms.MenuStrip();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gbRead.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chtData)).BeginInit();
             this.gbByteDecoder.SuspendLayout();
             this.tcOutput.SuspendLayout();
@@ -343,36 +343,36 @@
             this.tbPortRead.Size = new System.Drawing.Size(387, 109);
             this.tbPortRead.TabIndex = 15;
             // 
-            // groupBox1
+            // gbRead
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gbRead.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox1.Controls.Add(this.tbPortRead);
-            this.groupBox1.Location = new System.Drawing.Point(12, 386);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(399, 137);
-            this.groupBox1.TabIndex = 25;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "接收";
+            this.gbRead.Controls.Add(this.tbPortRead);
+            this.gbRead.Location = new System.Drawing.Point(12, 386);
+            this.gbRead.Name = "gbRead";
+            this.gbRead.Size = new System.Drawing.Size(399, 137);
+            this.gbRead.TabIndex = 25;
+            this.gbRead.TabStop = false;
+            this.gbRead.Text = "接收";
             // 
             // chtData
             // 
             this.chtData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chtData.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chtData.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chtData.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chtData.Legends.Add(legend2);
             this.chtData.Location = new System.Drawing.Point(6, 141);
             this.chtData.Name = "chtData";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.IsValueShownAsLabel = true;
-            series1.Legend = "Legend1";
-            series1.LegendText = "data1";
-            series1.Name = "Series1";
-            this.chtData.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.IsValueShownAsLabel = true;
+            series2.Legend = "Legend1";
+            series2.LegendText = "data1";
+            series2.Name = "Series1";
+            this.chtData.Series.Add(series2);
             this.chtData.Size = new System.Drawing.Size(556, 322);
             this.chtData.TabIndex = 26;
             // 
@@ -538,8 +538,8 @@
             // 
             // tpChart
             // 
-            this.tpChart.Controls.Add(this.button2);
-            this.tpChart.Controls.Add(this.button1);
+            this.tpChart.Controls.Add(this.btnChartNormal);
+            this.tpChart.Controls.Add(this.btnChartMaximized);
             this.tpChart.Controls.Add(this.cbChartTotb);
             this.tpChart.Controls.Add(this.btnChartXSmall);
             this.tpChart.Controls.Add(this.btnChartXBig);
@@ -558,6 +558,26 @@
             this.tpChart.TabIndex = 0;
             this.tpChart.Text = "图表显示";
             this.tpChart.UseVisualStyleBackColor = true;
+            // 
+            // btnChartNormal
+            // 
+            this.btnChartNormal.Location = new System.Drawing.Point(278, 51);
+            this.btnChartNormal.Name = "btnChartNormal";
+            this.btnChartNormal.Size = new System.Drawing.Size(75, 23);
+            this.btnChartNormal.TabIndex = 34;
+            this.btnChartNormal.Text = "图表小窗口";
+            this.btnChartNormal.UseVisualStyleBackColor = true;
+            this.btnChartNormal.Click += new System.EventHandler(this.btnChartNormal_Click);
+            // 
+            // btnChartMaximized
+            // 
+            this.btnChartMaximized.Location = new System.Drawing.Point(197, 51);
+            this.btnChartMaximized.Name = "btnChartMaximized";
+            this.btnChartMaximized.Size = new System.Drawing.Size(75, 23);
+            this.btnChartMaximized.TabIndex = 33;
+            this.btnChartMaximized.Text = "图表全屏";
+            this.btnChartMaximized.UseVisualStyleBackColor = true;
+            this.btnChartMaximized.Click += new System.EventHandler(this.btnChartMaximized_Click);
             // 
             // cbChartTotb
             // 
@@ -672,7 +692,7 @@
             // TSMIAbout
             // 
             this.TSMIAbout.Name = "TSMIAbout";
-            this.TSMIAbout.Size = new System.Drawing.Size(152, 22);
+            this.TSMIAbout.Size = new System.Drawing.Size(100, 22);
             this.TSMIAbout.Text = "更新";
             this.TSMIAbout.Click += new System.EventHandler(this.TSMIAbout_Click);
             // 
@@ -686,26 +706,6 @@
             this.MS.TabIndex = 30;
             this.MS.Text = "menuStrip1";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(197, 51);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 33;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(278, 51);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 34;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -713,7 +713,7 @@
             this.ClientSize = new System.Drawing.Size(1005, 535);
             this.Controls.Add(this.tcOutput);
             this.Controls.Add(this.gbByteDecoder);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbRead);
             this.Controls.Add(this.gbSend);
             this.Controls.Add(this.gbCmd);
             this.Controls.Add(this.gbPort);
@@ -721,6 +721,7 @@
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.MainMenuStrip = this.MS;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "COM.Analysis.v2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
@@ -730,8 +731,8 @@
             this.gbCmd.ResumeLayout(false);
             this.gbSend.ResumeLayout(false);
             this.gbSend.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbRead.ResumeLayout(false);
+            this.gbRead.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chtData)).EndInit();
             this.gbByteDecoder.ResumeLayout(false);
             this.gbByteDecoder.PerformLayout();
@@ -769,7 +770,7 @@
         private System.Windows.Forms.TextBox tbPortWrite;
         private System.Windows.Forms.GroupBox gbSend;
         private System.Windows.Forms.TextBox tbPortRead;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbRead;
         private System.Windows.Forms.CheckBox ckbNewLine;
         private System.Windows.Forms.DataVisualization.Charting.Chart chtData;
         private System.Windows.Forms.Label lbChartChannelName;
@@ -801,8 +802,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnChartXBig;
         private System.Windows.Forms.CheckBox cbChartTotb;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnChartNormal;
+        private System.Windows.Forms.Button btnChartMaximized;
     }
 }
 
