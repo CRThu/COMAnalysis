@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.COM = new System.IO.Ports.SerialPort(this.components);
             this.cbPort = new System.Windows.Forms.ComboBox();
             this.lbPort = new System.Windows.Forms.Label();
@@ -47,6 +47,7 @@
             this.btnPortOpen = new System.Windows.Forms.Button();
             this.btnPortClose = new System.Windows.Forms.Button();
             this.gbCmd = new System.Windows.Forms.GroupBox();
+            this.lbCOMstatus = new System.Windows.Forms.Label();
             this.btnPortWrite = new System.Windows.Forms.Button();
             this.tbPortWrite = new System.Windows.Forms.TextBox();
             this.gbSend = new System.Windows.Forms.GroupBox();
@@ -86,7 +87,6 @@
             this.TSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.MS = new System.Windows.Forms.MenuStrip();
-            this.lbCOMstatus = new System.Windows.Forms.Label();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -267,6 +267,15 @@
             this.gbCmd.TabStop = false;
             this.gbCmd.Text = "串口操作";
             // 
+            // lbCOMstatus
+            // 
+            this.lbCOMstatus.AutoSize = true;
+            this.lbCOMstatus.Location = new System.Drawing.Point(53, 60);
+            this.lbCOMstatus.Name = "lbCOMstatus";
+            this.lbCOMstatus.Size = new System.Drawing.Size(68, 17);
+            this.lbCOMstatus.TabIndex = 7;
+            this.lbCOMstatus.Text = "串口已关闭";
+            // 
             // btnPortWrite
             // 
             this.btnPortWrite.Location = new System.Drawing.Point(318, 93);
@@ -339,22 +348,24 @@
             this.chtData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.chtData.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chtData.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chtData.ChartAreas.Add(chartArea1);
+            this.chtData.Cursor = System.Windows.Forms.Cursors.Hand;
+            legend1.Name = "Legend1";
+            this.chtData.Legends.Add(legend1);
             this.chtData.Location = new System.Drawing.Point(6, 141);
             this.chtData.Name = "chtData";
-            series2.BorderWidth = 2;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.IsValueShownAsLabel = true;
-            series2.Legend = "Legend1";
-            series2.LegendText = "data1";
-            series2.Name = "Series1";
-            this.chtData.Series.Add(series2);
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.LegendText = "data1";
+            series1.Name = "Series1";
+            this.chtData.Series.Add(series1);
             this.chtData.Size = new System.Drawing.Size(556, 322);
             this.chtData.TabIndex = 26;
+            this.chtData.DoubleClick += new System.EventHandler(this.chtData_DoubleClick);
             // 
             // cbChartScrollBar
             // 
@@ -620,7 +631,7 @@
             this.tpExcel.Location = new System.Drawing.Point(4, 26);
             this.tpExcel.Name = "tpExcel";
             this.tpExcel.Padding = new System.Windows.Forms.Padding(3);
-            this.tpExcel.Size = new System.Drawing.Size(568, 467);
+            this.tpExcel.Size = new System.Drawing.Size(568, 469);
             this.tpExcel.TabIndex = 1;
             this.tpExcel.Text = "Excel显示";
             this.tpExcel.UseVisualStyleBackColor = true;
@@ -695,15 +706,6 @@
             this.MS.Size = new System.Drawing.Size(1005, 25);
             this.MS.TabIndex = 30;
             this.MS.Text = "menuStrip1";
-            // 
-            // lbCOMstatus
-            // 
-            this.lbCOMstatus.AutoSize = true;
-            this.lbCOMstatus.Location = new System.Drawing.Point(53, 60);
-            this.lbCOMstatus.Name = "lbCOMstatus";
-            this.lbCOMstatus.Size = new System.Drawing.Size(68, 17);
-            this.lbCOMstatus.TabIndex = 7;
-            this.lbCOMstatus.Text = "串口已关闭";
             // 
             // MainForm
             // 

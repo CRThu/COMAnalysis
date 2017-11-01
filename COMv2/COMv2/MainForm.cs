@@ -334,5 +334,13 @@ namespace COMv2
             this.WindowState = FormWindowState.Normal;
             tcOutput.Dock = DockStyle.None;
         }
+
+        private void chtData_DoubleClick(object sender, EventArgs e)        // 双击放大缩小
+        {
+            if (this.WindowState == FormWindowState.Maximized)   // IsMaximized ?
+                btnChartNormal_Click(null, null);
+            else
+                btnChartMaximized_Click(null, null);
+        }
     }
 }
