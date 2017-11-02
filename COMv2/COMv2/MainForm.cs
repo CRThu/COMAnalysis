@@ -48,6 +48,7 @@ namespace COMv2
             ChartChannelNameList.Add("data1");
             cbChartChannelNameList.SelectedIndex = 0;
             tbChartChannelName.Text = ChartChannelNameList[0];
+            cbChartChannelEnable.Checked = true;
 
             Chartinit();
             // 添加鼠标滚轮事件
@@ -185,6 +186,8 @@ namespace COMv2
             }
             else
                 tbChartChannelName.Text = ChartChannelNameList[cbChartChannelNameList.SelectedIndex];
+            if (chtDataSeriesAdd.Count != 0)
+                cbChartChannelEnable.Checked = chtDataSeriesAdd[cbChartChannelNameList.SelectedIndex].Enabled;
         }
 
         private void btnChartChannelName_Click(object sender, EventArgs e)
@@ -311,7 +314,7 @@ namespace COMv2
         }
         private void btnChartXBig_Click(object sender, EventArgs e)
         {
-                chtData.ChartAreas[0].AxisX.Interval /= 2;
+            chtData.ChartAreas[0].AxisX.Interval /= 2;
             chtData.ChartAreas[0].AxisX.ScaleView.Size /= 2;           // 可见数据点数
             if (chtData.ChartAreas[0].AxisX.Interval <= 1)
                 btnChartXBig.Enabled = false;
@@ -357,11 +360,15 @@ namespace COMv2
                 chtData.ChartAreas[0].AxisX.ScaleView.Position -= 1;
             else
                 chtData.ChartAreas[0].AxisX.ScaleView.Position += 1;
-            if (chtData.ChartAreas[0].AxisX.ScaleView.Position >= chtData.ChartAreas[0].AxisX.Maximum- chtData.ChartAreas[0].AxisX.ScaleView.Size)
-                chtData.ChartAreas[0].AxisX.ScaleView.Position = chtData.ChartAreas[0].AxisX.Maximum- chtData.ChartAreas[0].AxisX.ScaleView.Size;
+            if (chtData.ChartAreas[0].AxisX.ScaleView.Position >= chtData.ChartAreas[0].AxisX.Maximum - chtData.ChartAreas[0].AxisX.ScaleView.Size)
+                chtData.ChartAreas[0].AxisX.ScaleView.Position = chtData.ChartAreas[0].AxisX.Maximum - chtData.ChartAreas[0].AxisX.ScaleView.Size;
             if (chtData.ChartAreas[0].AxisX.ScaleView.Position <= 1)
                 chtData.ChartAreas[0].AxisX.ScaleView.Position = 1;
         }
 
+        private void cbChartChannelEnable_CheckedChanged(object sender, EventArgs e)
+        {
+            chtData.Series[cbChartChannelNameList.SelectedIndex].Enabled = cbChartChannelEnable.Checked;
+        }
     }
 }

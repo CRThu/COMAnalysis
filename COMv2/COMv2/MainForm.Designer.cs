@@ -71,6 +71,7 @@
             this.tbStringFilter = new System.Windows.Forms.TextBox();
             this.tcOutput = new System.Windows.Forms.TabControl();
             this.tpChart = new System.Windows.Forms.TabPage();
+            this.cbChartChannelEnable = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnChartNormal = new System.Windows.Forms.Button();
             this.btnChartMaximized = new System.Windows.Forms.Button();
@@ -530,6 +531,7 @@
             // 
             // tpChart
             // 
+            this.tpChart.Controls.Add(this.cbChartChannelEnable);
             this.tpChart.Controls.Add(this.label2);
             this.tpChart.Controls.Add(this.btnChartNormal);
             this.tpChart.Controls.Add(this.btnChartMaximized);
@@ -551,6 +553,17 @@
             this.tpChart.TabIndex = 0;
             this.tpChart.Text = "图表显示";
             this.tpChart.UseVisualStyleBackColor = true;
+            // 
+            // cbChartChannelEnable
+            // 
+            this.cbChartChannelEnable.AutoSize = true;
+            this.cbChartChannelEnable.Location = new System.Drawing.Point(329, 14);
+            this.cbChartChannelEnable.Name = "cbChartChannelEnable";
+            this.cbChartChannelEnable.Size = new System.Drawing.Size(51, 21);
+            this.cbChartChannelEnable.TabIndex = 36;
+            this.cbChartChannelEnable.Text = "显示";
+            this.cbChartChannelEnable.UseVisualStyleBackColor = true;
+            this.cbChartChannelEnable.CheckedChanged += new System.EventHandler(this.cbChartChannelEnable_CheckedChanged);
             // 
             // label2
             // 
@@ -807,6 +820,7 @@
         private System.Windows.Forms.Button btnChartMaximized;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbCOMstatus;
+        private System.Windows.Forms.CheckBox cbChartChannelEnable;
     }
 }
 
