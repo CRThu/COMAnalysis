@@ -366,6 +366,7 @@
             this.chtData.Size = new System.Drawing.Size(556, 322);
             this.chtData.TabIndex = 26;
             this.chtData.DoubleClick += new System.EventHandler(this.chtData_DoubleClick);
+            this.chtData.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chtData_MouseMove);
             // 
             // cbChartScrollBar
             // 

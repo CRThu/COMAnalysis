@@ -50,6 +50,8 @@ namespace COMv2
             tbChartChannelName.Text = ChartChannelNameList[0];
 
             Chartinit();
+            // 添加鼠标滚轮事件
+            this.chtData.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.chtData_MouseWheel);
 
             // Excel
             cbExcelAllDataOutput.Checked = true;
@@ -342,5 +344,24 @@ namespace COMv2
             else
                 btnChartMaximized_Click(null, null);
         }
+
+        private void chtData_MouseMove(object sender, MouseEventArgs e)
+        {
+            // 指向Chart时获取焦点
+            chtData.Focus();
+        }
+
+        public void chtData_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta > 0)
+                chtData.ChartAreas[0].AxisX.ScaleView.Position -= 1;
+            else
+                chtData.ChartAreas[0].AxisX.ScaleView.Position += 1;
+            if (chtData.ChartAreas[0].AxisX.ScaleView.Position >= chtData.ChartAreas[0].AxisX.Maximum- chtData.ChartAreas[0].AxisX.ScaleView.Size)
+                chtData.ChartAreas[0].AxisX.ScaleView.Position = chtData.ChartAreas[0].AxisX.Maximum- chtData.ChartAreas[0].AxisX.ScaleView.Size;
+            if (chtData.ChartAreas[0].AxisX.ScaleView.Position <= 1)
+                chtData.ChartAreas[0].AxisX.ScaleView.Position = 1;
+        }
+
     }
 }
