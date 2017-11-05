@@ -28,7 +28,7 @@ namespace COMv2
         public MainForm()
         {
             InitializeComponent();
-        }
+       }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
