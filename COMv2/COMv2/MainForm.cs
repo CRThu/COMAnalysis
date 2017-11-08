@@ -124,10 +124,51 @@ namespace COMv2
         {
             if (COM.IsOpen)
             {
+                try
+                {
+                    if (ckb16.Checked)
+                    {
+                        byte[] WriteStr = HexStringToByteArray(tbPortWrite.Text);
+                        COM.Write(WriteStr, 0, WriteStr.Length);
+                    }
+                    else
+                        COM.Write(tbPortWrite.Text);
+
                 if (ckbNewLine.Checked == true)
-                    tbPortWrite.Text += Environment.NewLine;
-                COM.Write(tbPortWrite.Text);
+                    COM.Write(Environment.NewLine);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
                 tbPortWrite.Text = "";
+            }
+        }
+
+        private void ckb16_CheckedChanged(object sender, EventArgs e)
+        {
+            tbPortWrite.Text = "";
+        }
+
+        private void tbPortWrite_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (ckb16.Checked)
+            {
+                if (!((e.KeyChar == '\b')
+                    || ((e.KeyChar >= '0') && (e.KeyChar <= '9'))
+                    || ((e.KeyChar >= 'A') && (e.KeyChar <= 'F'))
+                    || ((e.KeyChar >= 'a') && (e.KeyChar <= 'f'))))
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void tbPortWrite_TextChanged(object sender, EventArgs e)
+        {
+            if (COM.IsOpen)
+            {
+
             }
         }
 
@@ -312,6 +353,7 @@ namespace COMv2
             About about = new About();
             about.ShowDialog();
         }
+
         private void btnChartXBig_Click(object sender, EventArgs e)
         {
             chtData.ChartAreas[0].AxisX.Interval /= 2;
@@ -370,5 +412,6 @@ namespace COMv2
         {
             chtData.Series[cbChartChannelNameList.SelectedIndex].Enabled = cbChartChannelEnable.Checked;
         }
+
     }
 }

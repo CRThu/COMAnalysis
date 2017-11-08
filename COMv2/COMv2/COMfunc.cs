@@ -99,5 +99,17 @@ namespace COMv2
             //    chtData.Series["Series1"].Points.AddY(COMdataNow);
             //}));
         }
+
+        // 16进制字符串转byte[]
+        byte[] HexStringToByteArray(string s)
+        {
+            s = s.Replace(" ", "");
+            byte[] buffer = new byte[s.Length / 2];
+            if (s.Length % 2 != 0)
+                throw new IndexOutOfRangeException();
+            for (int i = 0; i < s.Length; i += 2)
+                buffer[i / 2] = (byte)Convert.ToByte(s.Substring(i, 2), 16);
+            return buffer;
+        }
     }
 }

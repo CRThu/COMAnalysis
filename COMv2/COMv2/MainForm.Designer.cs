@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.COM = new System.IO.Ports.SerialPort(this.components);
             this.cbPort = new System.Windows.Forms.ComboBox();
             this.lbPort = new System.Windows.Forms.Label();
@@ -88,6 +88,7 @@
             this.TSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.MS = new System.Windows.Forms.MenuStrip();
+            this.ckb16 = new System.Windows.Forms.CheckBox();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -295,9 +296,12 @@
             this.tbPortWrite.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.tbPortWrite.Size = new System.Drawing.Size(387, 61);
             this.tbPortWrite.TabIndex = 12;
+            this.tbPortWrite.TextChanged += new System.EventHandler(this.tbPortWrite_TextChanged);
+            this.tbPortWrite.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPortWrite_KeyPress);
             // 
             // gbSend
             // 
+            this.gbSend.Controls.Add(this.ckb16);
             this.gbSend.Controls.Add(this.ckbNewLine);
             this.gbSend.Controls.Add(this.tbPortWrite);
             this.gbSend.Controls.Add(this.btnPortWrite);
@@ -313,7 +317,7 @@
             this.ckbNewLine.AutoSize = true;
             this.ckbNewLine.Checked = true;
             this.ckbNewLine.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbNewLine.Location = new System.Drawing.Point(6, 95);
+            this.ckbNewLine.Location = new System.Drawing.Point(101, 95);
             this.ckbNewLine.Name = "ckbNewLine";
             this.ckbNewLine.Size = new System.Drawing.Size(87, 21);
             this.ckbNewLine.TabIndex = 13;
@@ -349,21 +353,21 @@
             this.chtData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chtData.ChartAreas.Add(chartArea1);
+            chartArea5.Name = "ChartArea1";
+            this.chtData.ChartAreas.Add(chartArea5);
             this.chtData.Cursor = System.Windows.Forms.Cursors.Hand;
-            legend1.Name = "Legend1";
-            this.chtData.Legends.Add(legend1);
+            legend5.Name = "Legend1";
+            this.chtData.Legends.Add(legend5);
             this.chtData.Location = new System.Drawing.Point(6, 141);
             this.chtData.Name = "chtData";
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.IsValueShownAsLabel = true;
-            series1.Legend = "Legend1";
-            series1.LegendText = "data1";
-            series1.Name = "Series1";
-            this.chtData.Series.Add(series1);
+            series5.BorderWidth = 2;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.IsValueShownAsLabel = true;
+            series5.Legend = "Legend1";
+            series5.LegendText = "data1";
+            series5.Name = "Series1";
+            this.chtData.Series.Add(series5);
             this.chtData.Size = new System.Drawing.Size(556, 322);
             this.chtData.TabIndex = 26;
             this.chtData.DoubleClick += new System.EventHandler(this.chtData_DoubleClick);
@@ -721,6 +725,17 @@
             this.MS.TabIndex = 30;
             this.MS.Text = "menuStrip1";
             // 
+            // ckb16
+            // 
+            this.ckb16.AutoSize = true;
+            this.ckb16.Location = new System.Drawing.Point(6, 95);
+            this.ckb16.Name = "ckb16";
+            this.ckb16.Size = new System.Drawing.Size(89, 21);
+            this.ckb16.TabIndex = 15;
+            this.ckb16.Text = "16进制输入";
+            this.ckb16.UseVisualStyleBackColor = true;
+            this.ckb16.CheckedChanged += new System.EventHandler(this.ckb16_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -821,6 +836,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbCOMstatus;
         private System.Windows.Forms.CheckBox cbChartChannelEnable;
+        private System.Windows.Forms.CheckBox ckb16;
     }
 }
 
