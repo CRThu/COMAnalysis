@@ -161,15 +161,17 @@ namespace COMv2
                 {
                     e.Handled = true;
                 }
+                if((e.KeyChar >= 'a') && (e.KeyChar <= 'f'))
+                {
+                    e.KeyChar = Convert.ToChar(e.KeyChar.ToString().ToUpper());
+                }
             }
         }
 
         private void tbPortWrite_TextChanged(object sender, EventArgs e)
         {
-            if (COM.IsOpen)
-            {
-
-            }
+            if (ckb16.Checked)
+                ;//TODO输入两位数后空格
         }
 
         //private void tbPortRead_TextChanged(object sender, EventArgs e)
