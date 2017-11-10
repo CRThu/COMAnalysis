@@ -170,8 +170,18 @@ namespace COMv2
 
         private void tbPortWrite_TextChanged(object sender, EventArgs e)
         {
+            string tb = "";
             if (ckb16.Checked)
-                ;//TODO输入两位数后空格
+            {
+                for (int i = 0; i < tbPortWrite.Text.Replace(" ", "").Length; i++)
+                {
+                    tb += tbPortWrite.Text.Replace(" ", "")[i];
+                    if (i % 2 != 0)
+                        tb += " ";
+                }
+            }
+            tbPortWrite.Text = tb;
+            tbPortWrite.Select(tbPortWrite.Text.Length, 0);
         }
 
         //private void tbPortRead_TextChanged(object sender, EventArgs e)
