@@ -18,3 +18,14 @@ D:\program\CSharp\COManalysis\COMv2 - 副本\COMv2\obj\Debug\COMv2.Properties.Re
 D:\program\CSharp\COManalysis\COMv2 - 副本\COMv2\obj\Debug\COMv2.csproj.GenerateResource.Cache
 D:\program\CSharp\COManalysis\COMv2\COMv2\obj\Debug\COMv2.csproj.ResolveComReference.cache
 D:\program\CSharp\COManalysis\COMv2\COMv2\obj\Debug\COMv2.About.resources
+C:\Users\YummyCarrot\Documents\Visual Studio 2015\Projects\COMAnalysis\COMv2\COMv2\bin\Debug\COMv2.exe.config
+C:\Users\YummyCarrot\Documents\Visual Studio 2015\Projects\COMAnalysis\COMv2\COMv2\obj\Debug\COMv2.csproj.ResolveComReference.cache
+C:\Users\YummyCarrot\Documents\Visual Studio 2015\Projects\COMAnalysis\COMv2\COMv2\obj\Debug\COMv2.exe
+C:\Users\YummyCarrot\Documents\Visual Studio 2015\Projects\COMAnalysis\COMv2\COMv2\obj\Debug\COMv2.pdb
+C:\Users\YummyCarrot\Documents\Visual Studio 2015\Projects\COMAnalysis\COMv2\COMv2\bin\Debug\COMv2.exe
+C:\Users\YummyCarrot\Documents\Visual Studio 2015\Projects\COMAnalysis\COMv2\COMv2\bin\Debug\COMv2.pdb
+C:\Users\YummyCarrot\Documents\Visual Studio 2015\Projects\COMAnalysis\COMv2\COMv2\obj\Debug\COMv2.csprojResolveAssemblyReference.cache
+C:\Users\YummyCarrot\Documents\Visual Studio 2015\Projects\COMAnalysis\COMv2\COMv2\obj\Debug\COMv2.About.resources
+C:\Users\YummyCarrot\Documents\Visual Studio 2015\Projects\COMAnalysis\COMv2\COMv2\obj\Debug\COMv2.MainForm.resources
+C:\Users\YummyCarrot\Documents\Visual Studio 2015\Projects\COMAnalysis\COMv2\COMv2\obj\Debug\COMv2.Properties.Resources.resources
+C:\Users\YummyCarrot\Documents\Visual Studio 2015\Projects\COMAnalysis\COMv2\COMv2\obj\Debug\COMv2.csproj.GenerateResource.Cache
