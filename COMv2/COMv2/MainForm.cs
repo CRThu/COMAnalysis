@@ -165,23 +165,30 @@ namespace COMv2
                 {
                     e.KeyChar = Convert.ToChar(e.KeyChar.ToString().ToUpper());
                 }
+                if (e.KeyChar == '\b')
+                    tbPortWrite.Text = tbPortWrite.Text.Substring(0, (tbPortWrite.Text.Length - 2 >= 0) ? tbPortWrite.Text.Length - 2 : tbPortWrite.Text.Length);
             }
         }
 
         private void tbPortWrite_TextChanged(object sender, EventArgs e)
         {
             string tb = "";
+            char n;
             if (ckb16.Checked)
             {
                 for (int i = 0; i < tbPortWrite.Text.Replace(" ", "").Length; i++)
                 {
-                    tb += tbPortWrite.Text.Replace(" ", "")[i];
+                    n = tbPortWrite.Text.Replace(" ", "")[i];
+                    if (((n>='0')&&(n<='9'))
+                        ||((n >= 'A') && (n <= 'F'))
+                        ||((n >= 'a') && (n <= 'f')))
+                            tb += n;
                     if (i % 2 != 0)
                         tb += " ";
                 }
+                tbPortWrite.Text = tb;
+                tbPortWrite.Select(tbPortWrite.Text.Length, 0);
             }
-            tbPortWrite.Text = tb;
-            tbPortWrite.Select(tbPortWrite.Text.Length, 0);
         }
 
         //private void tbPortRead_TextChanged(object sender, EventArgs e)
