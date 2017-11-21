@@ -89,6 +89,10 @@
             this.TSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.MS = new System.Windows.Forms.MenuStrip();
+            this.tbStartFrame = new System.Windows.Forms.TextBox();
+            this.tbStopFrame = new System.Windows.Forms.TextBox();
+            this.lbStartFrame = new System.Windows.Forms.Label();
+            this.lbStopFrame = new System.Windows.Forms.Label();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -236,9 +240,9 @@
             this.gbPort.Controls.Add(this.cbBaudRate);
             this.gbPort.Controls.Add(this.lbStopBits);
             this.gbPort.Location = new System.Drawing.Point(15, 30);
-            this.gbPort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbPort.Margin = new System.Windows.Forms.Padding(4);
             this.gbPort.Name = "gbPort";
-            this.gbPort.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbPort.Padding = new System.Windows.Forms.Padding(4);
             this.gbPort.Size = new System.Drawing.Size(211, 285);
             this.gbPort.TabIndex = 17;
             this.gbPort.TabStop = false;
@@ -247,7 +251,7 @@
             // btnPortOpen
             // 
             this.btnPortOpen.Location = new System.Drawing.Point(15, 28);
-            this.btnPortOpen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPortOpen.Margin = new System.Windows.Forms.Padding(4);
             this.btnPortOpen.Name = "btnPortOpen";
             this.btnPortOpen.Size = new System.Drawing.Size(94, 29);
             this.btnPortOpen.TabIndex = 5;
@@ -258,7 +262,7 @@
             // btnPortClose
             // 
             this.btnPortClose.Location = new System.Drawing.Point(116, 28);
-            this.btnPortClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPortClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnPortClose.Name = "btnPortClose";
             this.btnPortClose.Size = new System.Drawing.Size(94, 29);
             this.btnPortClose.TabIndex = 6;
@@ -272,9 +276,9 @@
             this.gbCmd.Controls.Add(this.btnPortOpen);
             this.gbCmd.Controls.Add(this.btnPortClose);
             this.gbCmd.Location = new System.Drawing.Point(234, 30);
-            this.gbCmd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbCmd.Margin = new System.Windows.Forms.Padding(4);
             this.gbCmd.Name = "gbCmd";
-            this.gbCmd.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbCmd.Padding = new System.Windows.Forms.Padding(4);
             this.gbCmd.Size = new System.Drawing.Size(224, 125);
             this.gbCmd.TabIndex = 22;
             this.gbCmd.TabStop = false;
@@ -293,7 +297,7 @@
             // btnPortWrite
             // 
             this.btnPortWrite.Location = new System.Drawing.Point(398, 116);
-            this.btnPortWrite.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPortWrite.Margin = new System.Windows.Forms.Padding(4);
             this.btnPortWrite.Name = "btnPortWrite";
             this.btnPortWrite.Size = new System.Drawing.Size(94, 29);
             this.btnPortWrite.TabIndex = 14;
@@ -304,7 +308,7 @@
             // tbPortWrite
             // 
             this.tbPortWrite.Location = new System.Drawing.Point(8, 28);
-            this.tbPortWrite.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbPortWrite.Margin = new System.Windows.Forms.Padding(4);
             this.tbPortWrite.Multiline = true;
             this.tbPortWrite.Name = "tbPortWrite";
             this.tbPortWrite.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -320,9 +324,9 @@
             this.gbSend.Controls.Add(this.tbPortWrite);
             this.gbSend.Controls.Add(this.btnPortWrite);
             this.gbSend.Location = new System.Drawing.Point(15, 322);
-            this.gbSend.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbSend.Margin = new System.Windows.Forms.Padding(4);
             this.gbSend.Name = "gbSend";
-            this.gbSend.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbSend.Padding = new System.Windows.Forms.Padding(4);
             this.gbSend.Size = new System.Drawing.Size(499, 152);
             this.gbSend.TabIndex = 23;
             this.gbSend.TabStop = false;
@@ -332,7 +336,7 @@
             // 
             this.ckb16.AutoSize = true;
             this.ckb16.Location = new System.Drawing.Point(8, 119);
-            this.ckb16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ckb16.Margin = new System.Windows.Forms.Padding(4);
             this.ckb16.Name = "ckb16";
             this.ckb16.Size = new System.Drawing.Size(109, 24);
             this.ckb16.TabIndex = 15;
@@ -346,7 +350,7 @@
             this.ckbNewLine.Checked = true;
             this.ckbNewLine.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckbNewLine.Location = new System.Drawing.Point(126, 119);
-            this.ckbNewLine.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ckbNewLine.Margin = new System.Windows.Forms.Padding(4);
             this.ckbNewLine.Name = "ckbNewLine";
             this.ckbNewLine.Size = new System.Drawing.Size(106, 24);
             this.ckbNewLine.TabIndex = 13;
@@ -359,7 +363,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPortRead.Location = new System.Drawing.Point(8, 28);
-            this.tbPortRead.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbPortRead.Margin = new System.Windows.Forms.Padding(4);
             this.tbPortRead.Multiline = true;
             this.tbPortRead.Name = "tbPortRead";
             this.tbPortRead.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -372,9 +376,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.gbRead.Controls.Add(this.tbPortRead);
             this.gbRead.Location = new System.Drawing.Point(15, 482);
-            this.gbRead.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbRead.Margin = new System.Windows.Forms.Padding(4);
             this.gbRead.Name = "gbRead";
-            this.gbRead.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbRead.Padding = new System.Windows.Forms.Padding(4);
             this.gbRead.Size = new System.Drawing.Size(499, 171);
             this.gbRead.TabIndex = 25;
             this.gbRead.TabStop = false;
@@ -391,7 +395,7 @@
             legend1.Name = "Legend1";
             this.chtData.Legends.Add(legend1);
             this.chtData.Location = new System.Drawing.Point(8, 176);
-            this.chtData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chtData.Margin = new System.Windows.Forms.Padding(4);
             this.chtData.Name = "chtData";
             series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
@@ -410,7 +414,7 @@
             // 
             this.cbChartScrollBar.AutoSize = true;
             this.cbChartScrollBar.Location = new System.Drawing.Point(26, 121);
-            this.cbChartScrollBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbChartScrollBar.Margin = new System.Windows.Forms.Padding(4);
             this.cbChartScrollBar.Name = "cbChartScrollBar";
             this.cbChartScrollBar.Size = new System.Drawing.Size(106, 24);
             this.cbChartScrollBar.TabIndex = 28;
@@ -422,7 +426,7 @@
             // 
             this.cbChartShowValue.AutoSize = true;
             this.cbChartShowValue.Location = new System.Drawing.Point(26, 88);
-            this.cbChartShowValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbChartShowValue.Margin = new System.Windows.Forms.Padding(4);
             this.cbChartShowValue.Name = "cbChartShowValue";
             this.cbChartShowValue.Size = new System.Drawing.Size(91, 24);
             this.cbChartShowValue.TabIndex = 19;
@@ -433,7 +437,7 @@
             // btnChartChannelName
             // 
             this.btnChartChannelName.Location = new System.Drawing.Point(310, 15);
-            this.btnChartChannelName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChartChannelName.Margin = new System.Windows.Forms.Padding(4);
             this.btnChartChannelName.Name = "btnChartChannelName";
             this.btnChartChannelName.Size = new System.Drawing.Size(94, 29);
             this.btnChartChannelName.TabIndex = 18;
@@ -444,7 +448,7 @@
             // tbChartChannelName
             // 
             this.tbChartChannelName.Location = new System.Drawing.Point(182, 15);
-            this.tbChartChannelName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbChartChannelName.Margin = new System.Windows.Forms.Padding(4);
             this.tbChartChannelName.Name = "tbChartChannelName";
             this.tbChartChannelName.Size = new System.Drawing.Size(119, 27);
             this.tbChartChannelName.TabIndex = 17;
@@ -456,7 +460,7 @@
             "Channel 1",
             "Add Channel"});
             this.cbChartChannelNameList.Location = new System.Drawing.Point(74, 15);
-            this.cbChartChannelNameList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbChartChannelNameList.Margin = new System.Windows.Forms.Padding(4);
             this.cbChartChannelNameList.Name = "cbChartChannelNameList";
             this.cbChartChannelNameList.Size = new System.Drawing.Size(100, 28);
             this.cbChartChannelNameList.TabIndex = 16;
@@ -476,7 +480,7 @@
             // 
             this.rbByteIsString.AutoSize = true;
             this.rbByteIsString.Location = new System.Drawing.Point(8, 35);
-            this.rbByteIsString.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbByteIsString.Margin = new System.Windows.Forms.Padding(4);
             this.rbByteIsString.Name = "rbByteIsString";
             this.rbByteIsString.Size = new System.Drawing.Size(74, 24);
             this.rbByteIsString.TabIndex = 25;
@@ -493,9 +497,9 @@
             this.gbByteDecoder.Controls.Add(this.tbStringFilter);
             this.gbByteDecoder.Controls.Add(this.rbByteIsString);
             this.gbByteDecoder.Location = new System.Drawing.Point(234, 162);
-            this.gbByteDecoder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbByteDecoder.Margin = new System.Windows.Forms.Padding(4);
             this.gbByteDecoder.Name = "gbByteDecoder";
-            this.gbByteDecoder.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbByteDecoder.Padding = new System.Windows.Forms.Padding(4);
             this.gbByteDecoder.Size = new System.Drawing.Size(224, 152);
             this.gbByteDecoder.TabIndex = 28;
             this.gbByteDecoder.TabStop = false;
@@ -504,7 +508,7 @@
             // btnOnlyForTest
             // 
             this.btnOnlyForTest.Location = new System.Drawing.Point(116, 109);
-            this.btnOnlyForTest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOnlyForTest.Margin = new System.Windows.Forms.Padding(4);
             this.btnOnlyForTest.Name = "btnOnlyForTest";
             this.btnOnlyForTest.Size = new System.Drawing.Size(94, 29);
             this.btnOnlyForTest.TabIndex = 11;
@@ -516,7 +520,7 @@
             // 
             this.rbNoDecoder.AutoSize = true;
             this.rbNoDecoder.Location = new System.Drawing.Point(8, 110);
-            this.rbNoDecoder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbNoDecoder.Margin = new System.Windows.Forms.Padding(4);
             this.rbNoDecoder.Name = "rbNoDecoder";
             this.rbNoDecoder.Size = new System.Drawing.Size(105, 24);
             this.rbNoDecoder.TabIndex = 34;
@@ -533,7 +537,7 @@
             "float",
             "double"});
             this.cbByteIsNumber.Location = new System.Drawing.Point(119, 71);
-            this.cbByteIsNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbByteIsNumber.Margin = new System.Windows.Forms.Padding(4);
             this.cbByteIsNumber.Name = "cbByteIsNumber";
             this.cbByteIsNumber.Size = new System.Drawing.Size(90, 28);
             this.cbByteIsNumber.TabIndex = 10;
@@ -542,7 +546,7 @@
             // 
             this.rbByteIsNumber.AutoSize = true;
             this.rbByteIsNumber.Location = new System.Drawing.Point(8, 72);
-            this.rbByteIsNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbByteIsNumber.Margin = new System.Windows.Forms.Padding(4);
             this.rbByteIsNumber.Name = "rbByteIsNumber";
             this.rbByteIsNumber.Size = new System.Drawing.Size(82, 24);
             this.rbByteIsNumber.TabIndex = 30;
@@ -562,7 +566,7 @@
             // tbStringFilter
             // 
             this.tbStringFilter.Location = new System.Drawing.Point(171, 35);
-            this.tbStringFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbStringFilter.Margin = new System.Windows.Forms.Padding(4);
             this.tbStringFilter.Name = "tbStringFilter";
             this.tbStringFilter.Size = new System.Drawing.Size(38, 27);
             this.tbStringFilter.TabIndex = 9;
@@ -576,7 +580,7 @@
             this.tcOutput.Controls.Add(this.tpChart);
             this.tcOutput.Controls.Add(this.tpExcel);
             this.tcOutput.Location = new System.Drawing.Point(521, 30);
-            this.tcOutput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tcOutput.Margin = new System.Windows.Forms.Padding(4);
             this.tcOutput.Name = "tcOutput";
             this.tcOutput.SelectedIndex = 0;
             this.tcOutput.Size = new System.Drawing.Size(720, 624);
@@ -584,6 +588,10 @@
             // 
             // tpChart
             // 
+            this.tpChart.Controls.Add(this.lbStopFrame);
+            this.tpChart.Controls.Add(this.lbStartFrame);
+            this.tpChart.Controls.Add(this.tbStopFrame);
+            this.tpChart.Controls.Add(this.tbStartFrame);
             this.tpChart.Controls.Add(this.cbChartChannelEnable);
             this.tpChart.Controls.Add(this.label2);
             this.tpChart.Controls.Add(this.btnChartNormal);
@@ -600,9 +608,9 @@
             this.tpChart.Controls.Add(this.tbChartChannelName);
             this.tpChart.Controls.Add(this.cbChartChannelNameList);
             this.tpChart.Location = new System.Drawing.Point(4, 29);
-            this.tpChart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpChart.Margin = new System.Windows.Forms.Padding(4);
             this.tpChart.Name = "tpChart";
-            this.tpChart.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpChart.Padding = new System.Windows.Forms.Padding(4);
             this.tpChart.Size = new System.Drawing.Size(712, 591);
             this.tpChart.TabIndex = 0;
             this.tpChart.Text = "图表显示";
@@ -612,7 +620,7 @@
             // 
             this.cbChartChannelEnable.AutoSize = true;
             this.cbChartChannelEnable.Location = new System.Drawing.Point(411, 18);
-            this.cbChartChannelEnable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbChartChannelEnable.Margin = new System.Windows.Forms.Padding(4);
             this.cbChartChannelEnable.Name = "cbChartChannelEnable";
             this.cbChartChannelEnable.Size = new System.Drawing.Size(61, 24);
             this.cbChartChannelEnable.TabIndex = 36;
@@ -633,7 +641,7 @@
             // btnChartNormal
             // 
             this.btnChartNormal.Location = new System.Drawing.Point(348, 84);
-            this.btnChartNormal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChartNormal.Margin = new System.Windows.Forms.Padding(4);
             this.btnChartNormal.Name = "btnChartNormal";
             this.btnChartNormal.Size = new System.Drawing.Size(94, 29);
             this.btnChartNormal.TabIndex = 34;
@@ -644,7 +652,7 @@
             // btnChartMaximized
             // 
             this.btnChartMaximized.Location = new System.Drawing.Point(246, 84);
-            this.btnChartMaximized.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChartMaximized.Margin = new System.Windows.Forms.Padding(4);
             this.btnChartMaximized.Name = "btnChartMaximized";
             this.btnChartMaximized.Size = new System.Drawing.Size(94, 29);
             this.btnChartMaximized.TabIndex = 33;
@@ -656,7 +664,7 @@
             // 
             this.cbChartTotb.AutoSize = true;
             this.cbChartTotb.Location = new System.Drawing.Point(26, 54);
-            this.cbChartTotb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbChartTotb.Margin = new System.Windows.Forms.Padding(4);
             this.cbChartTotb.Name = "cbChartTotb";
             this.cbChartTotb.Size = new System.Drawing.Size(91, 24);
             this.cbChartTotb.TabIndex = 32;
@@ -667,7 +675,7 @@
             // 
             this.btnChartXSmall.Enabled = false;
             this.btnChartXSmall.Location = new System.Drawing.Point(348, 119);
-            this.btnChartXSmall.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChartXSmall.Margin = new System.Windows.Forms.Padding(4);
             this.btnChartXSmall.Name = "btnChartXSmall";
             this.btnChartXSmall.Size = new System.Drawing.Size(94, 29);
             this.btnChartXSmall.TabIndex = 31;
@@ -679,7 +687,7 @@
             // 
             this.btnChartXBig.Enabled = false;
             this.btnChartXBig.Location = new System.Drawing.Point(246, 119);
-            this.btnChartXBig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChartXBig.Margin = new System.Windows.Forms.Padding(4);
             this.btnChartXBig.Name = "btnChartXBig";
             this.btnChartXBig.Size = new System.Drawing.Size(94, 29);
             this.btnChartXBig.TabIndex = 30;
@@ -705,9 +713,9 @@
             this.tpExcel.Controls.Add(this.cbExcelAllDataOutput);
             this.tpExcel.Controls.Add(this.btnExcelWrite);
             this.tpExcel.Location = new System.Drawing.Point(4, 29);
-            this.tpExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpExcel.Margin = new System.Windows.Forms.Padding(4);
             this.tpExcel.Name = "tpExcel";
-            this.tpExcel.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpExcel.Padding = new System.Windows.Forms.Padding(4);
             this.tpExcel.Size = new System.Drawing.Size(712, 591);
             this.tpExcel.TabIndex = 1;
             this.tpExcel.Text = "Excel显示";
@@ -726,7 +734,7 @@
             // tbExcelFileName
             // 
             this.tbExcelFileName.Location = new System.Drawing.Point(252, 25);
-            this.tbExcelFileName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbExcelFileName.Margin = new System.Windows.Forms.Padding(4);
             this.tbExcelFileName.Name = "tbExcelFileName";
             this.tbExcelFileName.Size = new System.Drawing.Size(182, 27);
             this.tbExcelFileName.TabIndex = 3;
@@ -735,7 +743,7 @@
             // 
             this.cbExcelChannelDataOutput.AutoSize = true;
             this.cbExcelChannelDataOutput.Location = new System.Drawing.Point(31, 61);
-            this.cbExcelChannelDataOutput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbExcelChannelDataOutput.Margin = new System.Windows.Forms.Padding(4);
             this.cbExcelChannelDataOutput.Name = "cbExcelChannelDataOutput";
             this.cbExcelChannelDataOutput.Size = new System.Drawing.Size(136, 24);
             this.cbExcelChannelDataOutput.TabIndex = 2;
@@ -746,7 +754,7 @@
             // 
             this.cbExcelAllDataOutput.AutoSize = true;
             this.cbExcelAllDataOutput.Location = new System.Drawing.Point(31, 28);
-            this.cbExcelAllDataOutput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbExcelAllDataOutput.Margin = new System.Windows.Forms.Padding(4);
             this.cbExcelAllDataOutput.Name = "cbExcelAllDataOutput";
             this.cbExcelAllDataOutput.Size = new System.Drawing.Size(121, 24);
             this.cbExcelAllDataOutput.TabIndex = 1;
@@ -756,7 +764,7 @@
             // btnExcelWrite
             // 
             this.btnExcelWrite.Location = new System.Drawing.Point(31, 98);
-            this.btnExcelWrite.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExcelWrite.Margin = new System.Windows.Forms.Padding(4);
             this.btnExcelWrite.Name = "btnExcelWrite";
             this.btnExcelWrite.Size = new System.Drawing.Size(94, 29);
             this.btnExcelWrite.TabIndex = 0;
@@ -790,6 +798,40 @@
             this.MS.Size = new System.Drawing.Size(1256, 28);
             this.MS.TabIndex = 30;
             this.MS.Text = "menuStrip1";
+            // 
+            // tbStartFrame
+            // 
+            this.tbStartFrame.Location = new System.Drawing.Point(569, 16);
+            this.tbStartFrame.Name = "tbStartFrame";
+            this.tbStartFrame.Size = new System.Drawing.Size(56, 27);
+            this.tbStartFrame.TabIndex = 37;
+            // 
+            // tbStopFrame
+            // 
+            this.tbStopFrame.Location = new System.Drawing.Point(569, 53);
+            this.tbStopFrame.Name = "tbStopFrame";
+            this.tbStopFrame.Size = new System.Drawing.Size(57, 27);
+            this.tbStopFrame.TabIndex = 38;
+            // 
+            // lbStartFrame
+            // 
+            this.lbStartFrame.AutoSize = true;
+            this.lbStartFrame.Location = new System.Drawing.Point(504, 19);
+            this.lbStartFrame.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbStartFrame.Name = "lbStartFrame";
+            this.lbStartFrame.Size = new System.Drawing.Size(58, 20);
+            this.lbStartFrame.TabIndex = 39;
+            this.lbStartFrame.Text = "起始帧:";
+            // 
+            // lbStopFrame
+            // 
+            this.lbStopFrame.AutoSize = true;
+            this.lbStopFrame.Location = new System.Drawing.Point(504, 56);
+            this.lbStopFrame.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbStopFrame.Name = "lbStopFrame";
+            this.lbStopFrame.Size = new System.Drawing.Size(58, 20);
+            this.lbStopFrame.TabIndex = 40;
+            this.lbStopFrame.Text = "终止帧:";
             // 
             // MainForm
             // 
@@ -892,6 +934,10 @@
         private System.Windows.Forms.Label lbCOMstatus;
         private System.Windows.Forms.CheckBox cbChartChannelEnable;
         private System.Windows.Forms.CheckBox ckb16;
+        private System.Windows.Forms.Label lbStopFrame;
+        private System.Windows.Forms.Label lbStartFrame;
+        private System.Windows.Forms.TextBox tbStopFrame;
+        private System.Windows.Forms.TextBox tbStartFrame;
     }
 }
 
