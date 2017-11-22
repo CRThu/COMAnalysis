@@ -72,6 +72,10 @@
             this.tbStringFilter = new System.Windows.Forms.TextBox();
             this.tcOutput = new System.Windows.Forms.TabControl();
             this.tpChart = new System.Windows.Forms.TabPage();
+            this.lbStopFrame = new System.Windows.Forms.Label();
+            this.lbStartFrame = new System.Windows.Forms.Label();
+            this.tbStopFrame = new System.Windows.Forms.TextBox();
+            this.tbStartFrame = new System.Windows.Forms.TextBox();
             this.cbChartChannelEnable = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnChartNormal = new System.Windows.Forms.Button();
@@ -89,10 +93,7 @@
             this.TSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.MS = new System.Windows.Forms.MenuStrip();
-            this.tbStartFrame = new System.Windows.Forms.TextBox();
-            this.tbStopFrame = new System.Windows.Forms.TextBox();
-            this.lbStartFrame = new System.Windows.Forms.Label();
-            this.lbStopFrame = new System.Windows.Forms.Label();
+            this.rbUseFrame = new System.Windows.Forms.RadioButton();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -588,6 +589,7 @@
             // 
             // tpChart
             // 
+            this.tpChart.Controls.Add(this.rbUseFrame);
             this.tpChart.Controls.Add(this.lbStopFrame);
             this.tpChart.Controls.Add(this.lbStartFrame);
             this.tpChart.Controls.Add(this.tbStopFrame);
@@ -615,6 +617,40 @@
             this.tpChart.TabIndex = 0;
             this.tpChart.Text = "图表显示";
             this.tpChart.UseVisualStyleBackColor = true;
+            // 
+            // lbStopFrame
+            // 
+            this.lbStopFrame.AutoSize = true;
+            this.lbStopFrame.Location = new System.Drawing.Point(522, 94);
+            this.lbStopFrame.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbStopFrame.Name = "lbStopFrame";
+            this.lbStopFrame.Size = new System.Drawing.Size(58, 20);
+            this.lbStopFrame.TabIndex = 40;
+            this.lbStopFrame.Text = "终止帧:";
+            // 
+            // lbStartFrame
+            // 
+            this.lbStartFrame.AutoSize = true;
+            this.lbStartFrame.Location = new System.Drawing.Point(522, 57);
+            this.lbStartFrame.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbStartFrame.Name = "lbStartFrame";
+            this.lbStartFrame.Size = new System.Drawing.Size(58, 20);
+            this.lbStartFrame.TabIndex = 39;
+            this.lbStartFrame.Text = "起始帧:";
+            // 
+            // tbStopFrame
+            // 
+            this.tbStopFrame.Location = new System.Drawing.Point(587, 91);
+            this.tbStopFrame.Name = "tbStopFrame";
+            this.tbStopFrame.Size = new System.Drawing.Size(57, 27);
+            this.tbStopFrame.TabIndex = 38;
+            // 
+            // tbStartFrame
+            // 
+            this.tbStartFrame.Location = new System.Drawing.Point(587, 54);
+            this.tbStartFrame.Name = "tbStartFrame";
+            this.tbStartFrame.Size = new System.Drawing.Size(56, 27);
+            this.tbStartFrame.TabIndex = 37;
             // 
             // cbChartChannelEnable
             // 
@@ -799,39 +835,16 @@
             this.MS.TabIndex = 30;
             this.MS.Text = "menuStrip1";
             // 
-            // tbStartFrame
+            // rbUseFrame
             // 
-            this.tbStartFrame.Location = new System.Drawing.Point(569, 16);
-            this.tbStartFrame.Name = "tbStartFrame";
-            this.tbStartFrame.Size = new System.Drawing.Size(56, 27);
-            this.tbStartFrame.TabIndex = 37;
-            // 
-            // tbStopFrame
-            // 
-            this.tbStopFrame.Location = new System.Drawing.Point(569, 53);
-            this.tbStopFrame.Name = "tbStopFrame";
-            this.tbStopFrame.Size = new System.Drawing.Size(57, 27);
-            this.tbStopFrame.TabIndex = 38;
-            // 
-            // lbStartFrame
-            // 
-            this.lbStartFrame.AutoSize = true;
-            this.lbStartFrame.Location = new System.Drawing.Point(504, 19);
-            this.lbStartFrame.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbStartFrame.Name = "lbStartFrame";
-            this.lbStartFrame.Size = new System.Drawing.Size(58, 20);
-            this.lbStartFrame.TabIndex = 39;
-            this.lbStartFrame.Text = "起始帧:";
-            // 
-            // lbStopFrame
-            // 
-            this.lbStopFrame.AutoSize = true;
-            this.lbStopFrame.Location = new System.Drawing.Point(504, 56);
-            this.lbStopFrame.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbStopFrame.Name = "lbStopFrame";
-            this.lbStopFrame.Size = new System.Drawing.Size(58, 20);
-            this.lbStopFrame.TabIndex = 40;
-            this.lbStopFrame.Text = "终止帧:";
+            this.rbUseFrame.AutoSize = true;
+            this.rbUseFrame.Location = new System.Drawing.Point(526, 17);
+            this.rbUseFrame.Name = "rbUseFrame";
+            this.rbUseFrame.Size = new System.Drawing.Size(105, 24);
+            this.rbUseFrame.TabIndex = 41;
+            this.rbUseFrame.TabStop = true;
+            this.rbUseFrame.Text = "使用标识帧";
+            this.rbUseFrame.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -938,6 +951,7 @@
         private System.Windows.Forms.Label lbStartFrame;
         private System.Windows.Forms.TextBox tbStopFrame;
         private System.Windows.Forms.TextBox tbStartFrame;
+        private System.Windows.Forms.RadioButton rbUseFrame;
     }
 }
 
