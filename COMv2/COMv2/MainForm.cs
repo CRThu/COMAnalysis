@@ -13,6 +13,17 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace COMv2
 {
+    struct Frame
+    {
+        public byte Begin;
+        public byte End;
+
+        public Frame(byte Begin, byte End) : this()
+        {
+            this.Begin = Begin;
+            this.End = End;
+        }
+    }
     public partial class MainForm : Form
     {
         public Thread thread = null;     // 监听线程
@@ -20,7 +31,8 @@ namespace COMv2
         byte[] COMdataNow;                // 缓冲区数据
         List<string> ChartChannelNameList = new List<string>();   // 通道名
         List<Series> chtDataSeriesAdd = new List<Series>();         // 通道类
-
+        List<Frame> chtDataFrame = new List<Frame>();              // 通道帧
+        
         public delegate void EventHandle(byte[] readBuffer);    // 读取串口委托
         public event EventHandle DataReceived;                      // 读取串口函数
 
@@ -242,12 +254,22 @@ namespace COMv2
                 cbChartChannelNameList.Items.Insert(cbChartChannelNameList.Items.Count - 1, "Channel " + cbChartChannelNameList.Items.Count.ToString());
                 cbChartChannelNameList.SelectedIndex--;
 
+                // Frame
+                chtDataFrame.Add(new Frame(0x00, 0x00));
+
                 ChartUpdate();
             }
             else
+            {
                 tbChartChannelName.Text = ChartChannelNameList[cbChartChannelNameList.SelectedIndex];
+            }
+
             if (chtDataSeriesAdd.Count != 0)
+            {
                 cbChartChannelEnable.Checked = chtDataSeriesAdd[cbChartChannelNameList.SelectedIndex].Enabled;
+                tbStartFrame.Text = chtDataFrame[cbChartChannelNameList.SelectedIndex].Begin.ToString();
+                tbStopFrame.Text = chtDataFrame[cbChartChannelNameList.SelectedIndex].End.ToString();
+            }
         }
 
         private void btnChartChannelName_Click(object sender, EventArgs e)
@@ -256,6 +278,9 @@ namespace COMv2
             ChartChannelNameList[cbChartChannelNameList.SelectedIndex] = tbChartChannelName.Text;
             // Change Channel Name In Series
             chtDataSeriesAdd[cbChartChannelNameList.SelectedIndex].Name = tbChartChannelName.Text;
+            // Frame
+            chtDataFrame[cbChartChannelNameList.SelectedIndex] = new Frame(HexStringToByteArray(tbStartFrame.Text)[0], HexStringToByteArray(tbStopFrame.Text)[0]);
+
             ChartUpdate();
         }
 
@@ -432,5 +457,34 @@ namespace COMv2
             chtData.Series[cbChartChannelNameList.SelectedIndex].Enabled = cbChartChannelEnable.Checked;
         }
 
+        private void tbStartFrame_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!((e.KeyChar == '\b')
+                 || ((e.KeyChar >= '0') && (e.KeyChar <= '9'))
+                 || ((e.KeyChar >= 'A') && (e.KeyChar <= 'F'))
+                 || ((e.KeyChar >= 'a') && (e.KeyChar <= 'f'))))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar >= 'a') && (e.KeyChar <= 'f'))
+            {
+                e.KeyChar = Convert.ToChar(e.KeyChar.ToString().ToUpper());
+            }
+        }
+
+        private void tbStopFrame_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!((e.KeyChar == '\b')
+                 || ((e.KeyChar >= '0') && (e.KeyChar <= '9'))
+                 || ((e.KeyChar >= 'A') && (e.KeyChar <= 'F'))
+                 || ((e.KeyChar >= 'a') && (e.KeyChar <= 'f'))))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar >= 'a') && (e.KeyChar <= 'f'))
+            {
+                e.KeyChar = Convert.ToChar(e.KeyChar.ToString().ToUpper());
+            }
+        }
     }
 }

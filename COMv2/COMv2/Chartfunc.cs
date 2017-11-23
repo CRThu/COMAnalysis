@@ -42,6 +42,9 @@ namespace COMv2
             // Legend
             Legend chtDataLegend = new Legend("chtDataLegend");
             chtData.Legends.Add(chtDataLegend);
+
+            // Frame
+            chtDataFrame.Add(new Frame(0x00,0x00));
         }
 
         void ChartDraw()

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.COM = new System.IO.Ports.SerialPort(this.components);
             this.cbPort = new System.Windows.Forms.ComboBox();
             this.lbPort = new System.Windows.Forms.Label();
@@ -72,6 +72,7 @@
             this.tbStringFilter = new System.Windows.Forms.TextBox();
             this.tcOutput = new System.Windows.Forms.TabControl();
             this.tpChart = new System.Windows.Forms.TabPage();
+            this.chkUseFrame = new System.Windows.Forms.CheckBox();
             this.lbStopFrame = new System.Windows.Forms.Label();
             this.lbStartFrame = new System.Windows.Forms.Label();
             this.tbStopFrame = new System.Windows.Forms.TextBox();
@@ -93,7 +94,6 @@
             this.TSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.MS = new System.Windows.Forms.MenuStrip();
-            this.rbUseFrame = new System.Windows.Forms.RadioButton();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -390,22 +390,22 @@
             this.chtData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chtData.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chtData.ChartAreas.Add(chartArea2);
             this.chtData.Cursor = System.Windows.Forms.Cursors.Hand;
-            legend1.Name = "Legend1";
-            this.chtData.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.chtData.Legends.Add(legend2);
             this.chtData.Location = new System.Drawing.Point(8, 176);
             this.chtData.Margin = new System.Windows.Forms.Padding(4);
             this.chtData.Name = "chtData";
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.IsValueShownAsLabel = true;
-            series1.Legend = "Legend1";
-            series1.LegendText = "data1";
-            series1.Name = "Series1";
-            this.chtData.Series.Add(series1);
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.IsValueShownAsLabel = true;
+            series2.Legend = "Legend1";
+            series2.LegendText = "data1";
+            series2.Name = "Series1";
+            this.chtData.Series.Add(series2);
             this.chtData.Size = new System.Drawing.Size(695, 402);
             this.chtData.TabIndex = 26;
             this.chtData.DoubleClick += new System.EventHandler(this.chtData_DoubleClick);
@@ -589,7 +589,7 @@
             // 
             // tpChart
             // 
-            this.tpChart.Controls.Add(this.rbUseFrame);
+            this.tpChart.Controls.Add(this.chkUseFrame);
             this.tpChart.Controls.Add(this.lbStopFrame);
             this.tpChart.Controls.Add(this.lbStartFrame);
             this.tpChart.Controls.Add(this.tbStopFrame);
@@ -618,10 +618,20 @@
             this.tpChart.Text = "图表显示";
             this.tpChart.UseVisualStyleBackColor = true;
             // 
+            // chkUseFrame
+            // 
+            this.chkUseFrame.AutoSize = true;
+            this.chkUseFrame.Location = new System.Drawing.Point(526, 42);
+            this.chkUseFrame.Name = "chkUseFrame";
+            this.chkUseFrame.Size = new System.Drawing.Size(106, 24);
+            this.chkUseFrame.TabIndex = 42;
+            this.chkUseFrame.Text = "使用标识帧";
+            this.chkUseFrame.UseVisualStyleBackColor = true;
+            // 
             // lbStopFrame
             // 
             this.lbStopFrame.AutoSize = true;
-            this.lbStopFrame.Location = new System.Drawing.Point(522, 94);
+            this.lbStopFrame.Location = new System.Drawing.Point(522, 118);
             this.lbStopFrame.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbStopFrame.Name = "lbStopFrame";
             this.lbStopFrame.Size = new System.Drawing.Size(58, 20);
@@ -631,7 +641,7 @@
             // lbStartFrame
             // 
             this.lbStartFrame.AutoSize = true;
-            this.lbStartFrame.Location = new System.Drawing.Point(522, 57);
+            this.lbStartFrame.Location = new System.Drawing.Point(522, 81);
             this.lbStartFrame.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbStartFrame.Name = "lbStartFrame";
             this.lbStartFrame.Size = new System.Drawing.Size(58, 20);
@@ -640,17 +650,19 @@
             // 
             // tbStopFrame
             // 
-            this.tbStopFrame.Location = new System.Drawing.Point(587, 91);
+            this.tbStopFrame.Location = new System.Drawing.Point(587, 115);
             this.tbStopFrame.Name = "tbStopFrame";
             this.tbStopFrame.Size = new System.Drawing.Size(57, 27);
             this.tbStopFrame.TabIndex = 38;
+            this.tbStopFrame.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStopFrame_KeyPress);
             // 
             // tbStartFrame
             // 
-            this.tbStartFrame.Location = new System.Drawing.Point(587, 54);
+            this.tbStartFrame.Location = new System.Drawing.Point(587, 78);
             this.tbStartFrame.Name = "tbStartFrame";
             this.tbStartFrame.Size = new System.Drawing.Size(56, 27);
             this.tbStartFrame.TabIndex = 37;
+            this.tbStartFrame.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStartFrame_KeyPress);
             // 
             // cbChartChannelEnable
             // 
@@ -835,17 +847,6 @@
             this.MS.TabIndex = 30;
             this.MS.Text = "menuStrip1";
             // 
-            // rbUseFrame
-            // 
-            this.rbUseFrame.AutoSize = true;
-            this.rbUseFrame.Location = new System.Drawing.Point(526, 17);
-            this.rbUseFrame.Name = "rbUseFrame";
-            this.rbUseFrame.Size = new System.Drawing.Size(105, 24);
-            this.rbUseFrame.TabIndex = 41;
-            this.rbUseFrame.TabStop = true;
-            this.rbUseFrame.Text = "使用标识帧";
-            this.rbUseFrame.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -951,7 +952,7 @@
         private System.Windows.Forms.Label lbStartFrame;
         private System.Windows.Forms.TextBox tbStopFrame;
         private System.Windows.Forms.TextBox tbStartFrame;
-        private System.Windows.Forms.RadioButton rbUseFrame;
+        private System.Windows.Forms.CheckBox chkUseFrame;
     }
 }
 
