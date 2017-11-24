@@ -31,7 +31,7 @@ namespace COMv2
         byte[] COMdataNow;                // 缓冲区数据
         List<string> ChartChannelNameList = new List<string>();   // 通道名
         List<Series> chtDataSeriesAdd = new List<Series>();         // 通道类
-        List<Frame> chtDataFrame = new List<Frame>();              // 通道帧
+        Frame chtDataFrame = new Frame(0x00,0x00);              // 通道帧
         
         public delegate void EventHandle(byte[] readBuffer);    // 读取串口委托
         public event EventHandle DataReceived;                      // 读取串口函数
@@ -253,22 +253,23 @@ namespace COMv2
                 // Add Channel Name To ComboBox
                 cbChartChannelNameList.Items.Insert(cbChartChannelNameList.Items.Count - 1, "Channel " + cbChartChannelNameList.Items.Count.ToString());
                 cbChartChannelNameList.SelectedIndex--;
-
-                // Frame
-                chtDataFrame.Add(new Frame(0x00, 0x00));
-
+                
                 ChartUpdate();
             }
             else
             {
                 tbChartChannelName.Text = ChartChannelNameList[cbChartChannelNameList.SelectedIndex];
+                //TODO 
+                // 输出格式修正
+                // Frame
+                //chtDataFrame = new Frame(HexStringToByteArray(tbStartFrame.Text)[0], HexStringToByteArray(tbStopFrame.Text)[0]);
+                tbStartFrame.Text = chtDataFrame.Begin.ToString();
+                tbStopFrame.Text = chtDataFrame.End.ToString();
             }
 
             if (chtDataSeriesAdd.Count != 0)
             {
                 cbChartChannelEnable.Checked = chtDataSeriesAdd[cbChartChannelNameList.SelectedIndex].Enabled;
-                tbStartFrame.Text = chtDataFrame[cbChartChannelNameList.SelectedIndex].Begin.ToString();
-                tbStopFrame.Text = chtDataFrame[cbChartChannelNameList.SelectedIndex].End.ToString();
             }
         }
 
@@ -278,8 +279,6 @@ namespace COMv2
             ChartChannelNameList[cbChartChannelNameList.SelectedIndex] = tbChartChannelName.Text;
             // Change Channel Name In Series
             chtDataSeriesAdd[cbChartChannelNameList.SelectedIndex].Name = tbChartChannelName.Text;
-            // Frame
-            chtDataFrame[cbChartChannelNameList.SelectedIndex] = new Frame(HexStringToByteArray(tbStartFrame.Text)[0], HexStringToByteArray(tbStopFrame.Text)[0]);
 
             ChartUpdate();
         }
