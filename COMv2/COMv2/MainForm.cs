@@ -15,13 +15,13 @@ namespace COMv2
 {
     struct Frame
     {
-        public UInt16 Begin;
-        public UInt16 End;
+        public byte[] Begin;
+        public byte[] End;
 
-        public Frame(UInt16 Begin, UInt16 End) : this()
+        public Frame(UInt16 uBegin, UInt16 uEnd) : this()
         {
-            this.Begin = Begin;
-            this.End = End;
+            this.Begin = BitConverter.GetBytes(uBegin);
+            this.End = BitConverter.GetBytes(uEnd);
         }
     }
     public partial class MainForm : Form
@@ -31,7 +31,7 @@ namespace COMv2
         byte[] COMdataNow;                // 缓冲区数据
         List<string> ChartChannelNameList = new List<string>();   // 通道名
         List<Series> chtDataSeriesAdd = new List<Series>();         // 通道类
-        Frame chtDataFrame = new Frame(0x00cc,0xabcd);              // 通道帧
+        Frame chtDataFrame = new Frame(0xcc00,0xcdab);              // 通道帧
         
         public delegate void EventHandle(byte[] readBuffer);    // 读取串口委托
         public event EventHandle DataReceived;                      // 读取串口函数
@@ -73,18 +73,14 @@ namespace COMv2
             // byte[] decode
             rbByteIsString.Checked = true;
             cbByteIsNumber.Text = "int16";
-            
+
             // Frame
-            // HexStringToByteArray(tbStartFrame.Text)[0]
-            // HexStringToByteArray(tbStopFrame.Text)[0]
-            tbStartFrame.Text =chtDataFrame.Begin.ToString("x04");
-            tbStopFrame.Text = chtDataFrame.End.ToString("x04");
-
-            byte[] h=HexStringToByteArray(tbStartFrame.Text);
-            Array.Reverse(h);
-            UInt16 f = BitConverter.ToUInt16(h, 0);
-            ;
-
+            // how to use it?
+            // chkUseFrame.checked
+            // HexStringToByteArray(tbStartFrame.Text)
+            // HexStringToByteArray(tbStopFrame.Text)
+            tbStartFrame.Text = BitConverter.ToUInt16(chtDataFrame.Begin,0).ToString("x04");
+            tbStopFrame.Text = BitConverter.ToUInt16(chtDataFrame.End, 0).ToString("x04");
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
