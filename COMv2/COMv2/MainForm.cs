@@ -15,10 +15,10 @@ namespace COMv2
 {
     struct Frame
     {
-        public byte Begin;
-        public byte End;
+        public UInt16 Begin;
+        public UInt16 End;
 
-        public Frame(byte Begin, byte End) : this()
+        public Frame(UInt16 Begin, UInt16 End) : this()
         {
             this.Begin = Begin;
             this.End = End;
@@ -31,7 +31,7 @@ namespace COMv2
         byte[] COMdataNow;                // 缓冲区数据
         List<string> ChartChannelNameList = new List<string>();   // 通道名
         List<Series> chtDataSeriesAdd = new List<Series>();         // 通道类
-        Frame chtDataFrame = new Frame(0x00,0x00);              // 通道帧
+        Frame chtDataFrame = new Frame(0x00cc,0xabcd);              // 通道帧
         
         public delegate void EventHandle(byte[] readBuffer);    // 读取串口委托
         public event EventHandle DataReceived;                      // 读取串口函数
@@ -73,6 +73,18 @@ namespace COMv2
             // byte[] decode
             rbByteIsString.Checked = true;
             cbByteIsNumber.Text = "int16";
+            
+            // Frame
+            // HexStringToByteArray(tbStartFrame.Text)[0]
+            // HexStringToByteArray(tbStopFrame.Text)[0]
+            tbStartFrame.Text =chtDataFrame.Begin.ToString("x04");
+            tbStopFrame.Text = chtDataFrame.End.ToString("x04");
+
+            byte[] h=HexStringToByteArray(tbStartFrame.Text);
+            Array.Reverse(h);
+            UInt16 f = BitConverter.ToUInt16(h, 0);
+            ;
+
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -259,12 +271,6 @@ namespace COMv2
             else
             {
                 tbChartChannelName.Text = ChartChannelNameList[cbChartChannelNameList.SelectedIndex];
-                //TODO 
-                // 输出格式修正
-                // Frame
-                //chtDataFrame = new Frame(HexStringToByteArray(tbStartFrame.Text)[0], HexStringToByteArray(tbStopFrame.Text)[0]);
-                tbStartFrame.Text = chtDataFrame.Begin.ToString();
-                tbStopFrame.Text = chtDataFrame.End.ToString();
             }
 
             if (chtDataSeriesAdd.Count != 0)
@@ -465,6 +471,8 @@ namespace COMv2
             {
                 e.Handled = true;
             }
+            if (tbStartFrame.Text.Length == 4 && e.KeyChar != '\b')
+                e.Handled = true;
             if ((e.KeyChar >= 'a') && (e.KeyChar <= 'f'))
             {
                 e.KeyChar = Convert.ToChar(e.KeyChar.ToString().ToUpper());
@@ -480,6 +488,8 @@ namespace COMv2
             {
                 e.Handled = true;
             }
+            if (tbStopFrame.Text.Length == 4 && e.KeyChar != '\b')
+                e.Handled = true;
             if ((e.KeyChar >= 'a') && (e.KeyChar <= 'f'))
             {
                 e.KeyChar = Convert.ToChar(e.KeyChar.ToString().ToUpper());
