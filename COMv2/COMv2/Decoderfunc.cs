@@ -89,6 +89,12 @@ namespace COMv2
                         DataPoint = ByteIsString(COMdataNow);
                     if (rbByteIsNumber.Checked)
                     {
+                        //
+                        // chkUseFrame.checked
+                        // HexStringToByteArray(tbStartFrame.Text)
+                        // HexStringToByteArray(tbStopFrame.Text)
+                        //
+
                         string NumSI = "";
                         chtData.Invoke(new Action(() =>
                         {
