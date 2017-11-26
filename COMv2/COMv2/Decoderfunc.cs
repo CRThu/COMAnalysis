@@ -94,9 +94,16 @@ namespace COMv2
                         // HexStringToByteArray(tbStartFrame.Text)
                         // HexStringToByteArray(tbStopFrame.Text)
                         //
+
                         // test for chkUseFrame
+                        //if (chkUseFrame.Checked)
+                        //    COMdataNow = new byte[] { };
+
                         if (chkUseFrame.Checked)
-                            COMdataNow = new byte[] { };
+                        {
+                            byte[] tmpCOMData;
+                            //TODO
+                        }
 
                         string NumSI = "";
                         chtData.Invoke(new Action(() =>

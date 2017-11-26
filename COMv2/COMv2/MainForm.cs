@@ -88,6 +88,15 @@ namespace COMv2
             btnPortClose_Click(null, null);
         }
 
+        private void tbThreadSleep_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!((e.KeyChar == '\b')
+                || ((e.KeyChar >= '0') && (e.KeyChar <= '9'))))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void btnPortOpen_Click(object sender, EventArgs e)
         {
             try
@@ -494,5 +503,6 @@ namespace COMv2
                 e.KeyChar = Convert.ToChar(e.KeyChar.ToString().ToUpper());
             }
         }
+
     }
 }

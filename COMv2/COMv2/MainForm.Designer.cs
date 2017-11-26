@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.COM = new System.IO.Ports.SerialPort(this.components);
             this.cbPort = new System.Windows.Forms.ComboBox();
             this.lbPort = new System.Windows.Forms.Label();
@@ -44,6 +44,7 @@
             this.lbParity = new System.Windows.Forms.Label();
             this.cbParity = new System.Windows.Forms.ComboBox();
             this.gbPort = new System.Windows.Forms.GroupBox();
+            this.lbThreadSleep = new System.Windows.Forms.Label();
             this.btnPortOpen = new System.Windows.Forms.Button();
             this.btnPortClose = new System.Windows.Forms.Button();
             this.gbCmd = new System.Windows.Forms.GroupBox();
@@ -94,6 +95,8 @@
             this.TSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.MS = new System.Windows.Forms.MenuStrip();
+            this.tbThreadSleep = new System.Windows.Forms.TextBox();
+            this.lbThreadSleepms = new System.Windows.Forms.Label();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -109,7 +112,7 @@
             // cbPort
             // 
             this.cbPort.FormattingEnabled = true;
-            this.cbPort.Location = new System.Drawing.Point(86, 51);
+            this.cbPort.Location = new System.Drawing.Point(94, 40);
             this.cbPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbPort.Name = "cbPort";
             this.cbPort.Size = new System.Drawing.Size(94, 28);
@@ -118,7 +121,7 @@
             // lbPort
             // 
             this.lbPort.AutoSize = true;
-            this.lbPort.Location = new System.Drawing.Point(20, 55);
+            this.lbPort.Location = new System.Drawing.Point(28, 44);
             this.lbPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbPort.Name = "lbPort";
             this.lbPort.Size = new System.Drawing.Size(43, 20);
@@ -128,7 +131,7 @@
             // lbBaudRate
             // 
             this.lbBaudRate.AutoSize = true;
-            this.lbBaudRate.Location = new System.Drawing.Point(20, 96);
+            this.lbBaudRate.Location = new System.Drawing.Point(28, 85);
             this.lbBaudRate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbBaudRate.Name = "lbBaudRate";
             this.lbBaudRate.Size = new System.Drawing.Size(58, 20);
@@ -150,7 +153,7 @@
             "230400",
             "460800",
             "921600"});
-            this.cbBaudRate.Location = new System.Drawing.Point(86, 92);
+            this.cbBaudRate.Location = new System.Drawing.Point(94, 81);
             this.cbBaudRate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbBaudRate.Name = "cbBaudRate";
             this.cbBaudRate.Size = new System.Drawing.Size(94, 28);
@@ -159,7 +162,7 @@
             // lbStopBits
             // 
             this.lbStopBits.AutoSize = true;
-            this.lbStopBits.Location = new System.Drawing.Point(20, 179);
+            this.lbStopBits.Location = new System.Drawing.Point(28, 168);
             this.lbStopBits.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbStopBits.Name = "lbStopBits";
             this.lbStopBits.Size = new System.Drawing.Size(58, 20);
@@ -173,7 +176,7 @@
             "1",
             "1.5",
             "2"});
-            this.cbStopBits.Location = new System.Drawing.Point(86, 175);
+            this.cbStopBits.Location = new System.Drawing.Point(94, 164);
             this.cbStopBits.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbStopBits.Name = "cbStopBits";
             this.cbStopBits.Size = new System.Drawing.Size(94, 28);
@@ -182,7 +185,7 @@
             // lbDataBits
             // 
             this.lbDataBits.AutoSize = true;
-            this.lbDataBits.Location = new System.Drawing.Point(20, 138);
+            this.lbDataBits.Location = new System.Drawing.Point(28, 127);
             this.lbDataBits.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbDataBits.Name = "lbDataBits";
             this.lbDataBits.Size = new System.Drawing.Size(58, 20);
@@ -197,7 +200,7 @@
             "6",
             "7",
             "8"});
-            this.cbDataBits.Location = new System.Drawing.Point(86, 134);
+            this.cbDataBits.Location = new System.Drawing.Point(94, 123);
             this.cbDataBits.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbDataBits.Name = "cbDataBits";
             this.cbDataBits.Size = new System.Drawing.Size(94, 28);
@@ -206,7 +209,7 @@
             // lbParity
             // 
             this.lbParity.AutoSize = true;
-            this.lbParity.Location = new System.Drawing.Point(20, 220);
+            this.lbParity.Location = new System.Drawing.Point(28, 209);
             this.lbParity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbParity.Name = "lbParity";
             this.lbParity.Size = new System.Drawing.Size(43, 20);
@@ -222,7 +225,7 @@
             "Even",
             "Mark",
             "Space"});
-            this.cbParity.Location = new System.Drawing.Point(86, 216);
+            this.cbParity.Location = new System.Drawing.Point(94, 205);
             this.cbParity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbParity.Name = "cbParity";
             this.cbParity.Size = new System.Drawing.Size(94, 28);
@@ -230,6 +233,9 @@
             // 
             // gbPort
             // 
+            this.gbPort.Controls.Add(this.lbThreadSleepms);
+            this.gbPort.Controls.Add(this.tbThreadSleep);
+            this.gbPort.Controls.Add(this.lbThreadSleep);
             this.gbPort.Controls.Add(this.cbPort);
             this.gbPort.Controls.Add(this.lbParity);
             this.gbPort.Controls.Add(this.cbDataBits);
@@ -248,6 +254,16 @@
             this.gbPort.TabIndex = 17;
             this.gbPort.TabStop = false;
             this.gbPort.Text = "串口参数";
+            // 
+            // lbThreadSleep
+            // 
+            this.lbThreadSleep.AutoSize = true;
+            this.lbThreadSleep.Location = new System.Drawing.Point(28, 244);
+            this.lbThreadSleep.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbThreadSleep.Name = "lbThreadSleep";
+            this.lbThreadSleep.Size = new System.Drawing.Size(73, 20);
+            this.lbThreadSleep.TabIndex = 17;
+            this.lbThreadSleep.Text = "读取频率:";
             // 
             // btnPortOpen
             // 
@@ -390,22 +406,22 @@
             this.chtData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.chtData.ChartAreas.Add(chartArea2);
+            chartArea5.Name = "ChartArea1";
+            this.chtData.ChartAreas.Add(chartArea5);
             this.chtData.Cursor = System.Windows.Forms.Cursors.Hand;
-            legend2.Name = "Legend1";
-            this.chtData.Legends.Add(legend2);
+            legend5.Name = "Legend1";
+            this.chtData.Legends.Add(legend5);
             this.chtData.Location = new System.Drawing.Point(8, 176);
             this.chtData.Margin = new System.Windows.Forms.Padding(4);
             this.chtData.Name = "chtData";
-            series2.BorderWidth = 2;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.IsValueShownAsLabel = true;
-            series2.Legend = "Legend1";
-            series2.LegendText = "data1";
-            series2.Name = "Series1";
-            this.chtData.Series.Add(series2);
+            series5.BorderWidth = 2;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.IsValueShownAsLabel = true;
+            series5.Legend = "Legend1";
+            series5.LegendText = "data1";
+            series5.Name = "Series1";
+            this.chtData.Series.Add(series5);
             this.chtData.Size = new System.Drawing.Size(695, 402);
             this.chtData.TabIndex = 26;
             this.chtData.DoubleClick += new System.EventHandler(this.chtData_DoubleClick);
@@ -847,6 +863,25 @@
             this.MS.TabIndex = 30;
             this.MS.Text = "menuStrip1";
             // 
+            // tbThreadSleep
+            // 
+            this.tbThreadSleep.Location = new System.Drawing.Point(108, 241);
+            this.tbThreadSleep.MaxLength = 3;
+            this.tbThreadSleep.Name = "tbThreadSleep";
+            this.tbThreadSleep.Size = new System.Drawing.Size(43, 27);
+            this.tbThreadSleep.TabIndex = 5;
+            this.tbThreadSleep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbThreadSleep_KeyPress);
+            // 
+            // lbThreadSleepms
+            // 
+            this.lbThreadSleepms.AutoSize = true;
+            this.lbThreadSleepms.Location = new System.Drawing.Point(158, 244);
+            this.lbThreadSleepms.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbThreadSleepms.Name = "lbThreadSleepms";
+            this.lbThreadSleepms.Size = new System.Drawing.Size(30, 20);
+            this.lbThreadSleepms.TabIndex = 19;
+            this.lbThreadSleepms.Text = "ms";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -953,6 +988,9 @@
         private System.Windows.Forms.TextBox tbStopFrame;
         private System.Windows.Forms.TextBox tbStartFrame;
         private System.Windows.Forms.CheckBox chkUseFrame;
+        private System.Windows.Forms.Label lbThreadSleep;
+        private System.Windows.Forms.Label lbThreadSleepms;
+        private System.Windows.Forms.TextBox tbThreadSleep;
     }
 }
 
