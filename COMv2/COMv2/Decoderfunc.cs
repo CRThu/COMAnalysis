@@ -94,6 +94,9 @@ namespace COMv2
                         // HexStringToByteArray(tbStartFrame.Text)
                         // HexStringToByteArray(tbStopFrame.Text)
                         //
+                        // test for chkUseFrame
+                        if (chkUseFrame.Checked)
+                            COMdataNow = new byte[] { };
 
                         string NumSI = "";
                         chtData.Invoke(new Action(() =>
@@ -122,7 +125,6 @@ namespace COMv2
                             tbPortRead.Text += System.Text.Encoding.Default.GetString(COMdataNow);
                         }));
                 }
-
             }
             catch (Exception ex)
             {
