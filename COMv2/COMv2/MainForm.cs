@@ -310,7 +310,9 @@ namespace COMv2
                 COMdataNow = System.Text.Encoding.Default.GetBytes("9.234,6.111,2.222,8.888,4.886,9.234,4.111,4.333,7.78,9.092,5.234,6.111,4.333,8.888,2.092,9.234,3.09,4.333,5.8,9.092,4.234,6.111,4.333,8.888,1.092,9.234,5.32,4.333,1.8,7.02");
             if (rbByteIsNumber.Checked)
                 if (chkUseFrame.Checked)
-                    COMdataNow = new byte[] { 0x12, 0x34, 0x0D, 0x6B, 0x3C, 0x05, 0x11, 0x55, 0x40, 0xDD, 0xF0, 0x65, 0x8E, 0xA3, 0xD5, 0xC7, 0x11, 0x05, 0xab, 0xcd };
+                    COMdataNow = new byte[] { 0x12, 0x34, 0x01, 0x02, 0xab, 0xcd, 0xab, 0x12, 0x34, 0xDD, 0xF0, 0xab, 0xab, 0xcd, 0x12, 0x34, 0x11, 0x05, 0xab, 0xcd };
+            //                                                                                          wrong                                                                     wrong                                              wrong
+            //                                                           start        01      02         stop         -          start            dd      f0      ab      stop             start          11       05       stop
                 else
                     COMdataNow = new byte[] { 0x0D, 0x6B, 0x3C, 0x05, 0x11, 0x55, 0x40, 0xDD, 0xF0, 0x65, 0x8E, 0xA3, 0xD5, 0xC7, 0x11, 0x05 };
             if (rbNoDecoder.Checked)

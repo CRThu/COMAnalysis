@@ -100,10 +100,7 @@ namespace COMv2
                         //    COMdataNow = new byte[] { };
 
                         if (chkUseFrame.Checked)
-                        {
-                            byte[] tmpCOMData;
-                            //TODO
-                        }
+                            ExtractFrames();
 
                         string NumSI = "";
                         chtData.Invoke(new Action(() =>
@@ -137,6 +134,69 @@ namespace COMv2
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        // 提取帧
+        void ExtractFrames()
+        {
+            //
+            // chkUseFrame.checked
+            // HexStringToByteArray(tbStartFrame.Text)
+            // HexStringToByteArray(tbStopFrame.Text)
+            //
+            byte[] StartFrameArray = HexStringToByteArray(tbStartFrame.Text);
+            byte[] StopFrameArray = HexStringToByteArray(tbStopFrame.Text);
+
+            bool FindStartFrame = false;
+            int Address = 0;
+
+            List<byte> COMDataTmp=new List<byte>();
+
+            for (int i = 0; i < COMdataNow.Length; i++)
+            {
+                if (FindStartFrame == false)    // 匹配开始帧
+                {
+                    bool IsStartMatch = true;
+                    for (int j = 0; j < StartFrameArray.Length; j++)
+                    {
+                        if ((i + j>= COMdataNow.Length) || (COMdataNow[i + j] != StartFrameArray[j]))
+                        {
+                            IsStartMatch = false;
+                            break;
+                        }
+                        else
+                            Address = i + j;
+                    }
+                    if (IsStartMatch == true)
+                    {
+                        i = Address;
+                        FindStartFrame = true;
+                    }
+                }
+                else        // 匹配结束帧
+                {
+                    COMDataTmp.Add(COMdataNow[i]);  // 存入
+
+                    bool IsStopMatch = true;
+                    for (int j = 0; j < StopFrameArray.Length; j++)
+                    {
+                        if ((i + j>= COMdataNow.Length) || (COMdataNow[i + j] != StopFrameArray[j]))
+                        {
+                            IsStopMatch = false;
+                            break;
+                        }
+                        else
+                            Address = i + j;
+                    }
+                    if (IsStopMatch == true)
+                    {
+                        i = Address;
+                        FindStartFrame = false;
+                    }
+                }
+            }
+            ;
+            COMdataNow = COMDataTmp.ToArray();
         }
 
         // 单通道转多通道
