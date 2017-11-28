@@ -190,6 +190,7 @@ namespace COMv2
                     }
                     if (IsStopMatch == true)
                     {
+                        COMDataTmp.RemoveAt(COMDataTmp.Count - 1);
                         i = Address;
                         FindStartFrame = false;
                     }
