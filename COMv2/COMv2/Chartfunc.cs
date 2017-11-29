@@ -46,6 +46,13 @@ namespace COMv2
 
         void ChartDraw()
         {
+            //MessageBox.Show(chtData.ChartAreas[0].AxisX.ScaleView.ViewMinimum.ToString());
+            //MessageBox.Show(chtData.ChartAreas[0].AxisX.ScaleView.ViewMaximum.ToString());
+
+            //MessageBox.Show(chtData.ChartAreas[0].AxisX.Minimum.ToString());    // 数据最小值
+            //MessageBox.Show(chtData.ChartAreas[0].AxisX.Maximum.ToString());    // 数据最大值
+            
+            //TODO
             chtData.Invoke(new Action(() =>
             {
                 for (int i = 0; i < ChartChannelNameList.Count; i++)
