@@ -51,13 +51,25 @@ namespace COMv2
 
             //MessageBox.Show(chtData.ChartAreas[0].AxisX.Minimum.ToString());    // 数据最小值
             //MessageBox.Show(chtData.ChartAreas[0].AxisX.Maximum.ToString());    // 数据最大值
-            
+
             //TODO
+            List<int> a = new List<int>();
+            for (int i = 0; i < MultiChannelDataPoint[0].Count; i++)
+                a.Add(i + 1);
             chtData.Invoke(new Action(() =>
             {
                 for (int i = 0; i < ChartChannelNameList.Count; i++)
-                    chtData.Series[ChartChannelNameList[i]].Points.DataBindY(MultiChannelDataPoint[i]);
+                    chtData.Series[ChartChannelNameList[i]].Points.DataBindXY(a,MultiChannelDataPoint[i]);
             }));
+
+            // 2.4.9.0
+            //chtData.Invoke(new Action(() =>
+            //{
+            //    for (int i = 0; i < ChartChannelNameList.Count; i++)
+            //        chtData.Series[ChartChannelNameList[i]].Points.DataBindY(MultiChannelDataPoint[i]);
+            //}));
+
+            // old
             //chtData.Invoke(new Action(() =>
             //{
             //    chtData.Series[ChartChannelNameList[0]].Points.DataBindY(DataPoint);
