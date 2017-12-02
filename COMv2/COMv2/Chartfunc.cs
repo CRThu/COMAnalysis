@@ -10,6 +10,9 @@ namespace COMv2
 {
     partial class MainForm
     {
+        List<List<int>> MultiChannelChartViewX = new List<List<int>>();      // 多通道显示数据集
+        List<List<double>> MultiChannelChartViewY = new List<List<double>>();      // 多通道显示数据集
+
         void Chartinit()
         {
             // Chart Clear Param
@@ -44,6 +47,17 @@ namespace COMv2
             chtData.Legends.Add(chtDataLegend);
         }
 
+        void ChartDataClear()
+        {
+            MultiChannelChartViewX.Clear();
+            MultiChannelChartViewY.Clear();
+        }
+
+        void ToViewData()
+        {
+
+        }
+
         void ChartDraw()
         {
             //MessageBox.Show(chtData.ChartAreas[0].AxisX.ScaleView.ViewMinimum.ToString());
@@ -52,14 +66,12 @@ namespace COMv2
             //MessageBox.Show(chtData.ChartAreas[0].AxisX.Minimum.ToString());    // 数据最小值
             //MessageBox.Show(chtData.ChartAreas[0].AxisX.Maximum.ToString());    // 数据最大值
 
-            //TODO
-            List<int> a = new List<int>();
-            for (int i = 0; i < MultiChannelDataPoint[0].Count; i++)
-                a.Add(i + 1);
+            ToViewData();
+
             chtData.Invoke(new Action(() =>
             {
                 for (int i = 0; i < ChartChannelNameList.Count; i++)
-                    chtData.Series[ChartChannelNameList[i]].Points.DataBindXY(a,MultiChannelDataPoint[i]);
+                    chtData.Series[ChartChannelNameList[i]].Points.DataBindXY(MultiChannelChartViewX[i],MultiChannelChartViewY[i]);
             }));
 
             // 2.4.9.0
@@ -79,6 +91,7 @@ namespace COMv2
         void ChartUpdate()
         {
             DataClear();
+            ChartDataClear();
             DataToMultiChannel();       // 单通道转多通道
             ChartDraw();                      // 绘图
         }
