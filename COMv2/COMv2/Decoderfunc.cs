@@ -116,10 +116,14 @@ namespace COMv2
                         }
                     }
                     AllDataPoint.AddRange(DataPoint);
-                    if(cbChartTotb.Checked)
+                    if (cbChartTotb.Checked)
                         DataToText();                     // 解释器
+                    
                     DataToMultiChannel();       // 单通道转多通道
+                    ChartDataClear();               // 清空绘图点
+                    ToViewData();                    // 计算绘图点
                     ChartDraw();                      // 绘图
+
                 }
                 else
                 {

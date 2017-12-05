@@ -55,19 +55,39 @@ namespace COMv2
 
         void ToViewData()
         {
+            // 完整多通道数据集 MultiChannelDataPoint[]
 
+            // 显示多通道数据集 MultiChannelChartViewX[i]
+            //                              MultiChannelChartViewY[i]
+
+            // 滚动条 chtData.ChartAreas[].AxisX.ScaleView.ViewMinimum
+            //            chtData.ChartAreas[].AxisX.ScaleView.ViewMaximum
+
+            // 数据量 chtData.ChartAreas[].AxisX.Minimum
+            //            chtData.ChartAreas[].AxisX.Maximum
+
+            // 控件尺寸 chtData.Size.Height
+            //                chtData.Size.Width
+
+
+            for (int i = 0; i < ChartChannelNameList.Count; i++)
+            {
+                MultiChannelChartViewX.Add(new List<int>());
+                MultiChannelChartViewY.Add(new List<double>());
+
+                float ViewScaleX = (float)MultiChannelDataPoint[i].Count / chtData.Size.Width;         // 数据总量/控件分辨率
+
+                for (int j = 0; j < MultiChannelDataPoint[i].Count; j += ((int)ViewScaleX<1)?1:(int)ViewScaleX)
+                {
+                    MultiChannelChartViewX[i].Add(j);
+                    MultiChannelChartViewY[i].Add(MultiChannelDataPoint[i][j]);
+                }
+                ;
+            }
         }
 
         void ChartDraw()
         {
-            //MessageBox.Show(chtData.ChartAreas[0].AxisX.ScaleView.ViewMinimum.ToString());
-            //MessageBox.Show(chtData.ChartAreas[0].AxisX.ScaleView.ViewMaximum.ToString());
-
-            //MessageBox.Show(chtData.ChartAreas[0].AxisX.Minimum.ToString());    // 数据最小值
-            //MessageBox.Show(chtData.ChartAreas[0].AxisX.Maximum.ToString());    // 数据最大值
-
-            ToViewData();
-
             chtData.Invoke(new Action(() =>
             {
                 for (int i = 0; i < ChartChannelNameList.Count; i++)
@@ -91,8 +111,9 @@ namespace COMv2
         void ChartUpdate()
         {
             DataClear();
-            ChartDataClear();
             DataToMultiChannel();       // 单通道转多通道
+            ChartDataClear();               // 清空绘图点
+            ToViewData();                    // 计算绘图点
             ChartDraw();                      // 绘图
         }
     }
