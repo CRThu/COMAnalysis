@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.COM = new System.IO.Ports.SerialPort(this.components);
             this.cbPort = new System.Windows.Forms.ComboBox();
             this.lbPort = new System.Windows.Forms.Label();
@@ -44,6 +44,8 @@
             this.lbParity = new System.Windows.Forms.Label();
             this.cbParity = new System.Windows.Forms.ComboBox();
             this.gbPort = new System.Windows.Forms.GroupBox();
+            this.lbThreadSleepms = new System.Windows.Forms.Label();
+            this.tbThreadSleep = new System.Windows.Forms.TextBox();
             this.lbThreadSleep = new System.Windows.Forms.Label();
             this.btnPortOpen = new System.Windows.Forms.Button();
             this.btnPortClose = new System.Windows.Forms.Button();
@@ -73,6 +75,7 @@
             this.tbStringFilter = new System.Windows.Forms.TextBox();
             this.tcOutput = new System.Windows.Forms.TabControl();
             this.tpChart = new System.Windows.Forms.TabPage();
+            this.chkAutoChartScroll = new System.Windows.Forms.CheckBox();
             this.chkUseFrame = new System.Windows.Forms.CheckBox();
             this.lbStopFrame = new System.Windows.Forms.Label();
             this.lbStartFrame = new System.Windows.Forms.Label();
@@ -95,8 +98,6 @@
             this.TSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.MS = new System.Windows.Forms.MenuStrip();
-            this.tbThreadSleep = new System.Windows.Forms.TextBox();
-            this.lbThreadSleepms = new System.Windows.Forms.Label();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -255,6 +256,25 @@
             this.gbPort.TabStop = false;
             this.gbPort.Text = "串口参数";
             // 
+            // lbThreadSleepms
+            // 
+            this.lbThreadSleepms.AutoSize = true;
+            this.lbThreadSleepms.Location = new System.Drawing.Point(158, 244);
+            this.lbThreadSleepms.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbThreadSleepms.Name = "lbThreadSleepms";
+            this.lbThreadSleepms.Size = new System.Drawing.Size(30, 20);
+            this.lbThreadSleepms.TabIndex = 19;
+            this.lbThreadSleepms.Text = "ms";
+            // 
+            // tbThreadSleep
+            // 
+            this.tbThreadSleep.Location = new System.Drawing.Point(108, 241);
+            this.tbThreadSleep.MaxLength = 3;
+            this.tbThreadSleep.Name = "tbThreadSleep";
+            this.tbThreadSleep.Size = new System.Drawing.Size(43, 27);
+            this.tbThreadSleep.TabIndex = 5;
+            this.tbThreadSleep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbThreadSleep_KeyPress);
+            // 
             // lbThreadSleep
             // 
             this.lbThreadSleep.AutoSize = true;
@@ -406,22 +426,22 @@
             this.chtData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea5.Name = "ChartArea1";
-            this.chtData.ChartAreas.Add(chartArea5);
+            chartArea1.Name = "ChartArea1";
+            this.chtData.ChartAreas.Add(chartArea1);
             this.chtData.Cursor = System.Windows.Forms.Cursors.Hand;
-            legend5.Name = "Legend1";
-            this.chtData.Legends.Add(legend5);
+            legend1.Name = "Legend1";
+            this.chtData.Legends.Add(legend1);
             this.chtData.Location = new System.Drawing.Point(8, 176);
             this.chtData.Margin = new System.Windows.Forms.Padding(4);
             this.chtData.Name = "chtData";
-            series5.BorderWidth = 2;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.IsValueShownAsLabel = true;
-            series5.Legend = "Legend1";
-            series5.LegendText = "data1";
-            series5.Name = "Series1";
-            this.chtData.Series.Add(series5);
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.LegendText = "data1";
+            series1.Name = "Series1";
+            this.chtData.Series.Add(series1);
             this.chtData.Size = new System.Drawing.Size(695, 402);
             this.chtData.TabIndex = 26;
             this.chtData.DoubleClick += new System.EventHandler(this.chtData_DoubleClick);
@@ -605,6 +625,7 @@
             // 
             // tpChart
             // 
+            this.tpChart.Controls.Add(this.chkAutoChartScroll);
             this.tpChart.Controls.Add(this.chkUseFrame);
             this.tpChart.Controls.Add(this.lbStopFrame);
             this.tpChart.Controls.Add(this.lbStartFrame);
@@ -633,6 +654,17 @@
             this.tpChart.TabIndex = 0;
             this.tpChart.Text = "图表显示";
             this.tpChart.UseVisualStyleBackColor = true;
+            // 
+            // chkAutoChartScroll
+            // 
+            this.chkAutoChartScroll.AutoSize = true;
+            this.chkAutoChartScroll.Location = new System.Drawing.Point(26, 153);
+            this.chkAutoChartScroll.Margin = new System.Windows.Forms.Padding(4);
+            this.chkAutoChartScroll.Name = "chkAutoChartScroll";
+            this.chkAutoChartScroll.Size = new System.Drawing.Size(91, 24);
+            this.chkAutoChartScroll.TabIndex = 43;
+            this.chkAutoChartScroll.Text = "自动滚动";
+            this.chkAutoChartScroll.UseVisualStyleBackColor = true;
             // 
             // chkUseFrame
             // 
@@ -863,25 +895,6 @@
             this.MS.TabIndex = 30;
             this.MS.Text = "menuStrip1";
             // 
-            // tbThreadSleep
-            // 
-            this.tbThreadSleep.Location = new System.Drawing.Point(108, 241);
-            this.tbThreadSleep.MaxLength = 3;
-            this.tbThreadSleep.Name = "tbThreadSleep";
-            this.tbThreadSleep.Size = new System.Drawing.Size(43, 27);
-            this.tbThreadSleep.TabIndex = 5;
-            this.tbThreadSleep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbThreadSleep_KeyPress);
-            // 
-            // lbThreadSleepms
-            // 
-            this.lbThreadSleepms.AutoSize = true;
-            this.lbThreadSleepms.Location = new System.Drawing.Point(158, 244);
-            this.lbThreadSleepms.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbThreadSleepms.Name = "lbThreadSleepms";
-            this.lbThreadSleepms.Size = new System.Drawing.Size(30, 20);
-            this.lbThreadSleepms.TabIndex = 19;
-            this.lbThreadSleepms.Text = "ms";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -991,6 +1004,7 @@
         private System.Windows.Forms.Label lbThreadSleep;
         private System.Windows.Forms.Label lbThreadSleepms;
         private System.Windows.Forms.TextBox tbThreadSleep;
+        private System.Windows.Forms.CheckBox chkAutoChartScroll;
     }
 }
 

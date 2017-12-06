@@ -89,25 +89,35 @@ namespace COMv2
 
         void ChartDraw()
         {
-            chtData.Invoke(new Action(() =>
+            try
+            {
+
+                chtData.Invoke(new Action(() =>
             {
                 for (int i = 0; i < ChartChannelNameList.Count; i++)
-                    chtData.Series[ChartChannelNameList[i]].Points.DataBindXY(MultiChannelChartViewX[i],MultiChannelChartViewY[i]);
+                    chtData.Series[ChartChannelNameList[i]].Points.DataBindXY(MultiChannelChartViewX[i], MultiChannelChartViewY[i]);
+                if (chkAutoChartScroll.Checked)
+                    chtData.ChartAreas[0].AxisX.ScaleView.Scroll(ScrollType.Last); //水平滚动条始终居于最右边
             }));
 
-            chtData.ChartAreas[0].AxisX.ScaleView.Scroll(ScrollType.Last); //水平滚动条始终居于最右边
-            // 2.4.9.0
-            //chtData.Invoke(new Action(() =>
-            //{
-            //    for (int i = 0; i < ChartChannelNameList.Count; i++)
-            //        chtData.Series[ChartChannelNameList[i]].Points.DataBindY(MultiChannelDataPoint[i]);
-            //}));
+                // 2.4.9.0
+                //chtData.Invoke(new Action(() =>
+                //{
+                //    for (int i = 0; i < ChartChannelNameList.Count; i++)
+                //        chtData.Series[ChartChannelNameList[i]].Points.DataBindY(MultiChannelDataPoint[i]);
+                //}));
 
-            // old
-            //chtData.Invoke(new Action(() =>
-            //{
-            //    chtData.Series[ChartChannelNameList[0]].Points.DataBindY(DataPoint);
-            //}));
+                // old
+                //chtData.Invoke(new Action(() =>
+                //{
+                //    chtData.Series[ChartChannelNameList[0]].Points.DataBindY(DataPoint);
+                //}));
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         void ChartUpdate()

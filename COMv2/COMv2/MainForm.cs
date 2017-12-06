@@ -57,6 +57,8 @@ namespace COMv2
 
             // Chart Set
             cbChartTotb.Checked = false;
+            // Scroll
+            chkAutoChartScroll.Checked = true;
 
             ChartChannelNameList.Add("data1");
             cbChartChannelNameList.SelectedIndex = 0;
