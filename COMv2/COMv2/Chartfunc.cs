@@ -75,15 +75,16 @@ namespace COMv2
                 MultiChannelChartViewX.Add(new List<int>());
                 MultiChannelChartViewY.Add(new List<double>());
 
-                float ViewScaleX = (float)MultiChannelDataPoint[i].Count / chtData.Size.Width;         // 数据总量/控件分辨率
+                //float ViewScaleX = (float)MultiChannelDataPoint[i].Count / chtData.Size.Width;         // 数据总量/控件分辨率
+                float ViewScaleX = (float)(double.IsNaN(chtData.ChartAreas[0].AxisX.ScaleView.Size) ? MultiChannelDataPoint[i].Count : chtData.ChartAreas[0].AxisX.ScaleView.Size) / chtData.Size.Width;         // 数据总量/控件分辨率
 
                 for (int j = 0; j < MultiChannelDataPoint[i].Count; j += ((int)ViewScaleX<1)?1:(int)ViewScaleX)
                 {
                     MultiChannelChartViewX[i].Add(j);
                     MultiChannelChartViewY[i].Add(MultiChannelDataPoint[i][j]);
                 }
-                ;
             }
+
         }
 
         void ChartDraw()
@@ -94,6 +95,7 @@ namespace COMv2
                     chtData.Series[ChartChannelNameList[i]].Points.DataBindXY(MultiChannelChartViewX[i],MultiChannelChartViewY[i]);
             }));
 
+            chtData.ChartAreas[0].AxisX.ScaleView.Scroll(ScrollType.Last); //水平滚动条始终居于最右边
             // 2.4.9.0
             //chtData.Invoke(new Action(() =>
             //{

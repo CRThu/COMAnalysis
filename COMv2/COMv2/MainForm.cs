@@ -56,7 +56,7 @@ namespace COMv2
             }
 
             // Chart Set
-            cbChartTotb.Checked = true;
+            cbChartTotb.Checked = false;
 
             ChartChannelNameList.Add("data1");
             cbChartChannelNameList.SelectedIndex = 0;
