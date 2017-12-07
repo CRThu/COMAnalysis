@@ -121,7 +121,8 @@ namespace COMv2
                     
                     DataToMultiChannel();       // 单通道转多通道
                     ChartDataClear();               // 清空绘图点
-                    ToViewData();                    // 计算绘图点
+                    if (testForLarge.Checked)
+                        ToViewData();                    // 计算绘图点
                     ChartDraw();                      // 绘图
 
                 }

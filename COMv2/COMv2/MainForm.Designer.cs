@@ -98,6 +98,7 @@
             this.TSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.MS = new System.Windows.Forms.MenuStrip();
+            this.testForLarge = new System.Windows.Forms.CheckBox();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -625,6 +626,7 @@
             // 
             // tpChart
             // 
+            this.tpChart.Controls.Add(this.testForLarge);
             this.tpChart.Controls.Add(this.chkAutoChartScroll);
             this.tpChart.Controls.Add(this.chkUseFrame);
             this.tpChart.Controls.Add(this.lbStopFrame);
@@ -895,6 +897,19 @@
             this.MS.TabIndex = 30;
             this.MS.Text = "menuStrip1";
             // 
+            // testForLarge
+            // 
+            this.testForLarge.AutoSize = true;
+            this.testForLarge.Checked = true;
+            this.testForLarge.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.testForLarge.Location = new System.Drawing.Point(174, 156);
+            this.testForLarge.Margin = new System.Windows.Forms.Padding(4);
+            this.testForLarge.Name = "testForLarge";
+            this.testForLarge.Size = new System.Drawing.Size(124, 24);
+            this.testForLarge.TabIndex = 44;
+            this.testForLarge.Text = "testForLarge";
+            this.testForLarge.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -1005,6 +1020,7 @@
         private System.Windows.Forms.Label lbThreadSleepms;
         private System.Windows.Forms.TextBox tbThreadSleep;
         private System.Windows.Forms.CheckBox chkAutoChartScroll;
+        private System.Windows.Forms.CheckBox testForLarge;
     }
 }
 

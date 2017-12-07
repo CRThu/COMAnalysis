@@ -77,7 +77,7 @@ namespace COMv2
 
                 //float ViewScaleX = (float)MultiChannelDataPoint[i].Count / chtData.Size.Width;         // 数据总量/控件分辨率
                 float ViewScaleX = (float)(double.IsNaN(chtData.ChartAreas[0].AxisX.ScaleView.Size) ? MultiChannelDataPoint[i].Count : chtData.ChartAreas[0].AxisX.ScaleView.Size) / chtData.Size.Width;         // 数据总量/控件分辨率
-
+                //TODO
                 for (int j = 0; j < MultiChannelDataPoint[i].Count; j += ((int)ViewScaleX<1)?1:(int)ViewScaleX)
                 {
                     MultiChannelChartViewX[i].Add(j);
@@ -91,21 +91,23 @@ namespace COMv2
         {
             try
             {
-
-                chtData.Invoke(new Action(() =>
-            {
-                for (int i = 0; i < ChartChannelNameList.Count; i++)
-                    chtData.Series[ChartChannelNameList[i]].Points.DataBindXY(MultiChannelChartViewX[i], MultiChannelChartViewY[i]);
-                if (chkAutoChartScroll.Checked)
-                    chtData.ChartAreas[0].AxisX.ScaleView.Scroll(ScrollType.Last); //水平滚动条始终居于最右边
-            }));
-
-                // 2.4.9.0
-                //chtData.Invoke(new Action(() =>
-                //{
-                //    for (int i = 0; i < ChartChannelNameList.Count; i++)
-                //        chtData.Series[ChartChannelNameList[i]].Points.DataBindY(MultiChannelDataPoint[i]);
-                //}));
+                if (testForLarge.Checked)
+                    chtData.Invoke(new Action(() =>
+                {
+                    for (int i = 0; i < ChartChannelNameList.Count; i++)
+                        chtData.Series[ChartChannelNameList[i]].Points.DataBindXY(MultiChannelChartViewX[i], MultiChannelChartViewY[i]);
+                    if (chkAutoChartScroll.Checked)
+                        chtData.ChartAreas[0].AxisX.ScaleView.Scroll(ScrollType.Last); //水平滚动条始终居于最右边
+                }));
+                else
+                    // 2.4.9.0
+                    chtData.Invoke(new Action(() =>
+                    {
+                        for (int i = 0; i < ChartChannelNameList.Count; i++)
+                            chtData.Series[ChartChannelNameList[i]].Points.DataBindY(MultiChannelDataPoint[i]);
+                        if (chkAutoChartScroll.Checked)
+                            chtData.ChartAreas[0].AxisX.ScaleView.Scroll(ScrollType.Last); //水平滚动条始终居于最右边
+                    }));
 
                 // old
                 //chtData.Invoke(new Action(() =>
@@ -125,7 +127,8 @@ namespace COMv2
             DataClear();
             DataToMultiChannel();       // 单通道转多通道
             ChartDataClear();               // 清空绘图点
-            ToViewData();                    // 计算绘图点
+            if (testForLarge.Checked)
+                ToViewData();                    // 计算绘图点
             ChartDraw();                      // 绘图
         }
     }
