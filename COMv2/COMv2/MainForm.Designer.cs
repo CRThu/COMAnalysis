@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.COM = new System.IO.Ports.SerialPort(this.components);
             this.cbPort = new System.Windows.Forms.ComboBox();
             this.lbPort = new System.Windows.Forms.Label();
@@ -75,6 +75,7 @@
             this.tbStringFilter = new System.Windows.Forms.TextBox();
             this.tcOutput = new System.Windows.Forms.TabControl();
             this.tpChart = new System.Windows.Forms.TabPage();
+            this.testForLarge = new System.Windows.Forms.CheckBox();
             this.chkAutoChartScroll = new System.Windows.Forms.CheckBox();
             this.chkUseFrame = new System.Windows.Forms.CheckBox();
             this.lbStopFrame = new System.Windows.Forms.Label();
@@ -98,7 +99,6 @@
             this.TSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.MS = new System.Windows.Forms.MenuStrip();
-            this.testForLarge = new System.Windows.Forms.CheckBox();
             this.gbPort.SuspendLayout();
             this.gbCmd.SuspendLayout();
             this.gbSend.SuspendLayout();
@@ -427,22 +427,22 @@
             this.chtData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chtData.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chtData.ChartAreas.Add(chartArea2);
             this.chtData.Cursor = System.Windows.Forms.Cursors.Hand;
-            legend1.Name = "Legend1";
-            this.chtData.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.chtData.Legends.Add(legend2);
             this.chtData.Location = new System.Drawing.Point(8, 176);
             this.chtData.Margin = new System.Windows.Forms.Padding(4);
             this.chtData.Name = "chtData";
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.IsValueShownAsLabel = true;
-            series1.Legend = "Legend1";
-            series1.LegendText = "data1";
-            series1.Name = "Series1";
-            this.chtData.Series.Add(series1);
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.IsValueShownAsLabel = true;
+            series2.Legend = "Legend1";
+            series2.LegendText = "data1";
+            series2.Name = "Series1";
+            this.chtData.Series.Add(series2);
             this.chtData.Size = new System.Drawing.Size(695, 402);
             this.chtData.TabIndex = 26;
             this.chtData.DoubleClick += new System.EventHandler(this.chtData_DoubleClick);
@@ -656,6 +656,17 @@
             this.tpChart.TabIndex = 0;
             this.tpChart.Text = "图表显示";
             this.tpChart.UseVisualStyleBackColor = true;
+            // 
+            // testForLarge
+            // 
+            this.testForLarge.AutoSize = true;
+            this.testForLarge.Location = new System.Drawing.Point(174, 156);
+            this.testForLarge.Margin = new System.Windows.Forms.Padding(4);
+            this.testForLarge.Name = "testForLarge";
+            this.testForLarge.Size = new System.Drawing.Size(91, 24);
+            this.testForLarge.TabIndex = 44;
+            this.testForLarge.Text = "数据过多";
+            this.testForLarge.UseVisualStyleBackColor = true;
             // 
             // chkAutoChartScroll
             // 
@@ -896,19 +907,6 @@
             this.MS.Size = new System.Drawing.Size(1256, 28);
             this.MS.TabIndex = 30;
             this.MS.Text = "menuStrip1";
-            // 
-            // testForLarge
-            // 
-            this.testForLarge.AutoSize = true;
-            this.testForLarge.Checked = true;
-            this.testForLarge.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.testForLarge.Location = new System.Drawing.Point(174, 156);
-            this.testForLarge.Margin = new System.Windows.Forms.Padding(4);
-            this.testForLarge.Name = "testForLarge";
-            this.testForLarge.Size = new System.Drawing.Size(124, 24);
-            this.testForLarge.TabIndex = 44;
-            this.testForLarge.Text = "testForLarge";
-            this.testForLarge.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

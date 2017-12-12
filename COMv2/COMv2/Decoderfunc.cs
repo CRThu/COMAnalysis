@@ -63,7 +63,11 @@ namespace COMv2
             List<double> FloatArray = new List<double>();
             if (ByteArray.Length % 4 == 0)
                 for (int i = 0; i < ByteArray.Length; i += 4)
+                {
+                    if (BitConverter.ToSingle(ByteArray, i) >= Int64.MaxValue || BitConverter.ToSingle(ByteArray, i) <= Int64.MinValue)
+                        throw new ArgumentOutOfRangeException();
                     FloatArray.Add(BitConverter.ToSingle(ByteArray, i));
+                }
             return FloatArray;
         }
 
@@ -72,7 +76,11 @@ namespace COMv2
             List<double> DoubleArray = new List<double>();
             if (ByteArray.Length % 8 == 0)
                 for (int i = 0; i < ByteArray.Length; i += 8)
+                {
+                    if (BitConverter.ToSingle(ByteArray, i) >= Int64.MaxValue || BitConverter.ToSingle(ByteArray, i) <= Int64.MinValue)
+                        throw new ArgumentOutOfRangeException();
                     DoubleArray.Add(BitConverter.ToDouble(ByteArray, i));
+                }
             return DoubleArray;
         }
 
